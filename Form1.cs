@@ -355,7 +355,7 @@ namespace Software_Trelisa
 
             DesenhaBarras();
 
-            button2.Enabled = false;
+            btnTeste.Enabled = false;
 
         }
     }
