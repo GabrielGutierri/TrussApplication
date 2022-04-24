@@ -8,6 +8,7 @@ namespace Software_Trelisa
         List<PictureBox> listaPictureBox = new List<PictureBox>();
         List<Ponto> listaDeletar = new List<Ponto>();
         bool querDeletar = false;
+        string teste = "teste";
 
         public  Form1()
         {
