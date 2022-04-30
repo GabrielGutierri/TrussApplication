@@ -8,10 +8,10 @@ namespace Software_Trelisa
 {
     public class Barra
      {
-        int x;
         // TRUE = CIMA OU DIREITA
         // FALSE = BAIXO OU ESQUERDA
-        public int pontoInicialX, pontoInicialY, pontoFinalX, pontoFinalY, forca;
+        public int pontoInicialX, pontoInicialY, pontoFinalX, pontoFinalY;
+        public Forca forca { get; set; }
         public bool estainclinada = true, sentidoVertical = true, sentidoHorizontal = false;
         public double angle, distancia;
 

@@ -10,7 +10,7 @@ namespace Software_Trelisa
     {
         public int valorX, valorY;
         public List<Barra> barrasPonto = new List<Barra>();
-
+        public List<ForcaPonto> forcasPonto = new List<ForcaPonto>();
         public Ponto(int x, int y)
         {
             valorX = x;

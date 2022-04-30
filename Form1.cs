@@ -1,3 +1,4 @@
+using Software_Trelisa.Properties;
 
 namespace Software_Trelisa
 {
@@ -6,6 +7,7 @@ namespace Software_Trelisa
         public static List<Barra> listaBarras = new List<Barra>();
         public static List<Ponto> listaPontos = new List<Ponto>();
         List<PictureBox> listaPictureBox = new List<PictureBox>();
+        
         List<Ponto> listaDeletar = new List<Ponto>();
         bool querDeletar = false;
         string teste = "teste";
@@ -25,7 +27,7 @@ namespace Software_Trelisa
             }
             else
             {
-                AdicionaBarras f = new AdicionaBarras(ponto);
+                frmCriacao f = new frmCriacao(ponto);
                 f.ShowDialog();
 
                 foreach (PictureBox imagem in listaPictureBox)
@@ -58,16 +60,16 @@ namespace Software_Trelisa
             novoPontoImagem.Click += new EventHandler((sender, e) => novoPonto_DoubleClick(sender, e, ponto));
             novoPontoImagem.Enabled = false;
             novoPontoImagem.Visible = false;
-            panel1.Controls.Add(novoPontoImagem);
+            panelDesenho.Controls.Add(novoPontoImagem);
             listaPictureBox.Add(novoPontoImagem);
 
         }
 
         private void DesenhaBarras()
         {
-            Graphics g = panel1.CreateGraphics();
-            Pen myPen = new Pen(Color.Green, 8);
-            g.Clear(panel1.BackColor);
+            Graphics g = panelDesenho.CreateGraphics();
+            Pen myPen = new Pen(Color.Gray, 8);
+            g.Clear(panelDesenho.BackColor);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             foreach (Barra barras in listaBarras)
             {
@@ -114,7 +116,7 @@ namespace Software_Trelisa
                         {
                             PictureBox pictureBoxRemove = listaPictureBox.Find(x => x.Name == "Ponto" +
                             pontoImagem.valorX.ToString() + pontoImagem.valorY.ToString());
-                            panel1.Controls.Remove(pictureBoxRemove);
+                            panelDesenho.Controls.Remove(pictureBoxRemove);
                             listaPictureBox.Remove(pictureBoxRemove);
                         }
                     }
@@ -145,7 +147,7 @@ namespace Software_Trelisa
                         {
                             PictureBox pictureBoxRemove = listaPictureBox.Find(x => x.Name == "Ponto" +
                             pontoImagem.valorX.ToString() + pontoImagem.valorY.ToString());
-                            panel1.Controls.Remove(pictureBoxRemove);
+                            panelDesenho.Controls.Remove(pictureBoxRemove);
                             listaPictureBox.Remove(pictureBoxRemove);
                         }
                     }
@@ -358,6 +360,23 @@ namespace Software_Trelisa
 
             btnTeste.Enabled = false;
 
+        }
+
+        private void lbDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCriar_Click_1(object sender, EventArgs e)
+        {
+            lbDeletar.Visible = false;
+            panelDesenho.Visible = true;
+            lbMensagem.Visible = true;
+            foreach (PictureBox imagem in listaPictureBox)
+            {
+                imagem.Enabled = true;
+                imagem.Visible = true;
+            }
         }
     }
 }
