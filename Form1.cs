@@ -1,4 +1,5 @@
 using Software_Trelisa.Properties;
+using System.Drawing.Drawing2D;
 
 namespace Software_Trelisa
 {
@@ -42,9 +43,10 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(75, 500);
+            Ponto ponto = new Ponto(125, 250);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
+            DesenhaForcaTeste(ponto);
         }
 
         public void CriaPontoImagem(Ponto ponto)
@@ -63,6 +65,62 @@ namespace Software_Trelisa
             panelDesenho.Controls.Add(novoPontoImagem);
             listaPictureBox.Add(novoPontoImagem);
 
+        }
+
+        private static Bitmap RotateImg(Bitmap bmp, float angle, Ponto ponto)
+        {
+            int w = bmp.Width;
+            int h = bmp.Height;
+            Bitmap tempImg = new Bitmap(w, h);
+            Graphics g = Graphics.FromImage(tempImg);
+            g.TranslateTransform(w / 2, h / 2);
+            g.RotateTransform(angle);
+            g.TranslateTransform(-w/2, -h / 2);
+            Point newPoint = new Point(ponto.valorX, ponto.valorY);
+            g.DrawImage(bmp, new Point(0,0));
+            return tempImg;
+            //g.DrawImageUnscaled(bmp,1,1);
+            //g.Dispose();
+            //GraphicsPath path = new GraphicsPath();
+            //path.AddRectangle(new RectangleF(0f, 0f, w , h));
+            //Matrix mtrx = new Matrix();
+            //mtrx.Rotate(angle);
+            ////PointF pontoF = new PointF(ponto.valorX, ponto.valorY);
+            ////mtrx.RotateAt(angle, pontoF);
+            //RectangleF rct = path.GetBounds(mtrx);
+            //Bitmap newImg = new Bitmap(Convert.ToInt32(rct.Width), Convert.ToInt32(rct.Height));
+            //g = Graphics.FromImage(newImg);
+            //g.TranslateTransform(-ponto.valorX, -ponto.valorY);
+            //g.RotateTransform(angle);
+            //g.InterpolationMode = InterpolationMode.HighQualityBilinear;
+            //g.DrawImageUnscaled(tempImg, ponto.valorX, ponto.valorY);
+            //g.Dispose();
+            //tempImg.Dispose();
+            //return newImg;
+        }
+
+        public void DesenhaForcaTeste(Ponto ponto)
+        {
+            //Image b = Resources.setaForcaCima;
+            //Bitmap returnBitmap = new Bitmap(100, 100);
+            //Graphics g = Graphics.FromImage(returnBitmap);
+            //g = panelDesenho.CreateGraphics();
+            //g.TranslateTransform(50, 50);
+            //g.RotateTransform(27);
+            //g.TranslateTransform(-50, -50);
+            //g.DrawImage(b, 50 - 50, 50 - 50, 50, 50);
+
+            //g.Dispose();
+            System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
+            novoPontoImagem.Image = Resources.setaForcaBaixo;
+            novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
+            novoPontoImagem.BackColor = Color.White;
+            novoPontoImagem.Width = 60;
+            novoPontoImagem.Height = 60;
+            novoPontoImagem.Location = new Point(ponto.valorX -20, ponto.valorY -50); // mudar a posicao de acordo com o quadrante da força
+            panelDesenho.Controls.Add(novoPontoImagem);
+            Bitmap bitmap = (Bitmap)novoPontoImagem.Image;
+            novoPontoImagem.Image = (Image)(RotateImg(bitmap, -30.0f, ponto));
         }
 
         private void DesenhaBarras()

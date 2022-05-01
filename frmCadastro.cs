@@ -25,7 +25,7 @@ namespace Software_Trelisa
         {
             try
             {
-                string connectionString = "Data Source=.;Integrated Security=True";
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog={};User ID=TrussAdmin;Password={}";
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
