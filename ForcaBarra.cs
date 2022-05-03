@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Software_Trelisa
 {
-    internal class ForcaBarra
+    public class ForcaBarra : Forca
     {
+        public List<Ponto> pontosBarras { get; set; }
+        public ForcaBarra(double intensidade, double angulo, string sentido, List<Ponto> pontos) : base(intensidade, angulo, sentido)
+        {
+            this.pontosBarras = pontos;
+        }
+
+
     }
 }

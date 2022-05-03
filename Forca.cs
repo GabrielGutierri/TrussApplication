@@ -14,16 +14,15 @@ namespace Software_Trelisa
         public double ComponenteVertical { get; set; }
         public double ComponenteHorizontal { get; set; }
 
-        public EnumSentido Sentido { get;}
+        public string Sentido { get; set; }
         
-        public Forca(double intensidade, double angulo, int sentido, string direcao)
+        public Forca(double intensidade, double angulo, string sentido)
         {
             Intensidade = intensidade; 
             Angulo = angulo;
-            this.Sentido = (EnumSentido)sentido;
+            this.Sentido = sentido;
             this.ComponenteVertical = Intensidade * Math.Sin(Angulo);
             this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo);
-            this.Direcao = direcao;
         }
     }
 }

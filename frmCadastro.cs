@@ -25,11 +25,11 @@ namespace Software_Trelisa
         {
             try
             {
-                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog={};User ID=TrussAdmin;Password={}";
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=TrussGVMJF0422"; ;
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (nome, email, senha) VALUES (@nome, @email, @senha)", connection);
+                SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (nome, senha) VALUES (@nome, @senha)", connection);
                 
                 cmd.Parameters.Add("@nome", SqlDbType.VarChar, 70).Value = txtNome.Text;
                 cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = txtEmail.Text;
@@ -41,6 +41,7 @@ namespace Software_Trelisa
                 adapter.InsertCommand.ExecuteNonQuery();
                 cmd.Dispose();
                 connection.Close();
+                
             }
             catch(Exception ex)
             {

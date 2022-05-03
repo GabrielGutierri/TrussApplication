@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
-            this.txtPasssword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -44,6 +44,7 @@
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Entrar";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label1
             // 
@@ -70,13 +71,13 @@
             this.txtUser.Size = new System.Drawing.Size(246, 23);
             this.txtUser.TabIndex = 3;
             // 
-            // txtPasssword
+            // txtPassword
             // 
-            this.txtPasssword.Location = new System.Drawing.Point(12, 107);
-            this.txtPasssword.Name = "txtPasssword";
-            this.txtPasssword.Size = new System.Drawing.Size(246, 23);
-            this.txtPasssword.TabIndex = 4;
-            this.txtPasssword.UseSystemPasswordChar = true;
+            this.txtPassword.Location = new System.Drawing.Point(12, 107);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(246, 23);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -96,7 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 270);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPasssword);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -114,7 +115,7 @@
         private Label label1;
         private Label label2;
         private TextBox txtUser;
-        private TextBox txtPasssword;
+        private TextBox txtPassword;
         private Label label3;
     }
 }
