@@ -21,6 +21,7 @@ namespace Software_Trelisa
             InitializeComponent();
         }
 
+        /*
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             try
@@ -48,5 +49,7 @@ namespace Software_Trelisa
                 MessageBox.Show(ex.Message);
             }
         }
+
+        */
     }
 }
