@@ -32,6 +32,7 @@ namespace Software_Trelisa
             {
                 MessageBox.Show(item.Intensidade.ToString());
             }
+            //CURINTIA
             frmAdicionaForca f = new frmAdicionaForca(_ponto);
             f.ShowDialog();
             this.Close();
