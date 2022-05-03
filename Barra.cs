@@ -11,7 +11,8 @@ namespace Software_Trelisa
         // TRUE = CIMA OU DIREITA
         // FALSE = BAIXO OU ESQUERDA
         public int pontoInicialX, pontoInicialY, pontoFinalX, pontoFinalY;
-        public Forca forca { get; set; }
+        public ForcaBarra Forca { get; set; }
+        public string Sentido { get; set; }
         public bool estainclinada = true, sentidoVertical = true, sentidoHorizontal = false;
         public double angle, distancia;
 
@@ -37,6 +38,17 @@ namespace Software_Trelisa
             {
                 estainclinada = false;
             }
+            defineSentido();
+            
+        }
+        public void defineSentido()
+        {
+            if (estainclinada)
+                this.Sentido = "inclinado";
+            if (sentidoHorizontal)
+                this.Sentido = "horizontal";
+            if (sentidoVertical)
+                this.Sentido = "vertical";
         }
     }
 }

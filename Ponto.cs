@@ -16,5 +16,21 @@ namespace Software_Trelisa
             valorX = x;
             valorY = y;
         }
+        public void checaForcasBarra()
+        {
+            foreach (var item in forcasPonto)
+            {
+                Console.WriteLine($"{item.Direcao} - {item.Sentido} - {item.Intensidade} - {item.Angulo}");
+            }
+        }
+        public void checaForcasPonto()
+        {
+            string c = "";
+            foreach (var item in barrasPonto)
+            {
+                c+= $"{item.Forca.Angulo} - {item.Forca.Sentido}" + Environment.NewLine;
+            }
+            MessageBox.Show(c);
+        }
     }
 }

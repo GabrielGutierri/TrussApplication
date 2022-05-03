@@ -205,8 +205,10 @@ namespace Software_Trelisa
                 MessageBox.Show("Ponto final fora dos limites permitidos. Tente outra vez");
                 return;
             }
-            Form1.listaBarras.Add(barra);
             VerificaPontoExiste(pontoFinal);
+            var listaPontosBarra = new List<Ponto>() { pontoInicial, pontoFinal };
+            barra.Forca = new ForcaBarra(Convert.ToDouble(null), barra.angle, barra.Sentido, listaPontosBarra);
+            Form1.listaBarras.Add(barra);
             this.Close();
         }
 

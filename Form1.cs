@@ -272,7 +272,7 @@ namespace Software_Trelisa
             Barra barra5 = new Barra(125, 230, 575, 150, 10.0806, 457.06);
             Barra barra6 = new Barra(575, 150, 825, 500, 54.46232, 430.12);
             Barra barra7 = new Barra(825, 500, 575, 500, 0, 250);
-
+            
             listaPontos[0].barrasPonto.Add(barra1);
             listaPontos[0].barrasPonto.Add(barra2);
             Ponto ponto2 = new Ponto(125, 230);
@@ -291,7 +291,7 @@ namespace Software_Trelisa
             Ponto ponto5 = new Ponto(825, 500);
             ponto5.barrasPonto.Add(barra6);
             ponto5.barrasPonto.Add(barra7);
-
+            ponto5.checaForcasPonto();
             listaPontos.Add(ponto2);
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);
