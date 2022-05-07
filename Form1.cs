@@ -39,6 +39,7 @@ namespace Software_Trelisa
                 lbMensagem.Visible = false;
             }
             DesenhaBarras();
+            DesenhaForcas();
         }
 
         private void AdicionaPrimeiroPonto()
@@ -46,7 +47,6 @@ namespace Software_Trelisa
             Ponto ponto = new Ponto(125, 250);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
-            DesenhaForcaTeste(ponto);
         }
 
         public void CriaPontoImagem(Ponto ponto)
@@ -79,50 +79,76 @@ namespace Software_Trelisa
             Point newPoint = new Point(ponto.valorX, ponto.valorY);
             g.DrawImage(bmp, new Point(0,0));
             return tempImg;
-            //g.DrawImageUnscaled(bmp,1,1);
-            //g.Dispose();
-            //GraphicsPath path = new GraphicsPath();
-            //path.AddRectangle(new RectangleF(0f, 0f, w , h));
-            //Matrix mtrx = new Matrix();
-            //mtrx.Rotate(angle);
-            ////PointF pontoF = new PointF(ponto.valorX, ponto.valorY);
-            ////mtrx.RotateAt(angle, pontoF);
-            //RectangleF rct = path.GetBounds(mtrx);
-            //Bitmap newImg = new Bitmap(Convert.ToInt32(rct.Width), Convert.ToInt32(rct.Height));
-            //g = Graphics.FromImage(newImg);
-            //g.TranslateTransform(-ponto.valorX, -ponto.valorY);
-            //g.RotateTransform(angle);
-            //g.InterpolationMode = InterpolationMode.HighQualityBilinear;
-            //g.DrawImageUnscaled(tempImg, ponto.valorX, ponto.valorY);
-            //g.Dispose();
-            //tempImg.Dispose();
-            //return newImg;
         }
 
-        public void DesenhaForcaTeste(Ponto ponto)
+        private int PosicaoXDesenhoForca(int quadrante, double angulo)
         {
-            //Image b = Resources.setaForcaCima;
-            //Bitmap returnBitmap = new Bitmap(100, 100);
-            //Graphics g = Graphics.FromImage(returnBitmap);
-            //g = panelDesenho.CreateGraphics();
-            //g.TranslateTransform(50, 50);
-            //g.RotateTransform(27);
-            //g.TranslateTransform(-50, -50);
-            //g.DrawImage(b, 50 - 50, 50 - 50, 50, 50);
+            switch (quadrante) {
+                case 1:
+                    return -20 + (Convert.ToInt32((5 / 15) * angulo));
+                case 2:
+                    return -20 - (Convert.ToInt32((5 / 15) * (0 - angulo)));
+                case 3:
+                    return -20 - (Convert.ToInt32((5 / 15) * angulo));
+                default:
+                    return -20 + (Convert.ToInt32((5 / 15) * (0 - angulo)));
+            }
+        }
 
-            //g.Dispose();
+        private int PosicaoYDesenhoForca(int quadrante, double angulo)
+        {
+            switch (quadrante)
+            {
+                case 1:
+                    return -35 + (Convert.ToInt32((5 / 30) * angulo));
+                case 2:
+                    return -35 - (Convert.ToInt32((5 / 30) * (0 - angulo)));
+                case 3:
+                    return -10 + Convert.ToInt32((-5 / 30) * angulo);
+                default:
+                    return -10 + Convert.ToInt32((-5 / 30) * (0 - angulo));
+            }
+        }
+        public void DesenhaForca(Image imagem, Ponto ponto, Forca forca)
+        {
+            int quadrante = 1;
+            int valorX = PosicaoXDesenhoForca(quadrante, forca.Angulo);
+            int valorY = PosicaoYDesenhoForca(quadrante, forca.Angulo);
+            MessageBox.Show($"X:{ponto.valorX + valorX} - {ponto.valorY + valorY}");
+            float angulo = (float)AnguloQuadrante(quadrante, forca.Angulo);
             System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
-            novoPontoImagem.Image = Resources.setaForcaBaixo;
+            novoPontoImagem.Image = imagem;
             novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             novoPontoImagem.BackColor = Color.White;
             novoPontoImagem.Width = 60;
             novoPontoImagem.Height = 60;
-            novoPontoImagem.Location = new Point(ponto.valorX -20, ponto.valorY -50); // mudar a posicao de acordo com o quadrante da força
+            novoPontoImagem.Location = new Point(ponto.valorX + valorX +20, ponto.valorY + valorY); // mudar a posicao de acordo com o quadrante da força
             panelDesenho.Controls.Add(novoPontoImagem);
             Bitmap bitmap = (Bitmap)novoPontoImagem.Image;
-            novoPontoImagem.Image = (Image)(RotateImg(bitmap, -30.0f, ponto));
+            
+            novoPontoImagem.Image = (Image)(RotateImg(bitmap, angulo, ponto));
         }
-
+        private double AnguloQuadrante(int quadrante, double angulo)
+        {
+            if (quadrante == 1 )
+                return 90 - angulo;
+            if (quadrante == 2)
+                return 0 - (90 - angulo);
+            if (quadrante == 3)
+                return 270 - angulo;
+            else
+                return  (180 - angulo);
+        }
+        private void DesenhaForcas()
+        {
+            foreach (Ponto ponto in listaPontos)
+            {
+                foreach (var forca in ponto.forcasPonto)
+                {
+                    DesenhaForca(Resources.setaForcaBaixo, ponto, forca); //Cima virou baixo e baixo virou cima
+                }
+            }
+        }
         private void DesenhaBarras()
         {
             Graphics g = panelDesenho.CreateGraphics();
@@ -291,7 +317,6 @@ namespace Software_Trelisa
             Ponto ponto5 = new Ponto(825, 500);
             ponto5.barrasPonto.Add(barra6);
             ponto5.barrasPonto.Add(barra7);
-            ponto5.checaForcasPonto();
             listaPontos.Add(ponto2);
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);

@@ -23,14 +23,6 @@ namespace Software_Trelisa
                 Console.WriteLine($"{item.Direcao} - {item.Sentido} - {item.Intensidade} - {item.Angulo}");
             }
         }
-        public void checaForcasPonto()
-        {
-            string c = "";
-            foreach (var item in barrasPonto)
-            {
-                c+= $"{item.Forca.Angulo} - {item.Forca.Sentido}" + Environment.NewLine;
-            }
-            MessageBox.Show(c);
-        }
+        
     }
 }

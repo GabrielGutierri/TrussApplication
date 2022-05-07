@@ -20,14 +20,20 @@ namespace Software_Trelisa
         {
             InitializeComponent();
         }
-
-        /*
+        
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             try
             {
-                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=;Password=";
-                SqlConnection connection = new SqlConnection(connectionString);
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=TrussGVMJF0422";
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+
+                builder.DataSource = "truss-server.database.windows.net";
+                builder.UserID = "TrussAdmin";
+                builder.Password = "TrussGVMJF0422";
+                builder.InitialCatalog = "TrussDatabase";
+
+                SqlConnection connection = new SqlConnection(builder.ConnectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (nome, senha) VALUES (@nome, @senha)", connection);
@@ -50,6 +56,6 @@ namespace Software_Trelisa
             }
         }
 
-        */
+        
     }
 }
