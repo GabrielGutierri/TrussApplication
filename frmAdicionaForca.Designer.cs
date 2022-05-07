@@ -59,7 +59,7 @@
             this.gbForça.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbForça.Name = "gbForça";
             this.gbForça.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbForça.Size = new System.Drawing.Size(374, 317);
+            this.gbForça.Size = new System.Drawing.Size(374, 305);
             this.gbForça.TabIndex = 21;
             this.gbForça.TabStop = false;
             this.gbForça.Text = "Adicionar Força";
@@ -98,7 +98,7 @@
             // btnCriarBarraInclinado
             // 
             this.btnCriarBarraInclinado.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(25, 261);
+            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(25, 262);
             this.btnCriarBarraInclinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCriarBarraInclinado.Name = "btnCriarBarraInclinado";
             this.btnCriarBarraInclinado.Size = new System.Drawing.Size(140, 30);
@@ -139,7 +139,7 @@
             // btnAjuda
             // 
             this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAjuda.Location = new System.Drawing.Point(546, 311);
+            this.btnAjuda.Location = new System.Drawing.Point(402, 302);
             this.btnAjuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAjuda.Name = "btnAjuda";
             this.btnAjuda.Size = new System.Drawing.Size(90, 30);
@@ -205,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 345);
+            this.ClientSize = new System.Drawing.Size(626, 353);
             this.Controls.Add(this.gbForça);
             this.Controls.Add(this.btnAjuda);
             this.Controls.Add(this.groupBox3);
@@ -234,5 +234,7 @@
         private RadioButton rbForcaHorizontal;
         private RadioButton rbForcaInclinada;
         private GroupBox groupBox3;
+        private ComboBox cbQuadranteForca;
+        private Label label4;
     }
 }

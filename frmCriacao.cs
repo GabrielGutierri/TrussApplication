@@ -28,11 +28,6 @@ namespace Software_Trelisa
 
         private void btnAdicionaForca_Click(object sender, EventArgs e)
         {
-            foreach (var item in _ponto.forcasPonto)
-            {
-                MessageBox.Show(item.Intensidade.ToString());
-            }
-            //CURINTIA
             frmAdicionaForca f = new frmAdicionaForca(_ponto);
             f.ShowDialog();
             this.Close();

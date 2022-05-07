@@ -41,7 +41,7 @@
             // 
             // panelDesenho
             // 
-            this.panelDesenho.BackColor = System.Drawing.Color.Red;
+            this.panelDesenho.BackColor = System.Drawing.Color.LightGray;
             this.panelDesenho.Location = new System.Drawing.Point(10, 39);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesenho.Name = "panelDesenho";

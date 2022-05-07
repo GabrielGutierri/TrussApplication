@@ -25,7 +25,7 @@ namespace Software_Trelisa
         {
             try
             {
-                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=;Password=";
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=GVMJF0422";
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
                 builder.DataSource = "truss-server.database.windows.net";

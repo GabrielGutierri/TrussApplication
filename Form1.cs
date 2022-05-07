@@ -7,9 +7,11 @@ namespace Software_Trelisa
     {
         public static List<Barra> listaBarras = new List<Barra>();
         public static List<Ponto> listaPontos = new List<Ponto>();
+        public static List<PontoSeta> listaSetas = new List<PontoSeta>();
         List<PictureBox> listaPictureBox = new List<PictureBox>();
-        
         List<Ponto> listaDeletar = new List<Ponto>();
+        GraphicsPath pontoSeta = new GraphicsPath(); 
+
         bool querDeletar = false;
         string teste = "teste";
 
@@ -67,87 +69,39 @@ namespace Software_Trelisa
 
         }
 
-        private static Bitmap RotateImg(Bitmap bmp, float angle, Ponto ponto)
-        {
-            int w = bmp.Width;
-            int h = bmp.Height;
-            Bitmap tempImg = new Bitmap(w, h);
-            Graphics g = Graphics.FromImage(tempImg);
-            g.TranslateTransform(w / 2, h / 2);
-            g.RotateTransform(angle);
-            g.TranslateTransform(-w/2, -h / 2);
-            Point newPoint = new Point(ponto.valorX, ponto.valorY);
-            g.DrawImage(bmp, new Point(0,0));
-            return tempImg;
-        }
-
-        private int PosicaoXDesenhoForca(int quadrante, double angulo)
-        {
-            switch (quadrante) {
-                case 1:
-                    return -20 + (Convert.ToInt32((5 / 15) * angulo));
-                case 2:
-                    return -20 - (Convert.ToInt32((5 / 15) * (0 - angulo)));
-                case 3:
-                    return -20 - (Convert.ToInt32((5 / 15) * angulo));
-                default:
-                    return -20 + (Convert.ToInt32((5 / 15) * (0 - angulo)));
-            }
-        }
-
-        private int PosicaoYDesenhoForca(int quadrante, double angulo)
-        {
-            switch (quadrante)
-            {
-                case 1:
-                    return -35 + (Convert.ToInt32((5 / 30) * angulo));
-                case 2:
-                    return -35 - (Convert.ToInt32((5 / 30) * (0 - angulo)));
-                case 3:
-                    return -10 + Convert.ToInt32((-5 / 30) * angulo);
-                default:
-                    return -10 + Convert.ToInt32((-5 / 30) * (0 - angulo));
-            }
-        }
-        public void DesenhaForca(Image imagem, Ponto ponto, Forca forca)
-        {
-            int quadrante = 1;
-            int valorX = PosicaoXDesenhoForca(quadrante, forca.Angulo);
-            int valorY = PosicaoYDesenhoForca(quadrante, forca.Angulo);
-            MessageBox.Show($"X:{ponto.valorX + valorX} - {ponto.valorY + valorY}");
-            float angulo = (float)AnguloQuadrante(quadrante, forca.Angulo);
-            System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
-            novoPontoImagem.Image = imagem;
-            novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
-            novoPontoImagem.BackColor = Color.White;
-            novoPontoImagem.Width = 60;
-            novoPontoImagem.Height = 60;
-            novoPontoImagem.Location = new Point(ponto.valorX + valorX +20, ponto.valorY + valorY); // mudar a posicao de acordo com o quadrante da força
-            panelDesenho.Controls.Add(novoPontoImagem);
-            Bitmap bitmap = (Bitmap)novoPontoImagem.Image;
-            
-            novoPontoImagem.Image = (Image)(RotateImg(bitmap, angulo, ponto));
-        }
-        private double AnguloQuadrante(int quadrante, double angulo)
-        {
-            if (quadrante == 1 )
-                return 90 - angulo;
-            if (quadrante == 2)
-                return 0 - (90 - angulo);
-            if (quadrante == 3)
-                return 270 - angulo;
-            else
-                return  (180 - angulo);
-        }
         private void DesenhaForcas()
         {
+            Graphics g = panelDesenho.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
+            Pen p = new Pen(Color.Red, 6.0f);
+            p.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(5, 5, false);
+
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            
             foreach (Ponto ponto in listaPontos)
             {
                 foreach (var forca in ponto.forcasPonto)
                 {
-                    DesenhaForca(Resources.setaForcaBaixo, ponto, forca); //Cima virou baixo e baixo virou cima
+                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(forca.Angulo * (Math.PI / 180)));
+                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-forca.Angulo * (Math.PI / 180)));
+                    MessageBox.Show(forca.Direcao);
+                    if (forca.Direcao == "Apontada para fora")
+                    {
+                        g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY);
+                        listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao));
+                        pontoSeta.AddLine(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY);
+                    }
+                    else {
+                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto);
+                        listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao));
+                        pontoSeta.AddLine(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto);
+                    }
                 }
             }
+            g.Dispose();
+            p.Dispose();
         }
         private void DesenhaBarras()
         {
@@ -155,6 +109,7 @@ namespace Software_Trelisa
             Pen myPen = new Pen(Color.Gray, 8);
             g.Clear(panelDesenho.BackColor);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
             foreach (Barra barras in listaBarras)
             {
                 g.DrawLine(myPen, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
@@ -259,7 +214,7 @@ namespace Software_Trelisa
                 AdicionaPrimeiroPonto();
             }
         }
-            
+          
         private void btnCriar_Click(object sender, EventArgs e)
         {
             lbDeletar.Visible = false;
@@ -358,6 +313,7 @@ namespace Software_Trelisa
                 imagem.Visible = true;
             }
         }
+
     }
 }
 
