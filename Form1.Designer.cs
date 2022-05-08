@@ -41,10 +41,11 @@
             // 
             // panelDesenho
             // 
-            this.panelDesenho.BackColor = System.Drawing.Color.Red;
-            this.panelDesenho.Location = new System.Drawing.Point(11, 52);
+            this.panelDesenho.BackColor = System.Drawing.Color.LightGray;
+            this.panelDesenho.Location = new System.Drawing.Point(10, 39);
+            this.panelDesenho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1617, 691);
+            this.panelDesenho.Size = new System.Drawing.Size(1415, 518);
             this.panelDesenho.TabIndex = 0;
             // 
             // panel3
