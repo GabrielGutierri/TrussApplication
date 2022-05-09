@@ -80,6 +80,7 @@
             this.btnDeletar.TabIndex = 8;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // button1
             // 
@@ -131,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1647, 864);
+            this.ClientSize = new System.Drawing.Size(1199, 607);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.lbDeletar);
