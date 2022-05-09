@@ -45,7 +45,7 @@
             this.panelDesenho.Location = new System.Drawing.Point(10, 39);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1415, 518);
+            this.panelDesenho.Size = new System.Drawing.Size(1617, 691);
             this.panelDesenho.TabIndex = 0;
             // 
             // panel3
@@ -90,6 +90,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Calcular";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbMensagem
             // 

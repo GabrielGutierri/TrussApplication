@@ -46,7 +46,7 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(125, 250);
+            Ponto ponto = new Ponto(75, 500);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
         }
@@ -314,6 +314,37 @@ namespace Software_Trelisa
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //forcasPonto já tem componente vertical e horizontal, adaptar código para usar elas
+            double somatoriaForcasVerticaisCima = 0, somatoriaForcasVerticaisBaixo = 0, somatoriaForcasHorizontaisDireita = 0,
+                somatoriaForcasHorizontaisEsquerda = 0;
+            foreach(Ponto pontoAnalisado in listaPontos)
+            {
+                if(pontoAnalisado.forcasPonto.Count != 0)
+                {
+                    foreach(ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
+                    {
+                        if(forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para fora")
+                        {
+                            somatoriaForcasVerticaisCima += forcaPonto.Intensidade;
+                        }
+                        else if(forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para dentro")
+                        {
+                            somatoriaForcasVerticaisBaixo += forcaPonto.Intensidade;
+                        }
+                        else if(forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para fora")
+                        {
+                            somatoriaForcasHorizontaisDireita += forcaPonto.Intensidade;
+                        }
+                        else if(forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para dentro")
+                        {
+                            somatoriaForcasHorizontaisEsquerda += forcaPonto.Intensidade;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
