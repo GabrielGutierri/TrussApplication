@@ -73,6 +73,16 @@ namespace Software_Trelisa.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconeDelete {
+            get {
+                object obj = ResourceManager.GetObject("iconeDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ponto {
             get {
                 object obj = ResourceManager.GetObject("ponto", resourceCulture);
