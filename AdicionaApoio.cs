@@ -42,7 +42,7 @@ namespace Software_Trelisa
             else
             {
                 ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Abaixo", "movel");
-                this._ponto.forcasPonto.Add(forcaApoioV);
+                this._ponto.forcasApoio.Add(forcaApoioV);
                 this.Close();
             }
 

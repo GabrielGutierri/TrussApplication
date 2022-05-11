@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Software_Trelisa
 {
-    internal class ForcaApoio:Forca
+    public class ForcaApoio:ForcaPonto
     {
         public bool ehApoioFixo { get; set; }
-        public ForcaApoio(double intensidade, double angulo, string sentido, string direcao, string tipoApoio) : base(intensidade, angulo, sentido)
+        public ForcaApoio(double intensidade, double angulo, string sentido, string direcao, string tipoApoio) : base(intensidade, angulo, sentido, direcao)
         {
             if (tipoApoio == "fixo")
                 ehApoioFixo = true;
