@@ -61,6 +61,7 @@
             this.btnAdicionaApoio.TabIndex = 2;
             this.btnAdicionaApoio.Text = "Adicionar Apoio";
             this.btnAdicionaApoio.UseVisualStyleBackColor = true;
+            this.btnAdicionaApoio.Click += new System.EventHandler(this.btnAdicionaApoio_Click);
             // 
             // frmCriacao
             // 
