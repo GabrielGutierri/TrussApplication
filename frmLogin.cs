@@ -32,16 +32,15 @@ namespace Software_Trelisa
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(@"SELECT nome, senha FROM USUARIO where nome = @email AND senha = @senha", connection);
+                SqlCommand cmd = new SqlCommand(@"SELECT email, userPassword FROM USUARIO where email = @email AND pwdcompare(@senha, userPassword) = 1", connection);
 
                 cmd.Parameters.Add("@email", SqlDbType.VarChar, 70).Value = txtUser.Text;
-                Password password = new Password(txtPassword.Text);
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = password.Encrypt();
+                cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = txtPassword.Text;
                 adapter.InsertCommand = cmd;
                 adapter.InsertCommand.ExecuteNonQuery();
                 var dr = cmd.ExecuteReader();
                 dr.Read();
-                MessageBox.Show(dr["nome"].ToString());
+                MessageBox.Show(dr["userPassword"].ToString());
                 cmd.Dispose();
                 connection.Close();
                 

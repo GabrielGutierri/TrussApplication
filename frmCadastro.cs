@@ -20,30 +20,38 @@ namespace Software_Trelisa
         {
             InitializeComponent();
         }
-        
+        private void VerificaDados(string nome, string email, string senha, string repetirSenha, SqlConnection connectionString)
+        {
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(repetirSenha))
+                throw new Exception("Todos os campos são obrigatórios!");
+
+            Verificacoes.VerificaEmail(email);
+            Verificacoes.VerificaSenha(senha, repetirSenha);
+            bool verifica = Verificacoes.VerificaUser(email, connectionString);
+        }
+
+
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             try
             {
+                string nome = txtNome.Text;
+                string email = txtEmail.Text;
+                string senha = txtPassword.Text;
+                string repetirSenha = txtRepeatPassword.Text;
                 string connectionString = $"";
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-
-                builder.DataSource = "truss-server.database.windows.net";
-                builder.UserID = "TrussAdmin";
-                builder.Password = "TrussGVMJF0422";
-                builder.InitialCatalog = "TrussDatabase";
-
-                SqlConnection connection = new SqlConnection(builder.ConnectionString);
+                
+               
+                SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (nome, senha) VALUES (@nome, @senha)", connection);
+                VerificaDados(nome, email, senha, repetirSenha, connection);
+                SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (userName, email, userPassword) VALUES (@nome, @email, CONVERT(VARBINARY(256),pwdencrypt(@senha)))", connection);
                 
                 cmd.Parameters.Add("@nome", SqlDbType.VarChar, 70).Value = txtNome.Text;
                 cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = txtEmail.Text;
 
-                //hash password
-                Password password = new Password(txtPassword.Text);
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = password.Encrypt();
+                cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = txtPassword.Text;
                 adapter.InsertCommand = cmd;
                 adapter.InsertCommand.ExecuteNonQuery();
                 cmd.Dispose();
