@@ -22,8 +22,8 @@ namespace Software_Trelisa
             // Esse angulo esta em graus? Talvez tenha que fazer a conversão de graus para radianos.
             Angulo = angulo;
             this.Sentido = sentido;
-            this.ComponenteVertical = Intensidade * Math.Sin(Angulo);
-            this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo);
+            this.ComponenteVertical = Intensidade * Math.Sin(Angulo * (Math.PI / 180));
+            this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo * (Math.PI / 180));
         }
     }
 }
