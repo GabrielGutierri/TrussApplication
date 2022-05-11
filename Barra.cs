@@ -16,13 +16,14 @@ namespace Software_Trelisa
         public bool estainclinada = true, sentidoVertical = true, sentidoHorizontal = false;
         public double angle, distancia;
 
-        public Barra(int pontoX, int pontoY, int pontoFX, int pontoFY, double angulo, double distancia)
+        public Barra(int pontoX, int pontoY, int pontoFX, int pontoFY, double angulo, double distancia, ForcaBarra forca)
         {
             pontoInicialX = pontoX;
             pontoInicialY = pontoY;
             pontoFinalX = pontoFX;
             pontoFinalY = pontoFY;
             angle = angulo;
+            Forca = forca;
             this.distancia = distancia;
 
             if (pontoFinalX - pontoInicialX > 0)

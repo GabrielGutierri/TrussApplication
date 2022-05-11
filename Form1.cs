@@ -247,13 +247,20 @@ namespace Software_Trelisa
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Barra barra1 = new Barra(75, 500, 125, 230, 79.509, 274.59060);
-            Barra barra2 = new Barra(75, 500, 575, 500, 0, 500);
-            Barra barra3 = new Barra(575, 500, 575, 150, 90, 350);
-            Barra barra4 = new Barra(125, 230, 575, 500, 30.96376, 524.78);
-            Barra barra5 = new Barra(125, 230, 575, 150, 10.0806, 457.06);
-            Barra barra6 = new Barra(575, 150, 825, 500, 54.46232, 430.12);
-            Barra barra7 = new Barra(825, 500, 575, 500, 0, 250);
+            ForcaBarra forcaNula1 = new ForcaBarra(0, 79.509, "");
+            Barra barra1 = new Barra(75, 500, 125, 230, 79.509, 274.59060, forcaNula1);
+            ForcaBarra forcaNula2 = new ForcaBarra(0, 0, "");
+            Barra barra2 = new Barra(75, 500, 575, 500, 0, 500, forcaNula2);
+            ForcaBarra forcaNula3 = new ForcaBarra(0, 90, "");
+            Barra barra3 = new Barra(575, 500, 575, 150, 90, 350, forcaNula3);
+            ForcaBarra forcaNula4 = new ForcaBarra(0, 30.96376, "");
+            Barra barra4 = new Barra(125, 230, 575, 500, 30.96376, 524.78, forcaNula4);
+            ForcaBarra forcaNula5 = new ForcaBarra(0, 10.0806, "");
+            Barra barra5 = new Barra(125, 230, 575, 150, 10.0806, 457.06, forcaNula5);
+            ForcaBarra forcaNula6 = new ForcaBarra(0, 54.46232, "");
+            Barra barra6 = new Barra(575, 150, 825, 500, 54.46232, 430.12, forcaNula6);
+            ForcaBarra forcaNula7 = new ForcaBarra(0, 0, "");
+            Barra barra7 = new Barra(825, 500, 575, 500, 0, 250, forcaNula7);
             
             listaPontos[0].barrasPonto.Add(barra1);
             listaPontos[0].barrasPonto.Add(barra2);
@@ -356,13 +363,18 @@ namespace Software_Trelisa
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string teste = "";
             int quantidadeNulos;
             double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
+            double calculo1, calculo2, calculo3, calculo4;
 
+            List<Barra> encontrouNulo = new List<Barra>();
             do
             {
                 foreach (Ponto pontoAnalisado in listaPontos)
                 {
+                    somatoriaForcasVerticais = 0;
+                    somatoriaForcasHorizontais = 0;
                     quantidadeNulos = 0;
 
                     foreach(Barra barraAnalisado in pontoAnalisado.barrasPonto)
@@ -375,6 +387,14 @@ namespace Software_Trelisa
 
                     if (quantidadeNulos <= 2)
                     {
+                        encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
+
+                        if (pontoAnalisado.forcasPonto == null || encontrouNulo.Count == 2)
+                        {
+                            continue;
+                        }
+
+
                         foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
                         {
                             if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para fora")
@@ -398,7 +418,7 @@ namespace Software_Trelisa
 
                         foreach(Barra forcaBarra in pontoAnalisado.barrasPonto)
                         {
-                            if(forcaBarra.Forca.ComponenteVertical != 0 || forcaBarra.Forca.ComponenteHorizontal != 0)
+                            if(forcaBarra.Forca.Intensidade != 0 || forcaBarra.Forca.Intensidade != 0)
                             {
                                 if (forcaBarra.Forca.Sentido == "vertical" && forcaBarra.Forca.Direcao == "Apontada para fora")
                                 {
@@ -420,49 +440,63 @@ namespace Software_Trelisa
                             }
                         }
 
-                        double calculo1 = 0, calculo2, calculo3, calculo4;
-
-                        //criar sistema que verifica quais barras que estão no ponto estam nulas;
-                        if(quantidadeNulos == 2)
+                        calculo1 = 0;
+                        calculo2 = 0;
+                        calculo3 = 0;
+                        calculo4 = 0;
+                        encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
+                        if (quantidadeNulos == 2)
                         {
-                            calculo1 = (Math.Sin(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180/Math.PI) *
-                                Math.Cos(pontoAnalisado.barrasPonto[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)) - 
-                                (Math.Cos(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
-                                Math.Sin(pontoAnalisado.barrasPonto[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
+                            calculo1 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180/Math.PI) *
+                                Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)) - 
+                                (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+                                Math.Sin(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
 
-                            calculo2 = (Math.Sin(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+                            calculo2 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
                                 somatoriaForcasHorizontais) - 
-                                (Math.Cos(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+                                (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
                                 somatoriaForcasVerticais);
 
                             calculo3 = calculo2 / calculo1;
                             calculo4 = (somatoriaForcasVerticais -
-                                (Math.Cos(pontoAnalisado.barrasPonto[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) * calculo3)
-                                / Math.Sin(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
+                                (Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) * calculo3)
+                                / Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
 
-                            pontoAnalisado.barrasPonto[0].Forca.Intensidade = calculo4;
-                            pontoAnalisado.barrasPonto[1].Forca.Intensidade = calculo3;
+
+
+                            encontrouNulo[0].Forca.Intensidade = calculo4;
+                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo4, encontrouNulo[0].angle);
+                            teste += " /// " + calculo4;
+                            encontrouNulo[1].Forca.Intensidade = calculo3;
+                            encontrouNulo[1].Forca.AdicionaComponentesEncontrados(calculo3, encontrouNulo[1].angle);
+                            teste += " /// " + calculo3;
 
                         }
                         else if(quantidadeNulos == 1)
                         {
-                            if(pontoAnalisado.barrasPonto[0].Forca.ComponenteVertical != 0)
+                            if(encontrouNulo[0].Forca.ComponenteVertical != 0)
                             {
-                                calculo1 = somatoriaForcasVerticais / 
-                                    Math.Sin(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)
+                                calculo1 = somatoriaForcasVerticais /
+                                    Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
                             }
-                            else if(pontoAnalisado.barrasPonto[0].Forca.ComponenteHorizontal != 0)
+                            else if(encontrouNulo[0].Forca.ComponenteHorizontal != 0)
                             {
                                 calculo1 = somatoriaForcasHorizontais /
-                                    Math.Cos(pontoAnalisado.barrasPonto[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)
+                                    Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
                             }
 
-                            pontoAnalisado.barrasPonto[0].Forca.Intensidade = calculo1;
+                            encontrouNulo[0].Forca.Intensidade = calculo1;
+                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo1, encontrouNulo[0].angle);
+                            teste += " /// " + calculo1;
                         }
                     }
                 }
+
+                encontrouNulo = listaBarras.FindAll(x => x.Forca.Intensidade == 0);
             }
-            while ();
+            while (encontrouNulo != null);
+
+            txtTeste.Text = teste;
             
         }
     

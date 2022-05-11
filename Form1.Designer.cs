@@ -36,6 +36,7 @@
             this.lbMensagem = new System.Windows.Forms.Label();
             this.lbDeletar = new System.Windows.Forms.Label();
             this.btnTeste = new System.Windows.Forms.Button();
+            this.txtTeste = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.panel3.Controls.Add(this.btnDeletar);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(597, 749);
+            this.panel3.Location = new System.Drawing.Point(923, 738);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(525, 107);
             this.panel3.TabIndex = 3;
@@ -119,7 +120,7 @@
             // btnTeste
             // 
             this.btnTeste.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste.Location = new System.Drawing.Point(1335, 781);
+            this.btnTeste.Location = new System.Drawing.Point(1463, 781);
             this.btnTeste.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTeste.Name = "btnTeste";
             this.btnTeste.Size = new System.Drawing.Size(120, 56);
@@ -128,11 +129,20 @@
             this.btnTeste.UseVisualStyleBackColor = true;
             this.btnTeste.Click += new System.EventHandler(this.button2_Click);
             // 
+            // txtTeste
+            // 
+            this.txtTeste.Location = new System.Drawing.Point(25, 751);
+            this.txtTeste.Multiline = true;
+            this.txtTeste.Name = "txtTeste";
+            this.txtTeste.Size = new System.Drawing.Size(879, 94);
+            this.txtTeste.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 607);
+            this.ClientSize = new System.Drawing.Size(1620, 857);
+            this.Controls.Add(this.txtTeste);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.lbDeletar);
@@ -156,5 +166,6 @@
         private Button btnTeste;
         private Button btnCriar;
         private Button btnDeletar;
+        private TextBox txtTeste;
     }
 }

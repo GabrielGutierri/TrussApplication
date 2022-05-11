@@ -19,11 +19,17 @@ namespace Software_Trelisa
         public Forca(double intensidade, double angulo, string sentido)
         {
             Intensidade = intensidade;
-            // Esse angulo esta em graus? Talvez tenha que fazer a conversão de graus para radianos.
             Angulo = angulo;
             this.Sentido = sentido;
             this.ComponenteVertical = Intensidade * Math.Sin(Angulo * (Math.PI / 180));
             this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo * (Math.PI / 180));
+        }
+
+        public void AdicionaComponentesEncontrados(double intensidade, double angle)
+        {
+            Angulo = angle;
+            this.ComponenteVertical = intensidade * Math.Sin(Angulo * (Math.PI / 180));
+            this.ComponenteHorizontal = intensidade * Math.Cos(Angulo * (Math.PI / 180));
         }
     }
 }

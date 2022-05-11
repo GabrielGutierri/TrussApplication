@@ -14,6 +14,10 @@ namespace Software_Trelisa
             this.pontosBarras = pontos;
         }
 
+        public ForcaBarra(double intensidade, double angulo, string sentido) : base(intensidade, angulo, sentido)
+        {
+
+        }
 
     }
 }
