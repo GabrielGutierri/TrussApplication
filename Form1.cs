@@ -13,6 +13,8 @@ namespace Software_Trelisa
         List<PictureBox> listaDeletaForca = new List<PictureBox>();
         bool querDeletar = false;
 
+        Ponto pontoTeste { get; set; }
+
         public  Form1()
         {
             InitializeComponent();
@@ -47,6 +49,7 @@ namespace Software_Trelisa
             Ponto ponto = new Ponto(75, 500);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
+            this.pontoTeste = ponto;
         }
 
         public void CriaPontoImagem(Ponto ponto)
@@ -264,16 +267,23 @@ namespace Software_Trelisa
             
             listaPontos[0].barrasPonto.Add(barra1);
             listaPontos[0].barrasPonto.Add(barra2);
+
+            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "Apontada para fora", "vertical", "fixo"));
+            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "Apontada para fora","horizontal","fixo"));
             Ponto ponto2 = new Ponto(125, 230);
+            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "Apontada para dentro", "vertical"));
+            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "Apontada para dentro", "horizontal"));
             ponto2.barrasPonto.Add(barra1);
             ponto2.barrasPonto.Add(barra4);
             ponto2.barrasPonto.Add(barra5);
             Ponto ponto3 = new Ponto(575, 500);
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "Apontada para dentro", "vertical"));
             ponto3.barrasPonto.Add(barra2);
             ponto3.barrasPonto.Add(barra3);
             ponto3.barrasPonto.Add(barra4);
             ponto3.barrasPonto.Add(barra7);
             Ponto ponto4 = new Ponto(575, 150);
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "Apontada para dentro", "inclinado"));
             ponto4.barrasPonto.Add(barra3);
             ponto4.barrasPonto.Add(barra5);
             ponto4.barrasPonto.Add(barra6);
@@ -284,6 +294,7 @@ namespace Software_Trelisa
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);
             listaPontos.Add(ponto5);
+            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "Apontada para fora", "vertical", "movel"));
 
             CriaPontoImagem(ponto2);
             CriaPontoImagem(ponto3);
@@ -300,7 +311,7 @@ namespace Software_Trelisa
             listaBarras.Add(barra7);
 
             DesenhaBarras();
-
+            DesenhaForcas();
             btnTeste.Enabled = false;
 
         }
