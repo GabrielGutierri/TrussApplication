@@ -522,6 +522,14 @@ namespace Software_Trelisa
                 
             }
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+            //EU SEI QUE VOU, VOU DO JEITO QUE EU SEI
+            //DE GOL EM GOL, COM DIREITO A REPLAY
+            //EU SEI QUE VOU, COM O CORAÇÃO BATENDO A MIIIIILLLLLL
+            //É TAÇA NA RAÇA, BRASILLLLLLLLLLL.
+        }
     }
 }
 
