@@ -389,7 +389,7 @@ namespace Software_Trelisa
                     {
                         encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
 
-                        if (pontoAnalisado.forcasPonto == null || encontrouNulo.Count == 2)
+                        if (pontoAnalisado.forcasPonto == null )
                         {
                             continue;
                         }
