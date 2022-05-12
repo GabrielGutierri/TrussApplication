@@ -33,5 +33,12 @@ namespace Software_Trelisa
             this.Close();
 
         }
+
+        private void btnAdicionaApoio_Click(object sender, EventArgs e)
+        {
+            AdicionaApoio f = new AdicionaApoio(_ponto);
+            f.ShowDialog();
+            this.Close();
+        }
     }
 }

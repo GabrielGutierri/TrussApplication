@@ -12,6 +12,7 @@
   <ItemGroup>
     <Compile Remove="Form2.cs" />
     <Compile Remove="Form2.Designer.cs" />
+    <Compile Remove="Password.cs" />
   </ItemGroup>
 
   <ItemGroup>
