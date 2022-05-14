@@ -37,13 +37,17 @@
             this.lbDeletar = new System.Windows.Forms.Label();
             this.btnTeste = new System.Windows.Forms.Button();
             this.txtTeste = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDesenho
             // 
             this.panelDesenho.BackColor = System.Drawing.Color.LightGray;
-            this.panelDesenho.Location = new System.Drawing.Point(9, 29);
+            this.panelDesenho.Location = new System.Drawing.Point(12, 30);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesenho.Name = "panelDesenho";
             this.panelDesenho.Size = new System.Drawing.Size(1415, 518);
@@ -138,6 +142,31 @@
             this.txtTeste.Size = new System.Drawing.Size(770, 72);
             this.txtTeste.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1321, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // novoToolStripMenuItem
+            // 
+            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Text = "Novo";
+            this.novoToolStripMenuItem.Click += new System.EventHandler(this.Novo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -149,10 +178,14 @@
             this.Controls.Add(this.lbDeletar);
             this.Controls.Add(this.lbMensagem);
             this.Controls.Add(this.panelDesenho);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel3.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +202,8 @@
         private Button btnCriar;
         private Button btnDeletar;
         private TextBox txtTeste;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem menuToolStripMenuItem;
+        private ToolStripMenuItem novoToolStripMenuItem;
     }
 }

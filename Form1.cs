@@ -530,6 +530,18 @@ namespace Software_Trelisa
             //EU SEI QUE VOU, COM O CORAÇÃO BATENDO A MIIIIILLLLLL
             //É TAÇA NA RAÇA, BRASILLLLLLLLLLL.
         }
+
+        private void Novo_Click(object sender, EventArgs e)
+        {
+            panelDesenho.Invalidate();
+            listaBarras.Clear();
+            listaPontos.Clear();
+            listaSetas.Clear();
+            listaPictureBox.Clear();    
+            listaDeletar.Clear();
+            listaDeletaForca.Clear();
+
+    }
     }
 }
 
