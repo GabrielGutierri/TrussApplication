@@ -16,7 +16,7 @@ namespace Software_Trelisa
         }
         public ForcaPonto(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido)
         {
-            if (angulo > 0 && angulo <= 90)
+            if (angulo >= 0 && angulo <= 90)
                 this.Quadrante = 1;
             if (angulo > 90 && angulo <= 180)
                 this.Quadrante = 2;

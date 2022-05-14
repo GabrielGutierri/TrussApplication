@@ -43,13 +43,14 @@ namespace Software_Trelisa
                         {
                             if (pontoApoioFixo.valorY - item.valorY >= 0) // ponto mais alto para a direita
                             {
+                                MessageBox.Show($"{pontoApoioFixo.valorY - item.valorY}");
                                 var listaApoio = CalculoMomentoDireita.PontoDireitaApoio(item, pontoApoioFixo);
                                 somaHorario += listaApoio[0];
                                 somaAntiHorario += listaApoio[1];
                             }
                             if(pontoApoioFixo.valorY - item.valorY < 0) // ponto mais baixo para a direita
                             {
-                                MessageBox.Show($"{pontoApoioFixo.valorY - item.valorY}");
+                                MessageBox.Show($"{pontoApoioFixo.valorY + item.valorY}");
                                 //var listaApoio = PontoDireitaApoioMaisBaixo(item, pontoApoioFixo);
                                 //somaHorario += listaApoio[0];
                                 //somaAntiHorario += listaApoio[1];

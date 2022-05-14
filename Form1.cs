@@ -15,11 +15,10 @@ namespace Software_Trelisa
 
         Ponto pontoTeste { get; set; }
 
-        public  Form1()
+        public Form1()
         {
             InitializeComponent();
             AdicionaPrimeiroPonto();
-       
         }
 
         public void novoPonto_DoubleClick(object sender, EventArgs e, Ponto ponto)
@@ -93,7 +92,7 @@ namespace Software_Trelisa
                         listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao, forca));
                     }
                     else {
-                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inical
+                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inicial
                         listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao, forca));
                     }
                 }
@@ -112,7 +111,6 @@ namespace Software_Trelisa
             foreach (Barra barras in listaBarras)
             {
                 g.DrawLine(myPen, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
-                
             }
             g.Dispose();
             myPen.Dispose();
@@ -312,14 +310,7 @@ namespace Software_Trelisa
 
             DesenhaBarras();
             DesenhaForcas();
-            int c = 0;
-            foreach (var item in listaPontos)
-            {
-                foreach (var j in item.forcasPonto)
-                {
-                    c++;
-                }
-            }
+
             btnTeste.Enabled = false;
         }
 
@@ -348,7 +339,6 @@ namespace Software_Trelisa
 
         public void deletaForca_Click(object sender, EventArgs e, PontoSeta pontoSeta)
         {
-            
             PontoSeta ponto = listaSetas.Find(p => (p.ValorFinalX == pontoSeta.ValorFinalX
                                                 && p.ValorFinalY == pontoSeta.ValorFinalY
                                                 && p.ValorInicialX == pontoSeta.ValorInicialX
@@ -357,18 +347,17 @@ namespace Software_Trelisa
             if (ponto != null) {
                 
                 var pontoForca = listaPontos.Find(f => (f.valorX == ponto.ValorInicialX && f.valorY == ponto.ValorInicialY) || (f.valorX == ponto.ValorFinalX && f.valorY == ponto.ValorFinalY));
-                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);
-                
+                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);  
             }
-            //}
             DesenhaBarras();
             DesenhaForcas();
+            listaDeletaForca.RemoveAll(pcb => pcb.Name == "iconeDelete");
         }
         public void CriaDeletaForca(PontoSeta pontoSeta)
         {
             PictureBox imagemDeleta = new PictureBox();
             imagemDeleta.Image = Resources.iconeDelete;
-            imagemDeleta.Name = "delete icon";
+            imagemDeleta.Name = "iconeDelete";
             imagemDeleta.SizeMode = PictureBoxSizeMode.StretchImage;
             imagemDeleta.Height = 20;
             imagemDeleta.Width = 20;
@@ -530,8 +519,8 @@ namespace Software_Trelisa
             foreach (var pontoSeta in listaSetas)
             {
                 CriaDeletaForca(pontoSeta);
-                
             }
+            
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
