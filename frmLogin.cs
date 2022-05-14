@@ -28,7 +28,7 @@ namespace Software_Trelisa
         {
             try
             {
-                string connectionString = $"";
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=TrussGVMJF0422";
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
@@ -37,13 +37,15 @@ namespace Software_Trelisa
                 cmd.Parameters.Add("@email", SqlDbType.VarChar, 70).Value = txtUser.Text;
                 cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = txtPassword.Text;
                 adapter.InsertCommand = cmd;
-                adapter.InsertCommand.ExecuteNonQuery();
-                var dr = cmd.ExecuteReader();
-                dr.Read();
-                MessageBox.Show(dr["userPassword"].ToString());
-                cmd.Dispose();
-                connection.Close();
-                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        MessageBox.Show("?????????????????????????????????");
+                    }
+                }
+
+
             }
             catch (Exception ex)
             {

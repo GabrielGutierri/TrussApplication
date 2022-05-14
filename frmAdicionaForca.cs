@@ -47,6 +47,7 @@ namespace Software_Trelisa
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
             //defineDirecao();
+            MessageBox.Show($"{cbQuadrante.SelectedIndex}");
             ForcaPonto forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), Convert.ToDouble(txtAngulo.Text), sentido, cbTipoSentido.SelectedItem.ToString());
             this._ponto.forcasPonto.Add(forcaPonto);
             this.Close();

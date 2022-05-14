@@ -268,22 +268,22 @@ namespace Software_Trelisa
             listaPontos[0].barrasPonto.Add(barra1);
             listaPontos[0].barrasPonto.Add(barra2);
 
-            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "Apontada para fora", "vertical", "fixo"));
-            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "Apontada para fora","horizontal","fixo"));
+            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora",  "fixo"));
+            this.pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora","fixo"));
             Ponto ponto2 = new Ponto(125, 230);
-            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "Apontada para dentro", "vertical"));
-            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "Apontada para dentro", "horizontal"));
+            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro", 1));
+            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro", 1));
             ponto2.barrasPonto.Add(barra1);
             ponto2.barrasPonto.Add(barra4);
             ponto2.barrasPonto.Add(barra5);
             Ponto ponto3 = new Ponto(575, 500);
-            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "Apontada para dentro", "vertical"));
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
             ponto3.barrasPonto.Add(barra2);
             ponto3.barrasPonto.Add(barra3);
             ponto3.barrasPonto.Add(barra4);
             ponto3.barrasPonto.Add(barra7);
             Ponto ponto4 = new Ponto(575, 150);
-            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "Apontada para dentro", "inclinado"));
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinada", "Apontada para dentro", 2));
             ponto4.barrasPonto.Add(barra3);
             ponto4.barrasPonto.Add(barra5);
             ponto4.barrasPonto.Add(barra6);
@@ -294,7 +294,7 @@ namespace Software_Trelisa
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);
             listaPontos.Add(ponto5);
-            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "Apontada para fora", "vertical", "movel"));
+            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora",  "movel"));
 
             CriaPontoImagem(ponto2);
             CriaPontoImagem(ponto3);
@@ -312,8 +312,15 @@ namespace Software_Trelisa
 
             DesenhaBarras();
             DesenhaForcas();
+            int c = 0;
+            foreach (var item in listaPontos)
+            {
+                foreach (var j in item.forcasPonto)
+                {
+                    c++;
+                }
+            }
             btnTeste.Enabled = false;
-
         }
 
         private void lbDeletar_Click(object sender, EventArgs e)
@@ -374,147 +381,151 @@ namespace Software_Trelisa
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string teste = "";
-            int quantidadeNulos;
-            double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
-            double calculo1, calculo2, calculo3, calculo4;
+            //string teste = "";
+            //int quantidadeNulos;
+            //double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
+            //double calculo1, calculo2, calculo3, calculo4;
 
-            List<Barra> encontrouNulo = new List<Barra>();
-            do
-            {
-                foreach (Ponto pontoAnalisado in listaPontos)
-                {
-                    somatoriaForcasVerticais = 0;
-                    somatoriaForcasHorizontais = 0;
-                    quantidadeNulos = 0;
+            //List<Barra> encontrouNulo = new List<Barra>();
+            //do
+            //{
+            //    foreach (Ponto pontoAnalisado in listaPontos)
+            //    {
+            //        somatoriaForcasVerticais = 0;
+            //        somatoriaForcasHorizontais = 0;
+            //        quantidadeNulos = 0;
 
-                    foreach(Barra barraAnalisado in pontoAnalisado.barrasPonto)
-                    {
-                        if(barraAnalisado.Forca.Intensidade == 0)
-                        {
-                            quantidadeNulos++;
-                        }
-                    }
+            //        foreach(Barra barraAnalisado in pontoAnalisado.barrasPonto)
+            //        {
+            //            if(barraAnalisado.Forca.Intensidade == 0)
+            //            {
+            //                quantidadeNulos++;
+            //            }
+            //        }
 
-                    if (quantidadeNulos <= 2)
-                    {
-                        encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
+            //        if (quantidadeNulos <= 2)
+            //        {
+            //            encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
 
-                        if (pontoAnalisado.forcasPonto == null)
-                        {
-                            continue;
-                        }
-
-
-                        foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
-                        {
-                            if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para fora")
-                            {
-                                somatoriaForcasVerticais += forcaPonto.ComponenteVertical;
-                            }
-                            else if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para dentro")
-                            {
-                                somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
-                            }
-                            
-                            if (forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para fora")
-                            {
-                                somatoriaForcasHorizontais += forcaPonto.ComponenteHorizontal;
-                            }
-                            else if (forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para dentro")
-                            {
-                                somatoriaForcasHorizontais -= forcaPonto.ComponenteHorizontal;
-                            }
-                        }
-
-                        foreach(Barra forcaBarra in pontoAnalisado.barrasPonto)
-                        {
-                            if(forcaBarra.Forca.Intensidade != 0 || forcaBarra.Forca.Intensidade != 0)
-                            {
-                                if (forcaBarra.Forca.Sentido == "vertical" && forcaBarra.Forca.Direcao == "Apontada para fora")
-                                {
-                                    somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
-                                }
-                                else if (forcaBarra.Forca.Sentido == "vertical" && forcaBarra.Forca.Direcao == "Apontada para dentro")
-                                {
-                                    somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
-                                }
-
-                                if (forcaBarra.Forca.Sentido == "horizontal" && forcaBarra.Forca.Direcao == "Apontada para fora")
-                                {
-                                    somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
-                                }
-                                else if (forcaBarra.Forca.Sentido == "horizontal" && forcaBarra.Forca.Direcao == "Apontada para dentro")
-                                {
-                                    somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
-                                }
-                            }
-                        }
-
-                        calculo1 = 0;
-                        calculo2 = 0;
-                        calculo3 = 0;
-                        calculo4 = 0;
-                        encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
-                        if (quantidadeNulos == 2)
-                        {
-                            calculo1 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180/Math.PI) *
-                                Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)) - 
-                                (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
-                                Math.Sin(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
-
-                            calculo2 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
-                                somatoriaForcasHorizontais) - 
-                                (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
-                                somatoriaForcasVerticais);
-
-                            calculo3 = calculo2 / calculo1;
-                            calculo4 = (somatoriaForcasVerticais -
-                                (Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) * calculo3)
-                                / Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
+            //            if (pontoAnalisado.forcasPonto == null)
+            //            {
+            //                continue;
+            //            }
 
 
+            //            foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
+            //            {
+            //                if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para fora")
+            //                {
+            //                    somatoriaForcasVerticais += forcaPonto.ComponenteVertical;
+            //                }
+            //                else if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para dentro")
+            //                {
+            //                    somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
+            //                }
 
-                            encontrouNulo[0].Forca.Intensidade = calculo4;
-                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo4, encontrouNulo[0].angle);
-                            teste += " /// " + calculo4;
-                            encontrouNulo[1].Forca.Intensidade = calculo3;
-                            encontrouNulo[1].Forca.AdicionaComponentesEncontrados(calculo3, encontrouNulo[1].angle);
-                            teste += " /// " + calculo3;
+            //                if (forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para fora")
+            //                {
+            //                    somatoriaForcasHorizontais += forcaPonto.ComponenteHorizontal;
+            //                }
+            //                else if (forcaPonto.Sentido == "horizontal" && forcaPonto.Direcao == "Apontada para dentro")
+            //                {
+            //                    somatoriaForcasHorizontais -= forcaPonto.ComponenteHorizontal;
+            //                }
+            //            }
 
-                        }
-                        else if(quantidadeNulos == 1)
-                        {
-                            if(encontrouNulo[0].Forca.ComponenteVertical != 0)
-                            {
-                                calculo1 = somatoriaForcasVerticais /
-                                    Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
-                            }
-                            else if(encontrouNulo[0].Forca.ComponenteHorizontal != 0)
-                            {
-                                calculo1 = somatoriaForcasHorizontais /
-                                    Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
-                            }
+            //            foreach(Barra forcaBarra in pontoAnalisado.barrasPonto)
+            //            {
+            //                if(forcaBarra.Forca.Intensidade != 0 || forcaBarra.Forca.Intensidade != 0)
+            //                {
+            //                    if (forcaBarra.Forca.Sentido == "vertical" && forcaBarra.Forca.Direcao == "Apontada para fora")
+            //                    {
+            //                        somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
+            //                    }
+            //                    else if (forcaBarra.Forca.Sentido == "vertical" && forcaBarra.Forca.Direcao == "Apontada para dentro")
+            //                    {
+            //                        somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
+            //                    }
 
-                            encontrouNulo[0].Forca.Intensidade = calculo1;
-                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo1, encontrouNulo[0].angle);
-                            teste += " /// " + calculo1;
-                        }
-                    }
-                }
+            //                    if (forcaBarra.Forca.Sentido == "horizontal" && forcaBarra.Forca.Direcao == "Apontada para fora")
+            //                    {
+            //                        somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
+            //                    }
+            //                    else if (forcaBarra.Forca.Sentido == "horizontal" && forcaBarra.Forca.Direcao == "Apontada para dentro")
+            //                    {
+            //                        somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
+            //                    }
+            //                }
+            //            }
 
-                encontrouNulo = listaBarras.FindAll(x => x.Forca.Intensidade == 0);
-            }
-            while (encontrouNulo != null);
+            //            calculo1 = 0;
+            //            calculo2 = 0;
+            //            calculo3 = 0;
+            //            calculo4 = 0;
+            //            encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
+            //            if (quantidadeNulos == 2)
+            //            {
+            //                calculo1 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180/Math.PI) *
+            //                    Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI)) - 
+            //                    (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+            //                    Math.Sin(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
 
-            txtTeste.Text = teste;
+            //                calculo2 = (Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+            //                    somatoriaForcasHorizontais) - 
+            //                    (Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) *
+            //                    somatoriaForcasVerticais);
+
+            //                calculo3 = calculo2 / calculo1;
+            //                calculo4 = (somatoriaForcasVerticais -
+            //                    (Math.Cos(encontrouNulo[1].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI) * calculo3)
+            //                    / Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI));
+
+
+
+            //                encontrouNulo[0].Forca.Intensidade = calculo4;
+            //                encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo4, encontrouNulo[0].angle);
+            //                teste += " /// " + calculo4;
+            //                encontrouNulo[1].Forca.Intensidade = calculo3;
+            //                encontrouNulo[1].Forca.AdicionaComponentesEncontrados(calculo3, encontrouNulo[1].angle);
+            //                teste += " /// " + calculo3;
+
+            //            }
+            //            else if(quantidadeNulos == 1)
+            //            {
+            //                if(encontrouNulo[0].Forca.ComponenteVertical != 0)
+            //                {
+            //                    calculo1 = somatoriaForcasVerticais /
+            //                        Math.Sin(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
+            //                }
+            //                else if(encontrouNulo[0].Forca.ComponenteHorizontal != 0)
+            //                {
+            //                    calculo1 = somatoriaForcasHorizontais /
+            //                        Math.Cos(encontrouNulo[0].Forca.Angulo * (Math.PI / 180)) * (180 / Math.PI);
+            //                }
+
+            //                encontrouNulo[0].Forca.Intensidade = calculo1;
+            //                encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo1, encontrouNulo[0].angle);
+            //                teste += " /// " + calculo1;
+            //            }
+            //        }
+            //    }
+
+            //    encontrouNulo = listaBarras.FindAll(x => x.Forca.Intensidade == 0);
+            //}
+            //while (encontrouNulo != null);
+
+            //txtTeste.Text = teste;
+            CalculaTeste001();
             
         }
     
-
+        private void CalculaTeste001()
+        {
+            Calculo.CalculaMomentoApoio();
+        }
         private void btnDeletar_Click(object sender, EventArgs e)
         {
-            listaDeletaForca.RemoveAll(pcb => pcb.Name == "delete icon");
+            listaDeletaForca.RemoveAll(pcb => pcb.Name == "iconeDelete");
 
             foreach (var pontoSeta in listaSetas)
             {

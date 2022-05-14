@@ -20,14 +20,14 @@ namespace Software_Trelisa
         {
             InitializeComponent();
         }
-        private void VerificaDados(string nome, string email, string senha, string repetirSenha, SqlConnection connectionString)
+        private bool VerificaDados(string nome, string email, string senha, string repetirSenha, SqlConnection connectionString)
         {
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(repetirSenha))
                 throw new Exception("Todos os campos são obrigatórios!");
 
-            Verificacoes.VerificaEmail(email);
-            Verificacoes.VerificaSenha(senha, repetirSenha);
-            bool verifica = Verificacoes.VerificaUser(email, connectionString);
+            if(Verificacoes.VerificaEmail(email) && Verificacoes.VerificaSenha(senha, repetirSenha) && Verificacoes.VerificaUser(email, connectionString))
+                return true;          
+            else return false;
         }
 
 
@@ -39,24 +39,24 @@ namespace Software_Trelisa
                 string email = txtEmail.Text;
                 string senha = txtPassword.Text;
                 string repetirSenha = txtRepeatPassword.Text;
-                string connectionString = $"";
-                
-               
+                string connectionString = "Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=TrussGVMJF0422";
+
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 connection.Open();
-                VerificaDados(nome, email, senha, repetirSenha, connection);
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (userName, email, userPassword) VALUES (@nome, @email, CONVERT(VARBINARY(256),pwdencrypt(@senha)))", connection);
-                
-                cmd.Parameters.Add("@nome", SqlDbType.VarChar, 70).Value = txtNome.Text;
-                cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = txtEmail.Text;
+                if (VerificaDados(nome, email, senha, repetirSenha, connection))
+                {
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO USUARIO (userName, email, userPassword) VALUES (@nome, @email, CONVERT(VARBINARY(256),pwdencrypt(@senha)))", connection);
 
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = txtPassword.Text;
-                adapter.InsertCommand = cmd;
-                adapter.InsertCommand.ExecuteNonQuery();
-                cmd.Dispose();
-                connection.Close();
-                
+                    cmd.Parameters.Add("@nome", SqlDbType.VarChar, 70).Value = txtNome.Text;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = txtEmail.Text;
+
+                    cmd.Parameters.Add("@senha", SqlDbType.VarChar, 100).Value = txtPassword.Text;
+                    adapter.InsertCommand = cmd;
+                    adapter.InsertCommand.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
             }
             catch(Exception ex)
             {

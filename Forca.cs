@@ -29,7 +29,7 @@ namespace Software_Trelisa
         {
             Angulo = angle;
             this.ComponenteVertical = intensidade * Math.Sin(Angulo * (Math.PI / 180));
-            this.ComponenteHorizontal = intensidade * Math.Cos(Angulo * (Math.PI / 180));
+            this.ComponenteHorizontal = Math.Round(intensidade * Math.Cos(Angulo * (Math.PI / 180)), 6);
         }
     }
 }
