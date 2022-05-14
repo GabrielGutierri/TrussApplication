@@ -18,14 +18,14 @@ namespace Software_Trelisa
         {
             InitializeComponent();
             _ponto = ponto;
-            
+            sentido = "inclinada";
         }
 
         private void rbForcaInclinada_CheckedChanged(object sender, EventArgs e)
         {
             txtAngulo.Text = "";
             txtAngulo.ReadOnly = false;
-            sentido = "inclinado";
+            sentido = "inclinada";
         }
 
         private void rbForcaVertical_CheckedChanged(object sender, EventArgs e)
