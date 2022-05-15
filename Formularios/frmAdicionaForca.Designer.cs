@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbForça = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbQuadrante = new System.Windows.Forms.ComboBox();
             this.cbTipoSentido = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIntensidade = new System.Windows.Forms.TextBox();
@@ -41,8 +43,6 @@
             this.rbForcaHorizontal = new System.Windows.Forms.RadioButton();
             this.rbForcaInclinada = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbQuadrante = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.gbForça.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,35 @@
             this.gbForça.TabIndex = 21;
             this.gbForça.TabStop = false;
             this.gbForça.Text = "Adicionar Força";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(25, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(188, 25);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Quadrante da Força :";
+            // 
+            // cbQuadrante
+            // 
+            this.cbQuadrante.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cbQuadrante.FormattingEnabled = true;
+            this.cbQuadrante.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cbQuadrante.Location = new System.Drawing.Point(25, 298);
+            this.cbQuadrante.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbQuadrante.Name = "cbQuadrante";
+            this.cbQuadrante.Size = new System.Drawing.Size(281, 33);
+            this.cbQuadrante.TabIndex = 24;
             // 
             // cbTipoSentido
             // 
@@ -204,33 +233,6 @@
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo de Força:";
-            // 
-            // cbQuadrante
-            // 
-            this.cbQuadrante.AutoCompleteCustomSource.AddRange(new string[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.cbQuadrante.FormattingEnabled = true;
-            this.cbQuadrante.Items.AddRange(new object[] {
-            "Apontada para fora",
-            "Apontada para dentro"});
-            this.cbQuadrante.Location = new System.Drawing.Point(25, 298);
-            this.cbQuadrante.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbQuadrante.Name = "cbQuadrante";
-            this.cbQuadrante.Size = new System.Drawing.Size(281, 33);
-            this.cbQuadrante.TabIndex = 24;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(25, 271);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 25);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Quadrante da Força :";
             // 
             // frmAdicionaForca
             // 

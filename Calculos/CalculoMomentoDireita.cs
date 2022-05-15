@@ -15,7 +15,6 @@ namespace Software_Trelisa
             double pontoY = item.valorY;
             foreach (var forcaPonto in item.forcasPonto)
             {
-                MessageBox.Show($"{forcaPonto.Sentido}");
                 if (forcaPonto.Direcao == "Apontada para fora")
                 {
                     if (forcaPonto.Sentido == "horizontal" && forcaPonto.Quadrante == 1)
@@ -126,7 +125,6 @@ namespace Software_Trelisa
                         var listaSoma = CalculaInclinadaDentroDireitaBaixo(forcaPonto, pontoApoioFixo, item, forcaPonto.Quadrante, somaAntiHorario, somaHorario, pontoY);
                         somaHorario = listaSoma[0];
                         somaAntiHorario = listaSoma[1];
-
                     }
                 }
             }
