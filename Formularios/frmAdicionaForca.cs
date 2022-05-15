@@ -52,10 +52,5 @@ namespace Software_Trelisa
             this._ponto.forcasPonto.Add(forcaPonto);
             this.Close();
         }
-
-        private void cbQuadranteForca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
