@@ -16,20 +16,27 @@ namespace Software_Trelisa
 
         public string Sentido { get; set; }
         
-        public Forca(double intensidade, double angulo, string sentido)
+        public Forca(double intensidade, double angulo, string sentido, string direcao)
         {
-            Intensidade = intensidade;
-            Angulo = angulo;
             this.Sentido = sentido;
-            this.ComponenteVertical = Intensidade * Math.Sin(Angulo * (Math.PI / 180));
-            this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo * (Math.PI / 180));
+            AdicionaComponentesEncontrados(intensidade,angulo, direcao);
         }
 
-        public void AdicionaComponentesEncontrados(double intensidade, double angle)
+        public void AdicionaComponentesEncontrados(double intensidade, double angle, string direcao)
         {
+            Direcao = direcao;
             Angulo = angle;
-            this.ComponenteVertical = intensidade * Math.Sin(Angulo * (Math.PI / 180));
-            this.ComponenteHorizontal = intensidade * Math.Cos(Angulo * (Math.PI / 180));
+
+            if (intensidade < 0)
+            {
+                Intensidade = -intensidade;
+            }
+            else
+            {
+                Intensidade = intensidade;
+            }
+            this.ComponenteVertical = Math.Round(Intensidade * Math.Sin(Angulo * (Math.PI / 180)), 6);
+            this.ComponenteHorizontal = Math.Round(Intensidade * Math.Cos(Angulo * (Math.PI / 180)), 6);
         }
     }
 }

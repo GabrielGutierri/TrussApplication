@@ -12,7 +12,6 @@ namespace Software_Trelisa
 {
     public partial class AdicionaBarras : Form
     {
-        ForcaBarra forcaNula;
         Barra barra;
         Ponto pontoInicial, pontoFinal;
         int pontoFinalX, pontoFinalY;
@@ -71,7 +70,6 @@ namespace Software_Trelisa
         private void btnCriarBarraVertical_Click(object sender, EventArgs e)
         {
             angulo = 90;
-            forcaNula = new ForcaBarra(0, angulo, "");
             distancia = Convert.ToDouble(txtDistanciaVertical.Text);
 
             if (rbCimaVertical.Checked == true)
@@ -79,7 +77,7 @@ namespace Software_Trelisa
                 
                 pontoFinalX = pontoInicial.valorX;
                 pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
             }
             else
@@ -87,7 +85,7 @@ namespace Software_Trelisa
                 
                 pontoFinalX = pontoInicial.valorX;
                 pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
                 
             }
@@ -105,21 +103,20 @@ namespace Software_Trelisa
         private void btnCriarBarraHorizontal_Click(object sender, EventArgs e)
         {
             angulo = 0;
-            forcaNula = new ForcaBarra(0, angulo, "");
             distancia = Convert.ToDouble(txtDistanciaHorizontal.Text);
 
             if (rbDireitaHorizontal.Checked == true)
             {
                 pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                 pontoFinalY = pontoInicial.valorY;
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
             }
             else
             {
                 pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                 pontoFinalY = pontoInicial.valorY;
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
             }
 
@@ -157,20 +154,20 @@ namespace Software_Trelisa
                     angulo = Convert.ToDouble(txtAnguloInclinado.Text);
                 }
 
-                forcaNula = new ForcaBarra(0, angulo, "");
+
 
                 if (rbSuperiorInclinado.Checked == true)
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
                 }
                 else
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
                 }
 
@@ -187,20 +184,19 @@ namespace Software_Trelisa
                     angulo = Convert.ToDouble(txtAnguloInclinado.Text);
                 }
 
-                forcaNula = new ForcaBarra(0, angulo, "");
 
                 if (rbSuperiorInclinado.Checked == true)
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
                 }
                 else
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, forcaNula);
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
                 }
 
@@ -213,7 +209,7 @@ namespace Software_Trelisa
             }
             VerificaPontoExiste(pontoFinal);
             var listaPontosBarra = new List<Ponto>() { pontoInicial, pontoFinal };
-            barra.Forca = new ForcaBarra(Convert.ToDouble(null), barra.angle, barra.Sentido, listaPontosBarra);
+            barra.Forca = new ForcaBarra(Convert.ToDouble(null), barra.angle, barra.Sentido,"Apontada para dentro", listaPontosBarra);
             Form1.listaBarras.Add(barra);
             this.Close();
         }

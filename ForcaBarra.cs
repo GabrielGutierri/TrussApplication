@@ -9,15 +9,18 @@ namespace Software_Trelisa
     public class ForcaBarra : Forca
     {
         public List<Ponto> pontosBarras { get; set; }
-        public ForcaBarra(double intensidade, double angulo, string sentido, List<Ponto> pontos) : base(intensidade, angulo, sentido)
+        public ForcaBarra(double intensidade, double angulo, string sentido, string direcao, List<Ponto> pontos) : base(intensidade, angulo, sentido, direcao)
         {
             this.pontosBarras = pontos;
+
         }
 
-        public ForcaBarra(double intensidade, double angulo, string sentido) : base(intensidade, angulo, sentido)
+        public ForcaBarra(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido, direcao)
         {
-
+            
         }
+
+       
 
     }
 }

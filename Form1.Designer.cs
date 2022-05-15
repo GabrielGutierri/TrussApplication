@@ -36,7 +36,6 @@
             this.lbMensagem = new System.Windows.Forms.Label();
             this.lbDeletar = new System.Windows.Forms.Label();
             this.btnTeste = new System.Windows.Forms.Button();
-            this.txtTeste = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,20 +128,11 @@
             this.btnTeste.UseVisualStyleBackColor = true;
             this.btnTeste.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txtTeste
-            // 
-            this.txtTeste.Location = new System.Drawing.Point(25, 751);
-            this.txtTeste.Multiline = true;
-            this.txtTeste.Name = "txtTeste";
-            this.txtTeste.Size = new System.Drawing.Size(879, 94);
-            this.txtTeste.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1620, 857);
-            this.Controls.Add(this.txtTeste);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.lbDeletar);
@@ -166,6 +156,5 @@
         private Button btnTeste;
         private Button btnCriar;
         private Button btnDeletar;
-        private TextBox txtTeste;
     }
 }
