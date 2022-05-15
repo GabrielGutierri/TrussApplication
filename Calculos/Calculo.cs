@@ -8,15 +8,15 @@ namespace Software_Trelisa
 {
     public static class Calculo
     {
-        public static double CalculaMomentoApoio()
+        static double somaAntiHorario = 0;
+        static double somaHorario = 0;
+        public static void CalculaMomentoApoio()
         {
             List<ForcaApoio> forcaApoioFixo = new List<ForcaApoio>();
             ForcaApoio forcaApoioMovel = null;
             Ponto pontoApoioFixo = null;
             Ponto pontoApoioMovel = null;
             
-            double somaAntiHorario = 0;
-            double somaHorario = 0;
             foreach (var item in Form1.listaPontos)
             {
                 if(item.forcasApoio.Count == 2) //verificar se tem apoio nesse ponto
@@ -43,14 +43,12 @@ namespace Software_Trelisa
                         {
                             if (pontoApoioFixo.valorY - item.valorY >= 0) // ponto mais alto para a direita
                             {
-                                MessageBox.Show($"{pontoApoioFixo.valorY - item.valorY}");
                                 var listaApoio = CalculoMomentoDireita.PontoDireitaApoio(item, pontoApoioFixo);
                                 somaHorario += listaApoio[0];
                                 somaAntiHorario += listaApoio[1];
                             }
                             if(pontoApoioFixo.valorY - item.valorY < 0) // ponto mais baixo para a direita
                             {
-                                MessageBox.Show($"{pontoApoioFixo.valorY + item.valorY}");
                                 //var listaApoio = PontoDireitaApoioMaisBaixo(item, pontoApoioFixo);
                                 //somaHorario += listaApoio[0];
                                 //somaAntiHorario += listaApoio[1];
@@ -72,10 +70,40 @@ namespace Software_Trelisa
                 }
                 
             }
-            MessageBox.Show($"{somaAntiHorario} - {somaHorario}");
-            MessageBox.Show($"{(somaHorario - somaAntiHorario) / (pontoApoioMovel.valorX - pontoApoioFixo.valorX)}");
-            return somaAntiHorario;
+            CalculaForcaApoioMovel(forcaApoioMovel, pontoApoioMovel, pontoApoioFixo);
+            CalculaForcasApoioFixo(forcaApoioFixo);
+        }
+        public static void CalculaForcaApoioMovel(ForcaApoio forcaMovel, Ponto pontoApoioMovel, Ponto pontoApoioFixo)
+        {
+            double intensidadeMovel;
+            if(pontoApoioMovel.valorX > pontoApoioFixo.valorX) //apoio movel está para a direita do ponto fixo
+            {
+                intensidadeMovel = (somaHorario - somaAntiHorario) / (pontoApoioMovel.valorX - pontoApoioFixo.valorX);
+            }
+            else
+            {
+                intensidadeMovel = (somaAntiHorario - somaHorario) / (pontoApoioFixo.valorX - pontoApoioMovel.valorX);
+            }
 
+            if(intensidadeMovel < 0) //Trocar se formos fazer a parte de apoios móveis para cima ou embaixo. Para a direita no canto = forca para a esquerda
+            {
+                if(forcaMovel.Sentido == "horizontal")
+                {
+                    if (pontoApoioMovel.valorX > pontoApoioFixo.valorX)
+                        forcaMovel.Direcao = "Apontada para fora";
+                    else
+                        forcaMovel.Direcao = "Apontada para dentro";
+                }
+                else
+                    forcaMovel.Direcao = "Apontada para dentro";
+            }
+            forcaMovel.Intensidade = intensidadeMovel;
+        }
+
+        public static void CalculaForcasApoioFixo(List<ForcaApoio> forcaApoioFixo)
+        {
+            CalculaForcasFixo.CalculaVertical(forcaApoioFixo[0]);
+            CalculaForcasFixo.CalculaHorizontal(forcaApoioFixo[1]);
         }
         public static double CalculaSoma(double intensidade, string orientacao, int subtracaoQuadrante, double angulo, int pontoReferencia1, double pontoReferencia2)
         {

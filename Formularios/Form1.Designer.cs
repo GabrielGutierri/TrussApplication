@@ -48,6 +48,7 @@
             this.panelDesenho.Name = "panelDesenho";
             this.panelDesenho.Size = new System.Drawing.Size(1415, 518);
             this.panelDesenho.TabIndex = 0;
+            this.panelDesenho.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDesenho_MouseMove);
             // 
             // panel3
             // 
@@ -61,7 +62,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(459, 80);
             this.panel3.TabIndex = 3;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // btnCriar
             // 
@@ -116,7 +116,6 @@
             this.lbDeletar.TabIndex = 5;
             this.lbDeletar.Text = "Selecione os dois pontos de uma barra clicando duas vezes sobre eles para deletar" +
     " a barra";
-            this.lbDeletar.Click += new System.EventHandler(this.lbDeletar_Click);
             // 
             // btnTeste
             // 
@@ -160,7 +159,7 @@
 
         #endregion
 
-        private Panel panelDesenho;
+        public Panel panelDesenho;
         private Panel panel3;
         private Button button1;
         private Label lbMensagem;
