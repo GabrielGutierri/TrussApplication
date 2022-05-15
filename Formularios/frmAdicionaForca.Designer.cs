@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbForça = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbQuadrante = new System.Windows.Forms.ComboBox();
             this.cbTipoSentido = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIntensidade = new System.Windows.Forms.TextBox();
@@ -47,6 +49,8 @@
             // 
             // gbForça
             // 
+            this.gbForça.Controls.Add(this.label5);
+            this.gbForça.Controls.Add(this.cbQuadrante);
             this.gbForça.Controls.Add(this.cbTipoSentido);
             this.gbForça.Controls.Add(this.label3);
             this.gbForça.Controls.Add(this.txtIntensidade);
@@ -55,14 +59,43 @@
             this.gbForça.Controls.Add(this.label1);
             this.gbForça.Controls.Add(this.label2);
             this.gbForça.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbForça.Location = new System.Drawing.Point(12, 3);
+            this.gbForça.Location = new System.Drawing.Point(12, -13);
             this.gbForça.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbForça.Name = "gbForça";
             this.gbForça.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbForça.Size = new System.Drawing.Size(374, 305);
+            this.gbForça.Size = new System.Drawing.Size(361, 404);
             this.gbForça.TabIndex = 21;
             this.gbForça.TabStop = false;
             this.gbForça.Text = "Adicionar Força";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(25, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(188, 25);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Quadrante da Força :";
+            // 
+            // cbQuadrante
+            // 
+            this.cbQuadrante.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cbQuadrante.FormattingEnabled = true;
+            this.cbQuadrante.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cbQuadrante.Location = new System.Drawing.Point(25, 298);
+            this.cbQuadrante.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbQuadrante.Name = "cbQuadrante";
+            this.cbQuadrante.Size = new System.Drawing.Size(281, 33);
+            this.cbQuadrante.TabIndex = 24;
             // 
             // cbTipoSentido
             // 
@@ -98,10 +131,10 @@
             // btnCriarBarraInclinado
             // 
             this.btnCriarBarraInclinado.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(25, 262);
+            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(25, 356);
             this.btnCriarBarraInclinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCriarBarraInclinado.Name = "btnCriarBarraInclinado";
-            this.btnCriarBarraInclinado.Size = new System.Drawing.Size(140, 30);
+            this.btnCriarBarraInclinado.Size = new System.Drawing.Size(119, 33);
             this.btnCriarBarraInclinado.TabIndex = 12;
             this.btnCriarBarraInclinado.Text = "Criar Força";
             this.btnCriarBarraInclinado.UseVisualStyleBackColor = true;
@@ -205,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 353);
+            this.ClientSize = new System.Drawing.Size(742, 431);
             this.Controls.Add(this.gbForça);
             this.Controls.Add(this.btnAjuda);
             this.Controls.Add(this.groupBox3);
@@ -236,5 +269,7 @@
         private GroupBox groupBox3;
         private ComboBox cbQuadranteForca;
         private Label label4;
+        private Label label5;
+        private ComboBox cbQuadrante;
     }
 }

@@ -9,7 +9,7 @@ namespace Software_Trelisa
     public class ForcaApoio:ForcaPonto
     {
         public bool ehApoioFixo { get; set; }
-        public ForcaApoio(double intensidade, double angulo, string sentido, string direcao, string tipoApoio) : base(intensidade, angulo, sentido, direcao)
+        public ForcaApoio(double intensidade, double angulo, string sentido, string direcao, string tipoApoio) : base(intensidade, angulo, sentido, direcao, 0)
         {
             if (tipoApoio == "fixo")
                 ehApoioFixo = true;

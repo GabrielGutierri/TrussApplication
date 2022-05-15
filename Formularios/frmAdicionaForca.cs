@@ -18,14 +18,14 @@ namespace Software_Trelisa
         {
             InitializeComponent();
             _ponto = ponto;
-            
+            sentido = "inclinada";
         }
 
         private void rbForcaInclinada_CheckedChanged(object sender, EventArgs e)
         {
             txtAngulo.Text = "";
             txtAngulo.ReadOnly = false;
-            sentido = "inclinado";
+            sentido = "inclinada";
         }
 
         private void rbForcaVertical_CheckedChanged(object sender, EventArgs e)
@@ -47,14 +47,10 @@ namespace Software_Trelisa
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
             //defineDirecao();
+            MessageBox.Show($"{cbQuadrante.SelectedIndex}");
             ForcaPonto forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), Convert.ToDouble(txtAngulo.Text), sentido, cbTipoSentido.SelectedItem.ToString());
             this._ponto.forcasPonto.Add(forcaPonto);
             this.Close();
-        }
-
-        private void cbQuadranteForca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

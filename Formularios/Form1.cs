@@ -8,20 +8,20 @@ namespace Software_Trelisa
         public static List<Barra> listaBarras = new List<Barra>();
         public static List<Ponto> listaPontos = new List<Ponto>();
         public static List<PontoSeta> listaSetas = new List<PontoSeta>();
-        List<PictureBox> listaPictureBox = new List<PictureBox>();
+        public static List<PictureBox> listaPictureBox = new List<PictureBox>();
         List<Ponto> listaDeletar = new List<Ponto>();
         List<PictureBox> listaDeletaForca = new List<PictureBox>();
         bool querDeletar = false;
 
         Ponto pontoTeste { get; set; }
 
-        public  Form1()
+        public Form1()
         {
             InitializeComponent();
             AdicionaPrimeiroPonto();
-       
         }
 
+        #region Eventos Ponto
         public void novoPonto_DoubleClick(object sender, EventArgs e, Ponto ponto)
         {
             if (querDeletar == true)
@@ -69,8 +69,10 @@ namespace Software_Trelisa
             listaPictureBox.Add(novoPontoImagem);
 
         }
+        #endregion
 
-        private void DesenhaForcas()
+        #region Desenhos de Forca, barra e apoio
+        public void DesenhaForcas()
         {
             Graphics g = panelDesenho.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -93,7 +95,7 @@ namespace Software_Trelisa
                         listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao, forca));
                     }
                     else {
-                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inical
+                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inicial
                         listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao, forca));
                     }
                 }
@@ -102,7 +104,7 @@ namespace Software_Trelisa
             p.Dispose();
         }
 
-        private void DesenhaBarras()
+        public void DesenhaBarras()
         {
             Graphics g = panelDesenho.CreateGraphics();
             Pen myPen = new Pen(Color.Gray, 6);
@@ -135,8 +137,11 @@ namespace Software_Trelisa
             myPen2.Dispose();
             myPen3.Dispose();
         }
+        #endregion
 
-        private void QuerDeletar(Ponto ponto)
+        #region Deletar Barra
+
+        public void QuerDeletar(Ponto ponto)
         {
             listaDeletar.Add(ponto);
 
@@ -231,23 +236,28 @@ namespace Software_Trelisa
                 AdicionaPrimeiroPonto();
             }
         }
-          
-        private void btnCriar_Click(object sender, EventArgs e)
+
+        public void DeletarBarraEvent()
         {
-            lbDeletar.Visible = false;
-            lbMensagem.Visible = true;
+            if (listaBarras.Count == 0)
+            {
+                MessageBox.Show("Não há barras para deletar");
+                return;
+            }
+
+            lbMensagem.Visible = false;
+            lbDeletar.Visible = true;
             foreach (PictureBox imagem in listaPictureBox)
             {
                 imagem.Enabled = true;
                 imagem.Visible = true;
             }
-            foreach (var item in listaDeletaForca)
+            querDeletar = true;
+            foreach (var item in listaPontos)
             {
-                item.Enabled = false;
-                item.Visible = false;
+                CriaPontoImagem(item);
             }
         }
-
         private void btnDeletarBarra_Click(object sender, EventArgs e)
         {
             if(listaBarras.Count == 0)
@@ -265,7 +275,9 @@ namespace Software_Trelisa
             }
             querDeletar = true;
         }
+        #endregion
 
+        #region Botao Teste
         private void button2_Click(object sender, EventArgs e)
         {
             //Analisar crescente, decrescente
@@ -284,19 +296,19 @@ namespace Software_Trelisa
             this.pontoTeste.forcasPonto.Add(new ForcaPonto(15870.3, 90, "vertical", "Apontada para fora"));
             this.pontoTeste.forcasPonto.Add(new ForcaPonto(2500, 0, "horizontal", "Apontada para dentro"));
             Ponto ponto2 = new Ponto(125, 230);
-            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro"));
-            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro"));
+            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro", 1));
+            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro", 1));
             ponto2.barrasPonto.Add(barra1);
             ponto2.barrasPonto.Add(barra4);
             ponto2.barrasPonto.Add(barra5);
             Ponto ponto3 = new Ponto(575, 500);
-            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro"));
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
             ponto3.barrasPonto.Add(barra2);
             ponto3.barrasPonto.Add(barra3);
             ponto3.barrasPonto.Add(barra4);
             ponto3.barrasPonto.Add(barra7);
             Ponto ponto4 = new Ponto(575, 150);
-            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinado", "Apontada para dentro"));
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinada", "Apontada para dentro", 2));
             ponto4.barrasPonto.Add(barra3);
             ponto4.barrasPonto.Add(barra5);
             ponto4.barrasPonto.Add(barra6);
@@ -325,14 +337,10 @@ namespace Software_Trelisa
 
             DesenhaBarras();
             DesenhaForcas();
+
             btnTeste.Enabled = false;
-
         }
-
-        private void lbDeletar_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
 
         private void btnCriar_Click_1(object sender, EventArgs e)
         {
@@ -344,46 +352,44 @@ namespace Software_Trelisa
                 imagem.Enabled = true;
                 imagem.Visible = true;
             }
-            foreach (PictureBox pcb in listaDeletaForca)
+            foreach (var pcb in listaDeletaForca)
             {
-                pcb.Enabled = false;
-                pcb.Visible = false;
-                pcb.SendToBack();
+                panelDesenho.Controls.Remove(pcb);
             }
-        }
-
-        public void deletaForca_Click(object sender, EventArgs e, PontoSeta pontoSeta)
-        {
-            
-            PontoSeta ponto = listaSetas.Find(p => (p.ValorFinalX == pontoSeta.ValorFinalX
-                                                && p.ValorFinalY == pontoSeta.ValorFinalY
-                                                && p.ValorInicialX == pontoSeta.ValorInicialX
-                                                && p.ValorInicialY == pontoSeta.ValorInicialY));
-            listaSetas.Remove(ponto);
-            if (ponto != null) {
-                
-                var pontoForca = listaPontos.Find(f => (f.valorX == ponto.ValorInicialX && f.valorY == ponto.ValorInicialY) || (f.valorX == ponto.ValorFinalX && f.valorY == ponto.ValorFinalY));
-                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);
-                
-            }
-            //}
+            listaSetas.Clear();
             DesenhaBarras();
             DesenhaForcas();
         }
-        public void CriaDeletaForca(PontoSeta pontoSeta)
+
+
+        #region Botao Calcular
+        private void button1_Click(object sender, EventArgs e)
         {
-            PictureBox imagemDeleta = new PictureBox();
-            imagemDeleta.Image = Resources.iconeDelete;
-            imagemDeleta.Name = "delete icon";
-            imagemDeleta.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagemDeleta.Height = 20;
-            imagemDeleta.Width = 20;
-            imagemDeleta.Location = new Point((pontoSeta.ValorFinalX + pontoSeta.ValorInicialX) / 2, (pontoSeta.ValorInicialY + pontoSeta.ValorFinalY) / 2);
-            imagemDeleta.Visible = true;
-            imagemDeleta.Click += new EventHandler((sender, e) => deletaForca_Click(sender, e, pontoSeta));
-            listaDeletaForca.Add(imagemDeleta);
-            panelDesenho.Controls.Add(imagemDeleta);
-        }
+            //string teste = "";
+            //int quantidadeNulos;
+            //double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
+            //double calculo1, calculo2, calculo3, calculo4;
+
+            //List<Barra> encontrouNulo = new List<Barra>();
+            //do
+            //{
+            //    foreach (Ponto pontoAnalisado in listaPontos)
+            //    {
+            //        somatoriaForcasVerticais = 0;
+            //        somatoriaForcasHorizontais = 0;
+            //        quantidadeNulos = 0;
+
+            //        foreach(Barra barraAnalisado in pontoAnalisado.barrasPonto)
+            //        {
+            //            if(barraAnalisado.Forca.Intensidade == 0)
+            //            {
+            //                quantidadeNulos++;
+            //            }
+            //        }
+
+            //        if (quantidadeNulos <= 2)
+            //        {
+            //            encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -412,13 +418,16 @@ namespace Software_Trelisa
                     somatoriaForcasHorizontais = 0;
                     quantidadeNulos = 0;
 
-                    foreach(Barra barraAnalisado in pontoAnalisado.barrasPonto)
-                    {
-                        if(barraAnalisado.Forca.Intensidade == 0)
-                        {
-                            quantidadeNulos++;
-                        }
-                    }
+            //            foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
+            //            {
+            //                if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para fora")
+            //                {
+            //                    somatoriaForcasVerticais += forcaPonto.ComponenteVertical;
+            //                }
+            //                else if (forcaPonto.Sentido == "vertical" && forcaPonto.Direcao == "Apontada para dentro")
+            //                {
+            //                    somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
+            //                }
 
                     if (quantidadeNulos <= 2)
                     {
@@ -678,6 +687,50 @@ namespace Software_Trelisa
                             }
                             encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo1, encontrouNulo[0].angle, direcao);
 
+        #region Deleta Forca
+        public void deletaForca_Click(object sender, EventArgs e, PontoSeta pontoSeta)
+        {
+            listaSetas.Clear();
+            DesenhaBarras();
+            DesenhaForcas();
+            PontoSeta ponto = listaSetas.Find(p => (p.ValorFinalX == pontoSeta.ValorFinalX
+                                                && p.ValorFinalY == pontoSeta.ValorFinalY
+                                                && p.ValorInicialX == pontoSeta.ValorInicialX
+                                                && p.ValorInicialY == pontoSeta.ValorInicialY));
+            listaSetas.Remove(ponto);
+            if (ponto != null)
+            {
+
+                var pontoForca = listaPontos.Find(f => (f.valorX == ponto.ValorInicialX && f.valorY == ponto.ValorInicialY) || (f.valorX == ponto.ValorFinalX && f.valorY == ponto.ValorFinalY));
+                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);
+            }
+            foreach (Control control in listaDeletaForca)
+            {
+                panelDesenho.Controls.Remove(control);
+            }
+            listaSetas.Clear();
+            DesenhaBarras();
+            DesenhaForcas();
+        }
+        public void CriaDeletaForca(PontoSeta pontoSeta)
+        {
+            PictureBox imagemDeleta = new PictureBox();
+            imagemDeleta.Image = Resources.iconeDelete;
+            imagemDeleta.Name = "iconeDelete";
+            imagemDeleta.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagemDeleta.Height = 20;
+            imagemDeleta.Width = 20;
+            imagemDeleta.Location = new Point((pontoSeta.ValorFinalX + pontoSeta.ValorInicialX) / 2, (pontoSeta.ValorInicialY + pontoSeta.ValorFinalY) / 2);
+            imagemDeleta.Visible = true;
+            imagemDeleta.Click += new EventHandler((sender, e) => deletaForca_Click(sender, e, pontoSeta));
+            listaDeletaForca.Add(imagemDeleta);
+            panelDesenho.Controls.Add(imagemDeleta);
+        }
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            frmDeleta f = new frmDeleta();
+            f.ShowDialog();
+
                         }
                     }
                 }
@@ -742,17 +795,21 @@ namespace Software_Trelisa
 
         }
 
-
-        private void btnDeletar_Click(object sender, EventArgs e)
+        public void DeletarForcaEvent()
         {
-            listaDeletaForca.RemoveAll(pcb => pcb.Name == "delete icon");
+            listaDeletaForca.RemoveAll(pcb => pcb.Name == "iconeDelete");
 
             foreach (var pontoSeta in listaSetas)
             {
                 CriaDeletaForca(pontoSeta);
-                
             }
         }
+        #endregion 
+        private void panelDesenho_MouseMove(object sender, MouseEventArgs e)
+        {
+            txtTeste.Text = $"X: {e.X} - Y: {e.Y}";
+        }
+        
     }
 }
 
