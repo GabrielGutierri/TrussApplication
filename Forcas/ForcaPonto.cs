@@ -11,14 +11,14 @@ namespace Software_Trelisa
         public int Quadrante { get; set; }
         public string DirecaoHorizontal { get; set; }
         public string DirecaoVertical { get; set; }
-        public ForcaPonto(double intensidade, double angulo, string sentido, string direcao, int quadrante) : base(intensidade, angulo, sentido)
+        public ForcaPonto(double intensidade, double angulo, string sentido, string direcao, int quadrante) : base(intensidade, angulo, sentido,direcao)
         {
             this.Quadrante = quadrante;
             this.Direcao = direcao;
             if (sentido == "inclinada")
                 MudaDirecao();
         }
-        public ForcaPonto(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido)
+        public ForcaPonto(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido, direcao)
         {
             if (angulo >= 0 && angulo <= 90)
                 this.Quadrante = 1;

@@ -50,7 +50,7 @@ namespace Software_Trelisa
         public void defineSentido()
         {
             if (estainclinada)
-                this.Sentido = "inclinado";
+                this.Sentido = "inclinada";
             if (sentidoHorizontal && estainclinada == false)
                 this.Sentido = "horizontal";
             if (sentidoVertical && estainclinada == false)

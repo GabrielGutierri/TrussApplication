@@ -47,7 +47,6 @@
             this.panelDesenho.Name = "panelDesenho";
             this.panelDesenho.Size = new System.Drawing.Size(1415, 518);
             this.panelDesenho.TabIndex = 0;
-            this.panelDesenho.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDesenho_MouseMove);
             // 
             // panel3
             // 
