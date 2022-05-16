@@ -21,8 +21,8 @@ namespace Software_Trelisa
             Intensidade = intensidade;
             Angulo = angulo;
             this.Sentido = sentido;
-            this.ComponenteVertical = Intensidade * Math.Sin(Angulo * (Math.PI / 180));
-            this.ComponenteHorizontal = Intensidade * Math.Cos(Angulo * (Math.PI / 180));
+            this.ComponenteVertical = Math.Sin(Angulo * (Math.PI / 180));
+            this.ComponenteHorizontal = Math.Cos(Angulo * (Math.PI / 180));
         }
 
         public void AdicionaComponentesEncontrados(double intensidade, double angle)

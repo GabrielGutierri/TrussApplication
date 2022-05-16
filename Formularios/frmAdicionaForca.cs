@@ -14,6 +14,7 @@ namespace Software_Trelisa
     {
         public Ponto _ponto;
         private string sentido;
+        private double angulo;
         public frmAdicionaForca(Ponto ponto)
         {
             InitializeComponent();
@@ -46,11 +47,23 @@ namespace Software_Trelisa
 
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
-            //defineDirecao();
-            MessageBox.Show($"{cbQuadrante.SelectedIndex}");
-            ForcaPonto forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), Convert.ToDouble(txtAngulo.Text), sentido, cbTipoSentido.SelectedItem.ToString());
+            //Verificar se foi passado um ângulo entre 0 e 90 -> falar pra adicionar horizontal se for 0 e adicionar vertical se for 90
+            AlteraAngulo();
+            ForcaPonto forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString());
             this._ponto.forcasPonto.Add(forcaPonto);
+            MessageBox.Show($"{forcaPonto.Angulo} = Cos: {forcaPonto.ComponenteHorizontal} - Sen {forcaPonto.ComponenteVertical}");
             this.Close();
+        }
+        private void AlteraAngulo()
+        {
+            if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+            {
+                angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+            }
+            else if (cbQuadrante.SelectedIndex + 1 == 3)
+                angulo = 180 + Convert.ToDouble(txtAngulo.Text);
+            else
+                angulo = Convert.ToDouble(txtAngulo.Text);
         }
     }
 }
