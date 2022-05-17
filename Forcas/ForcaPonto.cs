@@ -31,7 +31,8 @@ namespace Software_Trelisa
             this.Direcao = direcao;
             if (sentido == "inclinada")
                 MudaDirecao();
-            MudaComponentesAngulo(this);
+            if (this.ComponenteHorizontal == 0 || this.ComponenteVertical == 0)
+                MudaComponentesAngulo(this);
         }
         public void MudaComponentesAngulo(ForcaPonto forca)
         {

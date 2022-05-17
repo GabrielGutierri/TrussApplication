@@ -60,9 +60,8 @@ namespace Software_Trelisa
             if (forcaHorizontal.Intensidade < 0)
             {
                 if (forcaHorizontal.Direcao == "Apontada para fora")
-                {
                     forcaHorizontal.Direcao = "Apontada para dentro";
-                }
+                   
                 else
                     forcaHorizontal.Direcao = "Apontada para fora";
             }
@@ -87,7 +86,7 @@ namespace Software_Trelisa
                             {
                                 somaCima += forca.Intensidade;
                             }
-                            if ((forca.Quadrante == 1 && forca.Direcao == "Apontada para dentro") || (forca.Quadrante == 3 && forca.Direcao == "Apontada para dfora"))
+                            if ((forca.Quadrante == 1 && forca.Direcao == "Apontada para dentro") || (forca.Quadrante == 3 && forca.Direcao == "Apontada para fora"))
                             {
                                 somaBaixo += forca.Intensidade;
                             }

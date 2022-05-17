@@ -119,15 +119,3 @@ namespace Software_Trelisa
         }
     }
 }
-
-//Direita 
-    //Horizontal
-        // Ponto para cima
-        // Ponto para baixo
-    //Vertical
-        //Ponto para cima
-        //Ponto para baixo
-    //Inclinada
-        //Ponto para cima
-        //Ponto para baixo
-//Esquerda
