@@ -87,6 +87,8 @@ namespace Software_Trelisa
             {
                 foreach (var forca in ponto.forcasPonto)
                 {
+
+                    ValorXPonto(forca);
                     var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(forca.Angulo * (Math.PI / 180)));
                     var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-forca.Angulo * (Math.PI / 180)));
                     if (forca.Direcao == "Apontada para fora")
@@ -104,7 +106,18 @@ namespace Software_Trelisa
             g.Dispose();
             p.Dispose();
         }
-
+        public int ValorXPonto(ForcaPonto forca)
+        {
+            if(forca.Quadrante == 3)
+            {
+                MessageBox.Show($"{forca.Angulo}");
+                return Convert.ToInt32(75 * Math.Cos((forca.Angulo) * (Math.PI / 180)));
+            }
+            else
+            {
+                return 1;
+            }
+        }
         public void DesenhaBarras()
         {
             Font novaFont = new Font("Segoe", 14);
