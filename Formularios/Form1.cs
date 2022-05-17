@@ -100,12 +100,14 @@ namespace Software_Trelisa
                     }
                 }
             }
+
             g.Dispose();
             p.Dispose();
         }
 
         public void DesenhaBarras()
         {
+            Font novaFont = new Font("Segoe", 14);
             Graphics g = panelDesenho.CreateGraphics();
             Pen myPen = new Pen(Color.Gray, 6);
             Pen myPen2 = new Pen(Color.LightSteelBlue, 6);
@@ -132,6 +134,16 @@ namespace Software_Trelisa
 
 
             }
+            if(button1.Enabled == false)
+            {
+                Point pontoTracao = new Point(1250, 595);
+                Point pontoCompressao = new Point(1250, 635);
+                g.DrawLine(myPen2, 1400, 610, 1600, 610);
+                g.DrawString("Tração", novaFont, Brushes.Black, pontoTracao);
+                g.DrawLine(myPen3, 1400, 655, 1600, 655);
+                g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
+            }
+           
             g.Dispose();
             myPen.Dispose();
             myPen2.Dispose();
@@ -253,10 +265,20 @@ namespace Software_Trelisa
                 imagem.Visible = true;
             }
             querDeletar = true;
+
+
+            /*Pra que isso?
             foreach (var item in listaPontos)
             {
-                CriaPontoImagem(item);
+                Point novoPonto = new Point(item.valorX, item.valorY);
+                PictureBox encontrouImagem = listaPictureBox.Find(x => x.Location == novoPonto);
+                if(encontrouImagem == null)
+                {
+                    CriaPontoImagem(item);
+                }
             }
+            */
+
         }
         private void btnDeletarBarra_Click(object sender, EventArgs e)
         {
@@ -366,17 +388,38 @@ namespace Software_Trelisa
             btnCriar.Enabled = false;
             btnDeletar.Enabled = false;
             button1.Enabled = false;
-            int quantidadeNulos;
+            int quantidadeNulos, quantidadesForcasApoios = 0;
             double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
             double calculo1, calculo2, calculo3, calculo4;
             List<Barra> encontrouNulo = new List<Barra>();
+
+            /* Esperar parte de calcular força no apoio
+             
+            foreach(Ponto pontoAnalisado in listaPontos)
+            {
+                if(pontoAnalisado.forcasApoio.Count == 2)
+                {
+                    quantidadesForcasApoios += 2;
+                }
+                else if(pontoAnalisado.forcasApoio.Count == 1)
+                {
+                    quantidadesForcasApoios += 1;
+                }
+
+            }
+
+            if(quantidadesForcasApoios < 3)
+            {
+                MessageBox.Show("Treliça Hiperestatica - Não é possivel calcular");
+                return;
+            }
+            */
 
             do
             {
                 foreach (Ponto pontoAnalisado in listaPontos)
                 {
-                    // Analisar código e fazer varios testes
-                    //Verificar se é hiperestatica
+
                     encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade != 0);
                     
                     if (pontoAnalisado.forcasPonto.Count == 0 && encontrouNulo.Count == 0)

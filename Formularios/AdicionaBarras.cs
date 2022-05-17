@@ -17,6 +17,9 @@ namespace Software_Trelisa
         int pontoFinalX, pontoFinalY;
         double angulo, distancia;
 
+        //Primeiro calcula a distancia em cada um dos bõtoes e depois verifica em um metodo em separado. Caso ultrapasse,mudar a 
+        // escala, que vai ser uma variavel que divide a distancia;
+
         public AdicionaBarras(Ponto ponto)
         {
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace Software_Trelisa
             angulo = 90;
             distancia = Convert.ToDouble(txtDistanciaVertical.Text);
 
+
             if (rbCimaVertical.Checked == true)
             {
                 
@@ -104,6 +108,8 @@ namespace Software_Trelisa
         {
             angulo = 0;
             distancia = Convert.ToDouble(txtDistanciaHorizontal.Text);
+
+
 
             if (rbDireitaHorizontal.Checked == true)
             {
