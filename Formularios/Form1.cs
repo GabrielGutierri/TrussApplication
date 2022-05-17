@@ -327,9 +327,9 @@ namespace Software_Trelisa
             
             listaPontos[0].barrasPonto.Add(barra1);
             listaPontos[0].barrasPonto.Add(barra2);
-
-            this.pontoTeste.forcasPonto.Add(new ForcaPonto(15870.3, 90, "vertical", "Apontada para fora"));
-            this.pontoTeste.forcasPonto.Add(new ForcaPonto(2500, 0, "horizontal", "Apontada para dentro"));
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo"));
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
+          
             Ponto ponto2 = new Ponto(125, 230);
             ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro", 1));
             ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro", 1));
@@ -337,13 +337,13 @@ namespace Software_Trelisa
             ponto2.barrasPonto.Add(barra4);
             ponto2.barrasPonto.Add(barra5);
             Ponto ponto3 = new Ponto(575, 500);
-            ponto3.forcasPonto.Add(new ForcaPonto(8000, 90, "vertical", "Apontada para dentro", 3));
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
             ponto3.barrasPonto.Add(barra2);
             ponto3.barrasPonto.Add(barra3);
             ponto3.barrasPonto.Add(barra4);
             ponto3.barrasPonto.Add(barra7);
             Ponto ponto4 = new Ponto(575, 150);
-            ponto4.forcasPonto.Add(new ForcaPonto(35000, 60, "inclinada", "Apontada para dentro", 2));
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinada", "Apontada para dentro", 2));
             ponto4.barrasPonto.Add(barra3);
             ponto4.barrasPonto.Add(barra5);
             ponto4.barrasPonto.Add(barra6);
@@ -354,7 +354,7 @@ namespace Software_Trelisa
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);
             listaPontos.Add(ponto5);
-            ponto5.forcasPonto.Add(new ForcaPonto(18440.59, 90, "vertical", "Apontada para fora"));
+            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel"));
 
             CriaPontoImagem(ponto2);
             CriaPontoImagem(ponto3);
@@ -427,6 +427,21 @@ namespace Software_Trelisa
                 return;
             }
             */
+            Calculo.CalculaMomentoApoio();
+            foreach (var ponto in listaPontos)
+            {
+                if(ponto.forcasApoio.Count >= 1)
+                {
+                    
+                    foreach (var forcaApoio in ponto.forcasApoio)
+                    {
+                        //MessageBox.Show($"{forcaApoio.Intensidade}");
+                        //MessageBox.Show($"{forcaApoio.Angulo}");
+                        
+                        ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
+                    }
+                }
+            }
 
             do
             {
@@ -434,12 +449,12 @@ namespace Software_Trelisa
                 {
 
                     encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade != 0);
-                    
+                  
                     if (pontoAnalisado.forcasPonto.Count == 0 && encontrouNulo.Count == 0)
                     {
                             continue;
                     }
-                    
+                  
                     somatoriaForcasVerticais = 0;
                     somatoriaForcasHorizontais = 0;
                     quantidadeNulos = 0;
@@ -464,7 +479,7 @@ namespace Software_Trelisa
                             {
                                 somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
                             }
-                            
+                          
                             if ((forcaPonto.Sentido == "horizontal" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para fora")
                             {
                                 somatoriaForcasHorizontais += forcaPonto.ComponenteHorizontal;
@@ -534,7 +549,7 @@ namespace Software_Trelisa
                                         somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
                                     }
                                 }
-                               
+                             
                             }
                         }
 
@@ -556,7 +571,7 @@ namespace Software_Trelisa
                                 Math.Cos(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) -
                                 Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) *
                                 Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                                
+                              
 
                                 calculo2 = Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
                                     somatoriaForcasHorizontais -
@@ -696,7 +711,7 @@ namespace Software_Trelisa
                                         Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
                                 }
                             }
-                            
+                          
 
                             string direcao;
 
