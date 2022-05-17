@@ -110,7 +110,6 @@ namespace Software_Trelisa
         {
             if(forca.Quadrante == 3)
             {
-                MessageBox.Show($"{forca.Angulo}");
                 return Convert.ToInt32(75 * Math.Cos((forca.Angulo) * (Math.PI / 180)));
             }
             else

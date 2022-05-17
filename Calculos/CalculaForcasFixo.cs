@@ -49,9 +49,9 @@ namespace Software_Trelisa
             }
 
             if (forcaHorizontal.Direcao == "Apontada para fora") //está para a esquerda
-                forcaHorizontal.Intensidade = somaDireita - somaEsquerda;
-            else
                 forcaHorizontal.Intensidade = somaEsquerda - somaDireita;
+            else
+                forcaHorizontal.Intensidade = somaDireita - somaEsquerda;
             MessageBox.Show($"Esquerda: {somaEsquerda} - Direita: {somaDireita}");
             ChecaDirecaoHorizontal(forcaHorizontal);
         }
