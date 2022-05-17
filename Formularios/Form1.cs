@@ -337,13 +337,13 @@ namespace Software_Trelisa
             ponto2.barrasPonto.Add(barra4);
             ponto2.barrasPonto.Add(barra5);
             Ponto ponto3 = new Ponto(575, 500);
-            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 90, "vertical", "Apontada para dentro", 3));
             ponto3.barrasPonto.Add(barra2);
             ponto3.barrasPonto.Add(barra3);
             ponto3.barrasPonto.Add(barra4);
             ponto3.barrasPonto.Add(barra7);
             Ponto ponto4 = new Ponto(575, 150);
-            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinada", "Apontada para dentro", 2));
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 60, "inclinada", "Apontada para dentro", 2));
             ponto4.barrasPonto.Add(barra3);
             ponto4.barrasPonto.Add(barra5);
             ponto4.barrasPonto.Add(barra6);
