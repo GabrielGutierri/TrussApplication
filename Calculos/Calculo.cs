@@ -105,16 +105,16 @@ namespace Software_Trelisa
             CalculaForcasFixo.CalculaVertical(forcaApoioFixo[0]);
             CalculaForcasFixo.CalculaHorizontal(forcaApoioFixo[1]);
         }
-        public static double CalculaSoma(double intensidade, string orientacao, int subtracaoQuadrante, double angulo, int pontoReferencia1, double pontoReferencia2)
+        public static double CalculaSoma(ForcaPonto forca, string orientacao, int pontoReferencia1, double pontoReferencia2)
         {
-            double constAngle = 180 / Math.PI;
+            MessageBox.Show($"Horizontal: {forca.ComponenteHorizontal} - Vertical: {forca.ComponenteVertical}");
             if (orientacao == "sen")
             {
-                return (intensidade * Math.Sin(-(angulo - subtracaoQuadrante) * constAngle)) * (pontoReferencia1 - pontoReferencia2);
+                return Math.Abs(forca.ComponenteVertical * (pontoReferencia1 - pontoReferencia2));
             }
             else
             {
-                return (intensidade * Math.Cos((angulo - subtracaoQuadrante) * constAngle)) * (pontoReferencia1 - pontoReferencia2);
+                return Math.Abs(forca.ComponenteHorizontal * (pontoReferencia1 - pontoReferencia2));
             }
         }
     }

@@ -137,20 +137,20 @@ namespace Software_Trelisa
             switch (quadrante)
             {
                 case 1:
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 0, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX);
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 0, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX);
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 case 2:
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 180, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX)
-                        + Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 180, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX)
+                        + Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 case 3:
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 270, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX);
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 270, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX);
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 case 4:
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 360, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX)
-                        + Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 360, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX)
+                        + Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 default:
                     break;
@@ -162,20 +162,20 @@ namespace Software_Trelisa
             switch (quadrante)
             {
                 case 1:
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 0, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX); ;
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 0, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY); ;
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX); ;
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY); ;
                     break;
                 case 2:
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 180, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX)
-                        + Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 180, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX)
+                        + Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 case 3:
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 270, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX); ;
-                    somaHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 270, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY);
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX); ;
+                    somaHorario += Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY);
                     break;
                 case 4:
-                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto.Intensidade, "sen", 360, forcaPonto.Angulo, ponto.valorX, pontoApoioFixo.valorX)
-                        + Calculo.CalculaSoma(forcaPonto.Intensidade, "cos", 360, forcaPonto.Angulo, pontoApoioFixo.valorY, pontoY); ;
+                    somaAntiHorario += Calculo.CalculaSoma(forcaPonto, "sen", ponto.valorX, pontoApoioFixo.valorX)
+                        + Calculo.CalculaSoma(forcaPonto, "cos", pontoApoioFixo.valorY, pontoY); ;
                     break;
                 default:
                     break;
@@ -183,6 +183,7 @@ namespace Software_Trelisa
             return new List<double>() { somaHorario, somaAntiHorario };
         }
 
+        
         public static List<double> CalculaInclinadaForaDireitaBaixo(ForcaPonto forcaPonto, Ponto pontoApoioFixo, Ponto ponto, int quadrante, double somaAntiHorario, double somaHorario, double pontoY)
         {
             double constAngle = 180 / Math.PI;
