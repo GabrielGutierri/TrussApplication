@@ -17,6 +17,8 @@ namespace Software_Trelisa
             this.Direcao = direcao;
             if (sentido == "inclinada")
                 MudaDirecao();
+            MessageBox.Show($"Quadrante: {this.Quadrante}");
+            MudaComponentesAngulo(this);
         }
         public ForcaPonto(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido, direcao)
         {
@@ -40,18 +42,18 @@ namespace Software_Trelisa
             
             if(this.Quadrante == 2)
             {
-                forca.ComponenteVertical = Math.Sin(-(forca.Angulo - 180) * constAngle);
-                forca.ComponenteHorizontal = Math.Cos((forca.Angulo - 180) * constAngle);
+                forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
+                forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 180) * constAngle) * forca.Intensidade,6);
             }
             if(this.Quadrante == 3)
             {
-                forca.ComponenteVertical = Math.Sin((forca.Angulo + 180) * constAngle);
-                forca.ComponenteHorizontal = Math.Cos((forca.Angulo + 180) * constAngle);
+                forca.ComponenteVertical = Math.Round(Math.Sin((forca.Angulo + 180) * constAngle) * forca.Intensidade, 6);
+                forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo + 180) * constAngle) * forca.Intensidade, 6);
             }
             if(this.Quadrante == 4)
             {
-                forca.ComponenteVertical = Math.Sin(-(forca.Angulo -360) * constAngle);
-                forca.ComponenteHorizontal = Math.Cos((forca.Angulo - 360) * constAngle);
+                forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo -360) * constAngle) * forca.Intensidade, 6);
+                forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 360) * constAngle) * forca.Intensidade, 6);
             }
         }
         public void MudaDirecao()

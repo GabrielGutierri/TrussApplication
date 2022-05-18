@@ -53,7 +53,7 @@ namespace Software_Trelisa
             try
             {
                 AlteraAngulo();
-                forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString());
+                forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), cbQuadrante.SelectedIndex + 1);
                 this._ponto.forcasPonto.Add(forcaPonto);
             }
             catch

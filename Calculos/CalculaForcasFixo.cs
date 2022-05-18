@@ -19,9 +19,9 @@ namespace Software_Trelisa
                     foreach (var forca in ponto.forcasPonto)
                     {
                         if (forca.DirecaoHorizontal == "esquerda")
-                            somaEsquerda += forca.Intensidade * Math.Cos((forca.Angulo - 180) * (Math.PI/180));
+                            somaEsquerda += Math.Abs(forca.ComponenteHorizontal);
                         if (forca.DirecaoHorizontal == "direita")
-                            somaDireita += forca.Intensidade * Math.Cos((forca.Angulo - 180) * (Math.PI / 180));
+                            somaDireita += Math.Abs(forca.ComponenteHorizontal);
                         if (forca.Sentido == "horizontal")
                         {
                             if ((forca.Quadrante == 1 && forca.Direcao == "Apontada para fora") || (forca.Quadrante == 2 && forca.Direcao == "Apontada para dentro"))
@@ -77,9 +77,9 @@ namespace Software_Trelisa
                     foreach (var forca in ponto.forcasPonto)
                     {
                         if (forca.DirecaoVertical == "cima")
-                            somaCima += forca.Intensidade * Math.Sin(-(forca.Angulo - 180) * (Math.PI/180));
+                            somaCima += Math.Abs(forca.ComponenteVertical);
                         if (forca.DirecaoVertical == "baixo")
-                            somaBaixo += forca.Intensidade * Math.Sin(-(forca.Angulo - 180) * (Math.PI / 180));
+                            somaBaixo += Math.Abs(forca.ComponenteVertical);
                         if (forca.Sentido == "vertical")
                         {
                             if ((forca.Quadrante == 1 && forca.Direcao == "Apontada para fora") || (forca.Quadrante == 3 && forca.Direcao=="Apontada para dentro"))
