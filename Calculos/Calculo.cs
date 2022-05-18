@@ -117,5 +117,17 @@ namespace Software_Trelisa
                 return Math.Abs(forca.ComponenteHorizontal * (pontoReferencia1 - pontoReferencia2));
             }
         }
+
+        public static double CalculaSomaReferencial(ForcaPonto forca, string orientacao, int pontoReferencia1, double pontoReferencia2)
+        {
+            if (orientacao == "sen")
+            {
+                return Math.Abs(forca.ComponenteVertical * (pontoReferencia1 + pontoReferencia2));
+            }
+            else
+            {
+                return Math.Abs(forca.ComponenteHorizontal * (pontoReferencia1 + pontoReferencia2));
+            }
+        }
     }
 }
