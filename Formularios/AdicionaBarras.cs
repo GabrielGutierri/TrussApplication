@@ -15,7 +15,7 @@ namespace Software_Trelisa
         Barra barra;
         Ponto pontoInicial, pontoFinal;
         int pontoFinalX, pontoFinalY;
-        double angulo, distancia;
+        double angulo, distancia ;
 
         //Primeiro calcula a distancia em cada um dos bõtoes e depois verifica em um metodo em separado. Caso ultrapasse,mudar a 
         // escala, que vai ser uma variavel que divide a distancia;
@@ -27,6 +27,16 @@ namespace Software_Trelisa
             pontoInicial = ponto;
             
         }
+
+        /*
+        private void VerificaEscala()
+        {
+            if(Form1.listaBarras.Count == 0)
+            {
+                escala = distancia / 500;
+            }
+        }
+        */
 
         private void rbBarraInclinada_CheckedChanged(object sender, EventArgs e)
         {
@@ -72,6 +82,8 @@ namespace Software_Trelisa
 
         private void btnCriarBarraVertical_Click(object sender, EventArgs e)
         {
+            //distancia = Convert.ToDouble(txtDistanciaVertical.Text) / escala;
+            //VerificaEscala();
             angulo = 90;
             distancia = Convert.ToDouble(txtDistanciaVertical.Text);
 
@@ -106,8 +118,10 @@ namespace Software_Trelisa
 
         private void btnCriarBarraHorizontal_Click(object sender, EventArgs e)
         {
+            //distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / escala;
+            //VerificaEscala();
             angulo = 0;
-            distancia = Convert.ToDouble(txtDistanciaHorizontal.Text);
+            distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) ;
 
 
 
@@ -138,6 +152,18 @@ namespace Software_Trelisa
 
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
+            /*
+            if (txtDistanciaInclinado.Text == "")
+            {
+                distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
+                    Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / escala;
+            }
+            else
+            {
+                distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / escala;
+            }
+            */
+
             if (txtDistanciaInclinado.Text == "")
             {
                 distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
@@ -145,7 +171,7 @@ namespace Software_Trelisa
             }
             else
             {
-                distancia = Convert.ToDouble(txtDistanciaInclinado.Text);
+                distancia = Convert.ToDouble(txtDistanciaInclinado.Text) ;
             }
 
             if (cbTipoInclinacao.SelectedIndex == 0)

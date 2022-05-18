@@ -434,8 +434,8 @@ namespace Software_Trelisa
                     
                     foreach (var forcaApoio in ponto.forcasApoio)
                     {
-                        //MessageBox.Show($"{forcaApoio.Intensidade}");
-                        //MessageBox.Show($"{forcaApoio.Angulo}");
+                        MessageBox.Show($"{forcaApoio.Intensidade}");
+                        MessageBox.Show($"{forcaApoio.Angulo}");
                         
                         ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
                     }
