@@ -48,9 +48,20 @@ namespace Software_Trelisa
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
             //Verificar se foi passado um ângulo entre 0 e 90 -> falar pra adicionar horizontal se for 0 e adicionar vertical se for 90
-            AlteraAngulo();
-            ForcaPonto forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString());
-            this._ponto.forcasPonto.Add(forcaPonto);
+            ForcaPonto forcaPonto;
+
+            try
+            {
+                AlteraAngulo();
+                forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString());
+                this._ponto.forcasPonto.Add(forcaPonto);
+            }
+            catch
+            {
+                MessageBox.Show("Dados Invalidos");
+                return;
+            }
+
             MessageBox.Show($"{forcaPonto.Angulo} = Cos: {forcaPonto.ComponenteHorizontal} - Sen {forcaPonto.ComponenteVertical}");
             this.Close();
         }
