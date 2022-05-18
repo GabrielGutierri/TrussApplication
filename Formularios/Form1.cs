@@ -548,6 +548,27 @@ namespace Software_Trelisa
         }
         #endregion
 
+        public void AdicionaApoios(Ponto ponto, string tipo)
+        {
+            System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
+            novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
+            novoPontoImagem.BorderStyle = BorderStyle.None;
+            novoPontoImagem.BackColor = Color.White;
+            novoPontoImagem.Width = 100;
+            novoPontoImagem.Height = 60;
+            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY);
+            if(tipo == "Fixo")
+            {
+                novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
+                panelDesenho.Controls.Add(novoPontoImagem);
+            }
+            else
+            {
+                novoPontoImagem.Image = Properties.Resources.Apoio_simples;
+                panelDesenho.Controls.Add(novoPontoImagem);
+            }
+        }
+
     }
 }
 

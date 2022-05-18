@@ -28,6 +28,7 @@ namespace Software_Trelisa
 
         private void btnCriarApoio_Click(object sender, EventArgs e)
         {
+            Form1 formPrincipal = Application.OpenForms.OfType<Form1>().FirstOrDefault();
             //fixo   
             if (rbFixo.Checked)
             {
@@ -36,6 +37,7 @@ namespace Software_Trelisa
                 this._ponto.forcasApoio.Add(forcaApoioV);
                 ForcaApoio forcaApoioH2 = new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo");
                 this._ponto.forcasApoio.Add(forcaApoioH2);
+                formPrincipal.AdicionaApoios(_ponto, "Fixo");
                 this.Close();
 
             }
@@ -43,6 +45,7 @@ namespace Software_Trelisa
             {
                 ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel");
                 this._ponto.forcasApoio.Add(forcaApoioV);
+                formPrincipal.AdicionaApoios(_ponto, "Movel");
                 this.Close();
             }
 

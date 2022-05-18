@@ -121,8 +121,17 @@
   <data name="PontoInteiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PontoInteiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconeDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconeDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ponto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ponto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forca" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="setaForcaCima" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\setaForcaCima.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PontoSelecao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PontoSelecao.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,13 +139,10 @@
   <data name="setaForcaBaixo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setaForcaBaixo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="setaForcaCima" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\setaForcaCima.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Apoio Duplo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Apoio Duplo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forca" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconeDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconeDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Apoio simples" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Apoio simples.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

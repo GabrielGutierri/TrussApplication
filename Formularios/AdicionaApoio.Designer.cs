@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionaApoio));
             this.gbApoio = new System.Windows.Forms.GroupBox();
             this.pbFixo = new System.Windows.Forms.PictureBox();
             this.pbMovel = new System.Windows.Forms.PictureBox();
@@ -49,11 +48,9 @@
             this.gbApoio.Controls.Add(this.gbTipoApoio);
             this.gbApoio.Controls.Add(this.btnCriarApoio);
             this.gbApoio.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbApoio.Location = new System.Drawing.Point(12, 11);
-            this.gbApoio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbApoio.Location = new System.Drawing.Point(14, 15);
             this.gbApoio.Name = "gbApoio";
-            this.gbApoio.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbApoio.Size = new System.Drawing.Size(374, 226);
+            this.gbApoio.Size = new System.Drawing.Size(427, 301);
             this.gbApoio.TabIndex = 22;
             this.gbApoio.TabStop = false;
             this.gbApoio.Text = "Adicionar Apoio";
@@ -61,10 +58,10 @@
             // 
             // pbFixo
             // 
-            this.pbFixo.Image = ((System.Drawing.Image)(resources.GetObject("pbFixo.Image")));
-            this.pbFixo.Location = new System.Drawing.Point(238, 41);
+            this.pbFixo.Location = new System.Drawing.Point(272, 55);
+            this.pbFixo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbFixo.Name = "pbFixo";
-            this.pbFixo.Size = new System.Drawing.Size(111, 143);
+            this.pbFixo.Size = new System.Drawing.Size(127, 191);
             this.pbFixo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFixo.TabIndex = 25;
             this.pbFixo.TabStop = false;
@@ -72,10 +69,10 @@
             // 
             // pbMovel
             // 
-            this.pbMovel.Image = ((System.Drawing.Image)(resources.GetObject("pbMovel.Image")));
-            this.pbMovel.Location = new System.Drawing.Point(238, 41);
+            this.pbMovel.Location = new System.Drawing.Point(272, 55);
+            this.pbMovel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbMovel.Name = "pbMovel";
-            this.pbMovel.Size = new System.Drawing.Size(111, 143);
+            this.pbMovel.Size = new System.Drawing.Size(127, 191);
             this.pbMovel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMovel.TabIndex = 26;
             this.pbMovel.TabStop = false;
@@ -86,11 +83,9 @@
             this.gbTipoApoio.Controls.Add(this.rbFixo);
             this.gbTipoApoio.Controls.Add(this.rbMovel);
             this.gbTipoApoio.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbTipoApoio.Location = new System.Drawing.Point(6, 29);
-            this.gbTipoApoio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbTipoApoio.Location = new System.Drawing.Point(7, 39);
             this.gbTipoApoio.Name = "gbTipoApoio";
-            this.gbTipoApoio.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbTipoApoio.Size = new System.Drawing.Size(213, 144);
+            this.gbTipoApoio.Size = new System.Drawing.Size(243, 192);
             this.gbTipoApoio.TabIndex = 24;
             this.gbTipoApoio.TabStop = false;
             this.gbTipoApoio.Text = "Tipo de Apoio:";
@@ -99,10 +94,9 @@
             // 
             this.rbFixo.AutoSize = true;
             this.rbFixo.Checked = true;
-            this.rbFixo.Location = new System.Drawing.Point(10, 55);
-            this.rbFixo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFixo.Location = new System.Drawing.Point(11, 73);
             this.rbFixo.Name = "rbFixo";
-            this.rbFixo.Size = new System.Drawing.Size(64, 29);
+            this.rbFixo.Size = new System.Drawing.Size(78, 36);
             this.rbFixo.TabIndex = 15;
             this.rbFixo.TabStop = true;
             this.rbFixo.Text = "Fixo";
@@ -112,10 +106,9 @@
             // rbMovel
             // 
             this.rbMovel.AutoSize = true;
-            this.rbMovel.Location = new System.Drawing.Point(10, 98);
-            this.rbMovel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbMovel.Location = new System.Drawing.Point(11, 131);
             this.rbMovel.Name = "rbMovel";
-            this.rbMovel.Size = new System.Drawing.Size(82, 29);
+            this.rbMovel.Size = new System.Drawing.Size(102, 36);
             this.rbMovel.TabIndex = 16;
             this.rbMovel.Text = "Móvel";
             this.rbMovel.UseVisualStyleBackColor = true;
@@ -124,10 +117,9 @@
             // btnCriarApoio
             // 
             this.btnCriarApoio.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCriarApoio.Location = new System.Drawing.Point(34, 177);
-            this.btnCriarApoio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCriarApoio.Location = new System.Drawing.Point(39, 236);
             this.btnCriarApoio.Name = "btnCriarApoio";
-            this.btnCriarApoio.Size = new System.Drawing.Size(140, 45);
+            this.btnCriarApoio.Size = new System.Drawing.Size(160, 60);
             this.btnCriarApoio.TabIndex = 12;
             this.btnCriarApoio.Text = "Criar Apoio";
             this.btnCriarApoio.UseVisualStyleBackColor = true;
@@ -135,10 +127,11 @@
             // 
             // AdicionaApoio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 252);
+            this.ClientSize = new System.Drawing.Size(473, 336);
             this.Controls.Add(this.gbApoio);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdicionaApoio";
             this.Text = "AdicionaApoio";
             this.gbApoio.ResumeLayout(false);
