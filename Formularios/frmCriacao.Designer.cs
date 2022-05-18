@@ -35,9 +35,11 @@
             // 
             // btnAdicionaBarra
             // 
-            this.btnAdicionaBarra.Location = new System.Drawing.Point(4, 26);
+            this.btnAdicionaBarra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdicionaBarra.Location = new System.Drawing.Point(12, 13);
+            this.btnAdicionaBarra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdicionaBarra.Name = "btnAdicionaBarra";
-            this.btnAdicionaBarra.Size = new System.Drawing.Size(114, 45);
+            this.btnAdicionaBarra.Size = new System.Drawing.Size(174, 64);
             this.btnAdicionaBarra.TabIndex = 0;
             this.btnAdicionaBarra.Text = "Adicionar Barra";
             this.btnAdicionaBarra.UseVisualStyleBackColor = true;
@@ -45,9 +47,11 @@
             // 
             // btnAdicionaForca
             // 
-            this.btnAdicionaForca.Location = new System.Drawing.Point(124, 26);
+            this.btnAdicionaForca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdicionaForca.Location = new System.Drawing.Point(192, 13);
+            this.btnAdicionaForca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdicionaForca.Name = "btnAdicionaForca";
-            this.btnAdicionaForca.Size = new System.Drawing.Size(114, 45);
+            this.btnAdicionaForca.Size = new System.Drawing.Size(174, 64);
             this.btnAdicionaForca.TabIndex = 1;
             this.btnAdicionaForca.Text = "Adicionar Força";
             this.btnAdicionaForca.UseVisualStyleBackColor = true;
@@ -55,9 +59,11 @@
             // 
             // btnAdicionaApoio
             // 
-            this.btnAdicionaApoio.Location = new System.Drawing.Point(244, 26);
+            this.btnAdicionaApoio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdicionaApoio.Location = new System.Drawing.Point(372, 13);
+            this.btnAdicionaApoio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdicionaApoio.Name = "btnAdicionaApoio";
-            this.btnAdicionaApoio.Size = new System.Drawing.Size(114, 45);
+            this.btnAdicionaApoio.Size = new System.Drawing.Size(174, 64);
             this.btnAdicionaApoio.TabIndex = 2;
             this.btnAdicionaApoio.Text = "Adicionar Apoio";
             this.btnAdicionaApoio.UseVisualStyleBackColor = true;
@@ -65,12 +71,13 @@
             // 
             // frmCriacao
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 89);
+            this.ClientSize = new System.Drawing.Size(561, 89);
             this.Controls.Add(this.btnAdicionaApoio);
             this.Controls.Add(this.btnAdicionaForca);
             this.Controls.Add(this.btnAdicionaBarra);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmCriacao";
             this.Text = "frmCriacao";
             this.ResumeLayout(false);

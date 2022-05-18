@@ -32,16 +32,16 @@ namespace Software_Trelisa
             if (rbFixo.Checked)
             {
                 // Criando forças - > intensidade, ang, sentido, tiposentido
-                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Abaixo", "fixo");
+                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo");
                 this._ponto.forcasApoio.Add(forcaApoioV);
-                ForcaApoio forcaApoioH2 = new ForcaApoio(0, 0, "horizontal", "Esquerda", "fixo");
+                ForcaApoio forcaApoioH2 = new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo");
                 this._ponto.forcasApoio.Add(forcaApoioH2);
                 this.Close();
 
             }
             else
             {
-                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Abaixo", "movel");
+                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel");
                 this._ponto.forcasApoio.Add(forcaApoioV);
                 this.Close();
             }

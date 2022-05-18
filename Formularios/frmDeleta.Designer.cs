@@ -35,9 +35,11 @@
             // 
             // btnDeletaBarra
             // 
-            this.btnDeletaBarra.Location = new System.Drawing.Point(12, 28);
+            this.btnDeletaBarra.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeletaBarra.Location = new System.Drawing.Point(12, 13);
+            this.btnDeletaBarra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDeletaBarra.Name = "btnDeletaBarra";
-            this.btnDeletaBarra.Size = new System.Drawing.Size(90, 46);
+            this.btnDeletaBarra.Size = new System.Drawing.Size(174, 64);
             this.btnDeletaBarra.TabIndex = 0;
             this.btnDeletaBarra.Text = "Deletar Barra";
             this.btnDeletaBarra.UseVisualStyleBackColor = true;
@@ -45,9 +47,11 @@
             // 
             // btnDeletaForca
             // 
-            this.btnDeletaForca.Location = new System.Drawing.Point(136, 28);
+            this.btnDeletaForca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeletaForca.Location = new System.Drawing.Point(192, 13);
+            this.btnDeletaForca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDeletaForca.Name = "btnDeletaForca";
-            this.btnDeletaForca.Size = new System.Drawing.Size(91, 46);
+            this.btnDeletaForca.Size = new System.Drawing.Size(174, 64);
             this.btnDeletaForca.TabIndex = 1;
             this.btnDeletaForca.Text = "Deletar Força";
             this.btnDeletaForca.UseVisualStyleBackColor = true;
@@ -55,21 +59,24 @@
             // 
             // btnDeletaApoio
             // 
-            this.btnDeletaApoio.Location = new System.Drawing.Point(257, 28);
+            this.btnDeletaApoio.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeletaApoio.Location = new System.Drawing.Point(372, 13);
+            this.btnDeletaApoio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDeletaApoio.Name = "btnDeletaApoio";
-            this.btnDeletaApoio.Size = new System.Drawing.Size(91, 46);
+            this.btnDeletaApoio.Size = new System.Drawing.Size(174, 64);
             this.btnDeletaApoio.TabIndex = 2;
             this.btnDeletaApoio.Text = "Deletar Apoio";
             this.btnDeletaApoio.UseVisualStyleBackColor = true;
             // 
             // frmDeleta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 96);
+            this.ClientSize = new System.Drawing.Size(561, 89);
             this.Controls.Add(this.btnDeletaApoio);
             this.Controls.Add(this.btnDeletaForca);
             this.Controls.Add(this.btnDeletaBarra);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmDeleta";
             this.Text = "frmDeleta";
             this.ResumeLayout(false);

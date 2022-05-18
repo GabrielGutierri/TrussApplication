@@ -15,10 +15,7 @@ namespace Software_Trelisa
         Barra barra;
         Ponto pontoInicial, pontoFinal;
         int pontoFinalX, pontoFinalY;
-        double angulo, distancia;
-
-        //Primeiro calcula a distancia em cada um dos bõtoes e depois verifica em um metodo em separado. Caso ultrapasse,mudar a 
-        // escala, que vai ser uma variavel que divide a distancia;
+        double angulo, distancia ;
 
         public AdicionaBarras(Ponto ponto)
         {
@@ -27,6 +24,16 @@ namespace Software_Trelisa
             pontoInicial = ponto;
             
         }
+
+        
+        private void VerificaEscala()
+        {
+            if(Form1.listaBarras.Count == 0 && distancia > 400)
+            {
+                Form1.escalaDesenho = distancia / 400;
+            }
+        }
+        
 
         private void rbBarraInclinada_CheckedChanged(object sender, EventArgs e)
         {
@@ -72,9 +79,19 @@ namespace Software_Trelisa
 
         private void btnCriarBarraVertical_Click(object sender, EventArgs e)
         {
-            angulo = 90;
-            distancia = Convert.ToDouble(txtDistanciaVertical.Text);
-
+            try
+            {
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
+                VerificaEscala();
+                angulo = 90;
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
+            }
+            catch
+            {
+                MessageBox.Show("Dados Invalidos");
+                return;
+            }
+           
 
             if (rbCimaVertical.Checked == true)
             {
@@ -106,10 +123,18 @@ namespace Software_Trelisa
 
         private void btnCriarBarraHorizontal_Click(object sender, EventArgs e)
         {
-            angulo = 0;
-            distancia = Convert.ToDouble(txtDistanciaHorizontal.Text);
-
-
+            try
+            {
+                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
+                VerificaEscala();
+                angulo = 0;
+                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
+            }
+            catch
+            {
+                MessageBox.Show("Dados Invalidos");
+                return;
+            }
 
             if (rbDireitaHorizontal.Checked == true)
             {
@@ -138,30 +163,60 @@ namespace Software_Trelisa
 
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
-            if (txtDistanciaInclinado.Text == "")
+            try
             {
-                distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
-                    Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2));
-            }
-            else
-            {
-                distancia = Convert.ToDouble(txtDistanciaInclinado.Text);
-            }
-
-            if (cbTipoInclinacao.SelectedIndex == 0)
-            {
-                if (txtAnguloInclinado.Text == "")
+                if (txtDistanciaInclinado.Text == "")
                 {
-                    angulo = Math.Atan2(Convert.ToDouble(txtCatetoOpostoInclinado.Text), Convert.ToDouble(txtCatetoAdjacenteInclinado.Text)) *
-                        (180 / Math.PI);
+                    distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
+                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / Form1.escalaDesenho;
                 }
                 else
                 {
-                    angulo = Convert.ToDouble(txtAnguloInclinado.Text);
+                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / Form1.escalaDesenho;
                 }
 
-
-
+                VerificaEscala();
+                if (txtDistanciaInclinado.Text == "")
+                {
+                    distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
+                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / Form1.escalaDesenho;
+                }
+                else
+                {
+                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / Form1.escalaDesenho;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Dados Invalidos");
+                return;
+            }
+            
+            if(cbTipoInclinacao.SelectedIndex == -1)
+            {
+                MessageBox.Show("Tipo de inclinação não selecionado");
+                return;
+            }
+            else if (cbTipoInclinacao.SelectedIndex == 0)
+            {
+                try
+                {
+                    if (txtAnguloInclinado.Text == "")
+                    {
+                        angulo = Math.Atan2(Convert.ToDouble(txtCatetoOpostoInclinado.Text), Convert.ToDouble(txtCatetoAdjacenteInclinado.Text)) *
+                            (180 / Math.PI);
+                    }
+                    else
+                    {
+                        angulo = Convert.ToDouble(txtAnguloInclinado.Text);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Dados Invalidos");
+                    return;
+                }
+               
                 if (rbSuperiorInclinado.Checked == true)
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
@@ -178,18 +233,27 @@ namespace Software_Trelisa
                 }
 
             }
-
-            if (cbTipoInclinacao.SelectedIndex == 1)
+            else if (cbTipoInclinacao.SelectedIndex == 1)
             {
-                if (txtAnguloInclinado.Text == "")
-                {
-                    angulo = Math.Atan2(Convert.ToDouble(txtCatetoOpostoInclinado.Text), Convert.ToDouble(txtCatetoAdjacenteInclinado.Text)) * (180 / Math.PI);
-                }
-                else
-                {
-                    angulo = Convert.ToDouble(txtAnguloInclinado.Text);
-                }
 
+                try
+                {
+                    if (txtAnguloInclinado.Text == "")
+                    {
+                        angulo = Math.Atan2(Convert.ToDouble(txtCatetoOpostoInclinado.Text), Convert.ToDouble(txtCatetoAdjacenteInclinado.Text)) * (180 / Math.PI);
+                    }
+                    else
+                    {
+                        angulo = Convert.ToDouble(txtAnguloInclinado.Text);
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Dados Invalidos");
+                    return;
+                }
+                
 
                 if (rbSuperiorInclinado.Checked == true)
                 {

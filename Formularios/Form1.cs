@@ -11,8 +11,8 @@ namespace Software_Trelisa
         public static List<PictureBox> listaPictureBox = new List<PictureBox>();
         List<Ponto> listaDeletar = new List<Ponto>();
         List<PictureBox> listaDeletaForca = new List<PictureBox>();
+        public static double escalaDesenho = 1;
         bool querDeletar = false;
-
         Ponto pontoTeste { get; set; }
 
         public Form1()
@@ -71,96 +71,208 @@ namespace Software_Trelisa
         }
         #endregion
 
-        #region Desenhos de Forca, barra e apoio
-        public void DesenhaForcas()
+        #region Botao Teste
+        private void button2_Click(object sender, EventArgs e)
         {
-            Graphics g = panelDesenho.CreateGraphics();
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-
-            Pen p = new Pen(Color.Red, 4.0f);
-            p.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(5, 5, false);
-
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Barra barra1 = new Barra(75, 500, 125, 230, 79.509, 274.59060, "Crescente");
+            Barra barra2 = new Barra(75, 500, 575, 500, 0, 500, "Crescente");
+            Barra barra3 = new Barra(575, 500, 575, 150, 90, 350,"Crescente" );
+            Barra barra4 = new Barra(125, 230, 575, 500, 30.96376, 524.78, "Decrescente");
+            Barra barra5 = new Barra(125, 230, 575, 150, 10.0806, 457.06, "Crescente");
+            Barra barra6 = new Barra(575, 150, 825, 500, 54.46232, 430.12, "Decrescente");
+            Barra barra7 = new Barra(825, 500, 575, 500, 0, 250, "Decrescente");
             
-            foreach (Ponto ponto in listaPontos)
+            listaPontos[0].barrasPonto.Add(barra1);
+            listaPontos[0].barrasPonto.Add(barra2);
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo"));
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
+          
+            Ponto ponto2 = new Ponto(125, 230);
+            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro", 1));
+            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro", 1));
+            ponto2.barrasPonto.Add(barra1);
+            ponto2.barrasPonto.Add(barra4);
+            ponto2.barrasPonto.Add(barra5);
+            Ponto ponto3 = new Ponto(575, 500);
+            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
+            ponto3.barrasPonto.Add(barra2);
+            ponto3.barrasPonto.Add(barra3);
+            ponto3.barrasPonto.Add(barra4);
+            ponto3.barrasPonto.Add(barra7);
+            Ponto ponto4 = new Ponto(575, 150);
+            ponto4.forcasPonto.Add(new ForcaPonto(35000, 120, "inclinada", "Apontada para dentro", 2));
+            ponto4.barrasPonto.Add(barra3);
+            ponto4.barrasPonto.Add(barra5);
+            ponto4.barrasPonto.Add(barra6);
+            Ponto ponto5 = new Ponto(825, 500);
+            ponto5.barrasPonto.Add(barra6);
+            ponto5.barrasPonto.Add(barra7);
+            listaPontos.Add(ponto2);
+            listaPontos.Add(ponto3);
+            listaPontos.Add(ponto4);
+            listaPontos.Add(ponto5);
+            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel"));
+
+            CriaPontoImagem(ponto2);
+            CriaPontoImagem(ponto3);
+            CriaPontoImagem(ponto4);
+            CriaPontoImagem(ponto5);
+
+
+            listaBarras.Add(barra1);
+            listaBarras.Add(barra2);
+            listaBarras.Add(barra3);
+            listaBarras.Add(barra4);
+            listaBarras.Add(barra5);
+            listaBarras.Add(barra6);
+            listaBarras.Add(barra7);
+
+            DesenhaBarras();
+            DesenhaForcas();
+
+            btnTeste.Enabled = false;
+        }
+        #endregion
+
+        #region Botão Criar
+        private void btnCriar_Click_1(object sender, EventArgs e)
+        {
+            lbDeletar.Visible = false;
+            panelDesenho.Visible = true;
+            lbMensagem.Visible = true;
+            foreach (PictureBox imagem in listaPictureBox)
             {
-                foreach (var forca in ponto.forcasPonto)
+                imagem.Enabled = true;
+                imagem.Visible = true;
+            }
+            foreach (var pcb in listaDeletaForca)
+            {
+                panelDesenho.Controls.Remove(pcb);
+            }
+            listaSetas.Clear();
+            DesenhaBarras();
+            DesenhaForcas();
+        }
+        #endregion
+
+        #region Botão Deletar
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            frmDeleta f = new frmDeleta();
+            f.ShowDialog();
+        }
+
+        #endregion
+
+        #region Botão Calcular
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            btnCriar.Enabled = false;
+            btnDeletar.Enabled = false;
+            btnCalcular.Enabled = false;
+            if (VerificaHiperasticidade() == true)
+            {
+                return;
+            }
+            Calculo.CalculaMomentoApoio();
+            foreach (var ponto in Form1.listaPontos)
+            {
+                if (ponto.forcasApoio.Count >= 1)
                 {
 
-                    ValorXPonto(forca);
-                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(forca.Angulo * (Math.PI / 180)));
-                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-forca.Angulo * (Math.PI / 180)));
-                    if (forca.Direcao == "Apontada para fora")
+                    foreach (var forcaApoio in ponto.forcasApoio)
                     {
-                        g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY); //ponto da força é o ponto inicial
-                        listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao, forca));
-                    }
-                    else {
-                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inicial
-                        listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao, forca));
+                        MessageBox.Show($"{forcaApoio.Intensidade}");
+                        MessageBox.Show($"{forcaApoio.Angulo}");
+
+                        ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
                     }
                 }
             }
-
-            g.Dispose();
-            p.Dispose();
+            Calculos.CalculoForcasBarras.CalculaForcasBarra();
+            DesenhaBarras();
+            DesenhaForcas();
         }
-        public int ValorXPonto(ForcaPonto forca)
+
+
+        private bool VerificaHiperasticidade()
         {
-            if(forca.Quadrante == 3)
+            int quantidadesForcasApoios = 0;
+            foreach (Ponto pontoAnalisado in Form1.listaPontos)
             {
-                return Convert.ToInt32(75 * Math.Cos((forca.Angulo) * (Math.PI / 180)));
+                if (pontoAnalisado.forcasApoio.Count == 2)
+                {
+                    quantidadesForcasApoios += 2;
+                }
+                else if (pontoAnalisado.forcasApoio.Count == 1)
+                {
+                    quantidadesForcasApoios += 1;
+                }
+            }
+
+            if (quantidadesForcasApoios < 3)
+            {
+                MessageBox.Show("Treliça Hiperestatica - Não é possivel calcular");
+                return true;
             }
             else
             {
-                return 1;
+                return false;
             }
         }
-        public void DesenhaBarras()
+        #endregion
+
+        #region Deletar Forca
+        public void deletaForca_Click(object sender, EventArgs e, PontoSeta pontoSeta)
+            {
+                listaSetas.Clear();
+                DesenhaBarras();
+                DesenhaForcas();
+                PontoSeta ponto = listaSetas.Find(p => (p.ValorFinalX == pontoSeta.ValorFinalX
+                                                && p.ValorFinalY == pontoSeta.ValorFinalY
+                                                && p.ValorInicialX == pontoSeta.ValorInicialX
+                                                && p.ValorInicialY == pontoSeta.ValorInicialY));
+                listaSetas.Remove(ponto);
+            if (ponto != null)
+            {
+
+                var pontoForca = listaPontos.Find(f => (f.valorX == ponto.ValorInicialX && f.valorY == ponto.ValorInicialY) || (f.valorX == ponto.ValorFinalX && f.valorY == ponto.ValorFinalY));
+                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);
+            }
+            foreach (Control control in listaDeletaForca)
+            {
+                panelDesenho.Controls.Remove(control);
+            }
+            listaSetas.Clear();
+            DesenhaBarras();
+            DesenhaForcas();
+        }
+
+        public void CriaDeletaForca(PontoSeta pontoSeta)
         {
-            Font novaFont = new Font("Segoe", 14);
-            Graphics g = panelDesenho.CreateGraphics();
-            Pen myPen = new Pen(Color.Gray, 6);
-            Pen myPen2 = new Pen(Color.LightSteelBlue, 6);
-            Pen myPen3 = new Pen(Color.DarkSeaGreen, 6);
-            g.Clear(panelDesenho.BackColor);
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
-            foreach (Barra barras in listaBarras)
-            {
-                if(barras.Forca.Intensidade == 0)
-                {
-                    g.DrawLine(myPen, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
-                }
-                else if (barras.Forca.Direcao == "Apontada para dentro")
-                {
-                    g.DrawLine(myPen3, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
-                    AdicionaIntensidade(barras);
-                }
-                else if(barras.Forca.Direcao == "Apontada para fora")
-                {
-                    g.DrawLine(myPen2, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
-                    AdicionaIntensidade(barras);
-                }
-
-
-            }
-            if(button1.Enabled == false)
-            {
-                Point pontoTracao = new Point(1250, 595);
-                Point pontoCompressao = new Point(1250, 635);
-                g.DrawLine(myPen2, 1400, 610, 1600, 610);
-                g.DrawString("Tração", novaFont, Brushes.Black, pontoTracao);
-                g.DrawLine(myPen3, 1400, 655, 1600, 655);
-                g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
-            }
-           
-            g.Dispose();
-            myPen.Dispose();
-            myPen2.Dispose();
-            myPen3.Dispose();
+            PictureBox imagemDeleta = new PictureBox();
+            imagemDeleta.Image = Resources.iconeDelete;
+            imagemDeleta.Name = "iconeDelete";
+            imagemDeleta.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagemDeleta.Height = 20;
+            imagemDeleta.Width = 20;
+            imagemDeleta.Location = new Point((pontoSeta.ValorFinalX + pontoSeta.ValorInicialX) / 2, (pontoSeta.ValorInicialY + pontoSeta.ValorFinalY) / 2);
+            imagemDeleta.Visible = true;
+            imagemDeleta.Click += new EventHandler((sender, e) => deletaForca_Click(sender, e, pontoSeta));
+            listaDeletaForca.Add(imagemDeleta);
+            panelDesenho.Controls.Add(imagemDeleta);
         }
+
+        public void DeletarForcaEvent()
+        {
+            listaDeletaForca.RemoveAll(pcb => pcb.Name == "iconeDelete");
+
+            foreach (var pontoSeta in listaSetas)
+            {
+                CriaDeletaForca(pontoSeta);
+            }
+        }
+
         #endregion
 
         #region Deletar Barra
@@ -169,7 +281,7 @@ namespace Software_Trelisa
         {
             listaDeletar.Add(ponto);
 
-            if(listaDeletar.Count == 2)
+            if (listaDeletar.Count == 2)
             {
                 foreach (PictureBox imagem in listaPictureBox)
                 {
@@ -177,9 +289,9 @@ namespace Software_Trelisa
                     imagem.Visible = false;
                 }
 
-                if(listaBarras.Find(x => x.pontoInicialX == listaDeletar[0].valorX &
-                x.pontoInicialY == listaDeletar[0].valorY & x.pontoFinalX == listaDeletar[1].valorX &
-                x.pontoFinalY == listaDeletar[1].valorY) != null)
+                if (listaBarras.Find(x => x.pontoInicialX == listaDeletar[0].valorX &
+                 x.pontoInicialY == listaDeletar[0].valorY & x.pontoFinalX == listaDeletar[1].valorX &
+                 x.pontoFinalY == listaDeletar[1].valorY) != null)
                 {
                     Barra barraDeletar = listaBarras.Find(x => x.pontoInicialX == listaDeletar[0].valorX &
                     x.pontoInicialY == listaDeletar[0].valorY & x.pontoFinalX == listaDeletar[1].valorX &
@@ -208,9 +320,9 @@ namespace Software_Trelisa
 
                     listaPontos.RemoveAll(x => x.barrasPonto.Count == 0);
                 }
-                else if(listaBarras.Find(x => x.pontoInicialX == listaDeletar[1].valorX &
-                x.pontoInicialY == listaDeletar[1].valorY & x.pontoFinalX == listaDeletar[0].valorX &
-                x.pontoFinalY == listaDeletar[0].valorY) != null)
+                else if (listaBarras.Find(x => x.pontoInicialX == listaDeletar[1].valorX &
+                 x.pontoInicialY == listaDeletar[1].valorY & x.pontoFinalX == listaDeletar[0].valorX &
+                 x.pontoFinalY == listaDeletar[0].valorY) != null)
                 {
                     Barra barraDeletar = listaBarras.Find(x => x.pontoInicialX == listaDeletar[1].valorX &
                     x.pontoInicialY == listaDeletar[1].valorY & x.pontoFinalX == listaDeletar[0].valorX &
@@ -292,451 +404,99 @@ namespace Software_Trelisa
             */
 
         }
-        private void btnDeletarBarra_Click(object sender, EventArgs e)
-        {
-            if(listaBarras.Count == 0)
-            {
-                MessageBox.Show("Não há barras para deletar");
-                return;
-            }
 
-            lbMensagem.Visible = false;
-            lbDeletar.Visible = true;
-            foreach (PictureBox imagem in listaPictureBox)
-            {
-                imagem.Enabled = true;
-                imagem.Visible = true;
-            }
-            querDeletar = true;
-        }
         #endregion
 
-        #region Botao Teste
-        private void button2_Click(object sender, EventArgs e)
+        #region Desenhos de Forca, Barra, Apoio e Valores Encontrados
+        public void DesenhaForcas()
         {
-            //Analisar crescente, decrescente
+            Graphics g = panelDesenho.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
-            Barra barra1 = new Barra(75, 500, 125, 230, 79.509, 274.59060, "Crescente");
-            Barra barra2 = new Barra(75, 500, 575, 500, 0, 500, "Crescente");
-            Barra barra3 = new Barra(575, 500, 575, 150, 90, 350,"Crescente" );
-            Barra barra4 = new Barra(125, 230, 575, 500, 30.96376, 524.78, "Decrescente");
-            Barra barra5 = new Barra(125, 230, 575, 150, 10.0806, 457.06, "Crescente");
-            Barra barra6 = new Barra(575, 150, 825, 500, 54.46232, 430.12, "Decrescente");
-            Barra barra7 = new Barra(825, 500, 575, 500, 0, 250, "Decrescente");
-            
-            listaPontos[0].barrasPonto.Add(barra1);
-            listaPontos[0].barrasPonto.Add(barra2);
-            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo"));
-            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
-          
-            Ponto ponto2 = new Ponto(125, 230);
-            ponto2.forcasPonto.Add(new ForcaPonto(12000, 90, "vertical", "Apontada para dentro", 1));
-            ponto2.forcasPonto.Add(new ForcaPonto(15000, 0, "horizontal", "Apontada para dentro", 1));
-            ponto2.barrasPonto.Add(barra1);
-            ponto2.barrasPonto.Add(barra4);
-            ponto2.barrasPonto.Add(barra5);
-            Ponto ponto3 = new Ponto(575, 500);
-            ponto3.forcasPonto.Add(new ForcaPonto(8000, 270, "vertical", "Apontada para dentro", 3));
-            ponto3.barrasPonto.Add(barra2);
-            ponto3.barrasPonto.Add(barra3);
-            ponto3.barrasPonto.Add(barra4);
-            ponto3.barrasPonto.Add(barra7);
-            Ponto ponto4 = new Ponto(575, 150);
-            ponto4.barrasPonto.Add(barra3);
-            ponto4.barrasPonto.Add(barra5);
-            ponto4.barrasPonto.Add(barra6);
-            Ponto ponto5 = new Ponto(825, 500);
-            ponto5.barrasPonto.Add(barra6);
-            ponto5.barrasPonto.Add(barra7);
-            listaPontos.Add(ponto2);
-            listaPontos.Add(ponto3);
-            listaPontos.Add(ponto4);
-            listaPontos.Add(ponto5);
-            ponto5.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel"));
+            Pen p = new Pen(Color.Red, 4.0f);
+            p.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(5, 5, false);
 
-            CriaPontoImagem(ponto2);
-            CriaPontoImagem(ponto3);
-            CriaPontoImagem(ponto4);
-            CriaPontoImagem(ponto5);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
+            foreach (Ponto ponto in listaPontos)
+            {
+                foreach (var forca in ponto.forcasPonto)
+                {
 
-            listaBarras.Add(barra1);
-            listaBarras.Add(barra2);
-            listaBarras.Add(barra3);
-            listaBarras.Add(barra4);
-            listaBarras.Add(barra5);
-            listaBarras.Add(barra6);
-            listaBarras.Add(barra7);
+                    ValorXPonto(forca);
+                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(forca.Angulo * (Math.PI / 180)));
+                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-forca.Angulo * (Math.PI / 180)));
+                    if (forca.Direcao == "Apontada para fora")
+                    {
+                        g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY); //ponto da força é o ponto inicial
+                        listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao, forca));
+                    }
+                    else
+                    {
+                        g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inicial
+                        listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao, forca));
+                    }
+                }
+            }
 
-            DesenhaBarras();
-            DesenhaForcas();
-
-            btnTeste.Enabled = false;
+            g.Dispose();
+            p.Dispose();
         }
-        #endregion
-
-        private void btnCriar_Click_1(object sender, EventArgs e)
+        public int ValorXPonto(ForcaPonto forca)
         {
-            lbDeletar.Visible = false;
-            panelDesenho.Visible = true;
-            lbMensagem.Visible = true;
-            foreach (PictureBox imagem in listaPictureBox)
+            if (forca.Quadrante == 3)
             {
-                imagem.Enabled = true;
-                imagem.Visible = true;
+                return Convert.ToInt32(75 * Math.Cos((forca.Angulo) * (Math.PI / 180)));
             }
-            foreach (var pcb in listaDeletaForca)
+            else
             {
-                panelDesenho.Controls.Remove(pcb);
+                return 1;
             }
-            listaSetas.Clear();
-            DesenhaBarras();
-            DesenhaForcas();
         }
-   
-        private void button1_Click(object sender, EventArgs e)
+        public void DesenhaBarras()
         {
-            btnCriar.Enabled = false;
-            btnDeletar.Enabled = false;
-            button1.Enabled = false;
-            int quantidadeNulos, quantidadesForcasApoios = 0;
-            double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
-            double calculo1, calculo2, calculo3, calculo4;
-            List<Barra> encontrouNulo = new List<Barra>();
+            Font novaFont = new Font("Segoe", 14);
+            Graphics g = panelDesenho.CreateGraphics();
+            Pen myPen = new Pen(Color.Gray, 6);
+            Pen myPen2 = new Pen(Color.LightSteelBlue, 6);
+            Pen myPen3 = new Pen(Color.DarkSeaGreen, 6);
+            g.Clear(panelDesenho.BackColor);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-            /* Esperar parte de calcular força no apoio
-             
-            foreach(Ponto pontoAnalisado in listaPontos)
+            foreach (Barra barras in listaBarras)
             {
-                if(pontoAnalisado.forcasApoio.Count == 2)
+                if (barras.Forca.Intensidade == 0)
                 {
-                    quantidadesForcasApoios += 2;
+                    g.DrawLine(myPen, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
                 }
-                else if(pontoAnalisado.forcasApoio.Count == 1)
+                else if (barras.Forca.Direcao == "Apontada para dentro")
                 {
-                    quantidadesForcasApoios += 1;
+                    g.DrawLine(myPen3, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
+                    AdicionaIntensidade(barras);
                 }
-
-            }
-
-            if(quantidadesForcasApoios < 3)
-            {
-                MessageBox.Show("Treliça Hiperestatica - Não é possivel calcular");
-                return;
-            }
-            */
-            Calculo.CalculaMomentoApoio();
-            foreach (var ponto in listaPontos)
-            {
-                if(ponto.forcasApoio.Count >= 1)
+                else if (barras.Forca.Direcao == "Apontada para fora")
                 {
-                    
-                    foreach (var forcaApoio in ponto.forcasApoio)
-                    {
-                        MessageBox.Show($"{forcaApoio.Intensidade}");
-                        MessageBox.Show($"{forcaApoio.Angulo}");
-                        
-                        ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
-                    }
-                }
-            }
-
-            do
-            {
-                foreach (Ponto pontoAnalisado in listaPontos)
-                {
-
-                    encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade != 0);
-                  
-                    if (pontoAnalisado.forcasPonto.Count == 0 && encontrouNulo.Count == 0)
-                    {
-                            continue;
-                    }
-                  
-                    somatoriaForcasVerticais = 0;
-                    somatoriaForcasHorizontais = 0;
-                    quantidadeNulos = 0;
-
-                    foreach(Barra barra in pontoAnalisado.barrasPonto)
-                    {
-                        if(barra.Forca.Intensidade == 0)
-                        {
-                            quantidadeNulos++;
-                        }
-                    }
-
-                    if (quantidadeNulos <= 2)
-                    {
-                        foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
-                        {
-                            if ((forcaPonto.Sentido == "vertical" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para fora")
-                            {
-                                somatoriaForcasVerticais += forcaPonto.ComponenteVertical;
-                            }
-                            else if ((forcaPonto.Sentido == "vertical" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para dentro")
-                            {
-                                somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
-                            }
-                          
-                            if ((forcaPonto.Sentido == "horizontal" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para fora")
-                            {
-                                somatoriaForcasHorizontais += forcaPonto.ComponenteHorizontal;
-                            }
-                            else if ((forcaPonto.Sentido == "horizontal" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para dentro")
-                            {
-                                somatoriaForcasHorizontais -= forcaPonto.ComponenteHorizontal;
-                            }
-                        }
-
-                        foreach(Barra forcaBarra in pontoAnalisado.barrasPonto)
-                        {
-                            if(forcaBarra.Forca.Intensidade != 0)
-                            {
-                                if(forcaBarra.pontoInicialX == pontoAnalisado.valorX
-                                && forcaBarra.pontoInicialY == pontoAnalisado.valorY)
-                                {
-                                    if ((forcaBarra.quadrantePontoInicial == "1" && forcaBarra.Forca.Direcao == "Apontada para fora") ||
-                                        (forcaBarra.quadrantePontoInicial == "3" && forcaBarra.Forca.Direcao == "Apontada para dentro"))
-                                    {
-                                        somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoInicial == "1" && forcaBarra.Forca.Direcao == "Apontada para dentro") ||
-                                        (forcaBarra.quadrantePontoInicial == "3" && forcaBarra.Forca.Direcao == "Apontada para fora"))
-                                    {
-                                        somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoInicial == "2" && forcaBarra.Forca.Direcao == "Apontada para fora") ||
-                                        (forcaBarra.quadrantePontoInicial == "4" && forcaBarra.Forca.Direcao == "Apontada para dentro"))
-                                    {
-                                        somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoInicial == "2" && forcaBarra.Forca.Direcao == "Apontada para dentro") ||
-                                        (forcaBarra.quadrantePontoInicial == "4" && forcaBarra.Forca.Direcao == "Apontada para fora"))
-                                    {
-                                        somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                }
-                                else
-                                {
-                                    if ((forcaBarra.quadrantePontoFinal == "1" && forcaBarra.Forca.Direcao == "Apontada para fora") ||
-                                        (forcaBarra.quadrantePontoFinal == "3" && forcaBarra.Forca.Direcao == "Apontada para dentro"))
-                                    {
-                                        somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoFinal == "1" && forcaBarra.Forca.Direcao == "Apontada para dentro") ||
-                                        (forcaBarra.quadrantePontoFinal == "3" && forcaBarra.Forca.Direcao == "Apontada para fora"))
-                                    {
-                                        somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoFinal == "2" && forcaBarra.Forca.Direcao == "Apontada para fora") ||
-                                        (forcaBarra.quadrantePontoFinal == "4" && forcaBarra.Forca.Direcao == "Apontada para dentro"))
-                                    {
-                                        somatoriaForcasVerticais += forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais -= forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                    else if ((forcaBarra.quadrantePontoFinal == "2" && forcaBarra.Forca.Direcao == "Apontada para dentro") ||
-                                        (forcaBarra.quadrantePontoFinal == "4" && forcaBarra.Forca.Direcao == "Apontada para fora"))
-                                    {
-                                        somatoriaForcasVerticais -= forcaBarra.Forca.ComponenteVertical;
-                                        somatoriaForcasHorizontais += forcaBarra.Forca.ComponenteHorizontal;
-                                    }
-                                }
-                             
-                            }
-                        }
-
-                        calculo1 = 0;
-                        calculo2 = 0;
-                        calculo3 = 0;
-                        calculo4 = 0;
-                        encontrouNulo = pontoAnalisado.barrasPonto.FindAll(x => x.Forca.Intensidade == 0);
-
-                        if (quantidadeNulos == 2)
-                        {
-
-                            if (encontrouNulo[0].pontoInicialX == pontoAnalisado.valorX 
-                                && encontrouNulo[0].pontoInicialY == pontoAnalisado.valorY 
-                                && encontrouNulo[1].pontoInicialX == pontoAnalisado.valorX
-                                && encontrouNulo[1].pontoInicialY == pontoAnalisado.valorY)
-                            {
-                                calculo1 = Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) -
-                                Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                              
-
-                                calculo2 = Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                    somatoriaForcasHorizontais -
-                                    Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                    somatoriaForcasVerticais;
-
-                                calculo3 = calculo2 / calculo1;
-                                calculo4 = (somatoriaForcasVerticais -
-                                    Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180))  * calculo3)
-                                    / Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                            }
-                            else if (encontrouNulo[0].pontoInicialX == pontoAnalisado.valorX
-                                && encontrouNulo[0].pontoInicialY == pontoAnalisado.valorY
-                                && encontrouNulo[1].pontoFinalX == pontoAnalisado.valorX
-                                && encontrouNulo[1].pontoFinalY == pontoAnalisado.valorY)
-                            {
-                                calculo1 = Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) -
-                                Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-
-
-                                calculo2 = Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                    somatoriaForcasHorizontais -
-                                    Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180)) *
-                                    somatoriaForcasVerticais;
-
-                                calculo3 = calculo2 / calculo1;
-                                calculo4 = (somatoriaForcasVerticais -
-                                    Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
-                                    / Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                            }
-                            else if (encontrouNulo[0].pontoFinalX == pontoAnalisado.valorX
-                                && encontrouNulo[0].pontoFinalY == pontoAnalisado.valorY
-                                && encontrouNulo[1].pontoInicialX == pontoAnalisado.valorX
-                                && encontrouNulo[1].pontoInicialY == pontoAnalisado.valorY)
-                            {
-                                calculo1 = Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) -
-                                Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-
-
-                                calculo2 = Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                    somatoriaForcasHorizontais -
-                                    Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                    somatoriaForcasVerticais;
-
-                                calculo3 = calculo2 / calculo1;
-                                calculo4 = (somatoriaForcasVerticais -
-                                    Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) * calculo3)
-                                    / Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-                            }
-                            else if (encontrouNulo[0].pontoFinalX == pontoAnalisado.valorX
-                                && encontrouNulo[0].pontoFinalY == pontoAnalisado.valorY
-                                && encontrouNulo[1].pontoFinalX == pontoAnalisado.valorX
-                                && encontrouNulo[1].pontoFinalY == pontoAnalisado.valorY)
-                            {
-                                calculo1 = Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) -
-                                Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) *
-                                Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-
-
-                                calculo2 = Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                    somatoriaForcasHorizontais -
-                                    Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180)) *
-                                    somatoriaForcasVerticais;
-
-                                calculo3 = calculo2 / calculo1;
-                                calculo4 = (somatoriaForcasVerticais -
-                                    Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
-                                    / Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-                            }
-
-                            string direcao;
-
-                            if(calculo4 > 0)
-                            {
-                                direcao = "Apontada para dentro";
-                            }
-                            else
-                            {
-                                direcao = "Apontada para fora";
-                            }
-
-                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo4, encontrouNulo[0].angle, direcao);
-
-                            if (calculo3 > 0)
-                            {
-                                direcao = "Apontada para dentro";
-                            }
-                            else
-                            {
-                                direcao = "Apontada para fora";
-                            }
-                            encontrouNulo[1].Forca.AdicionaComponentesEncontrados(calculo3, encontrouNulo[1].angle, direcao);
-
-
-                        }
-                        else if(quantidadeNulos == 1)
-                        {
-                            if (encontrouNulo[0].pontoInicialX == pontoAnalisado.valorX
-                                && encontrouNulo[0].pontoInicialY == pontoAnalisado.valorY)
-                            {
-                                if (encontrouNulo[0].Forca.Angulo == 90 || encontrouNulo[0].Forca.Angulo == 270)
-                                {
-                                    calculo1 = somatoriaForcasVerticais /
-                                        Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                                }
-                                else if (encontrouNulo[0].Forca.Angulo == 0 || encontrouNulo[0].Forca.Angulo == 180)
-                                {
-                                    calculo1 = somatoriaForcasHorizontais /
-                                        Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                                }
-                                else
-                                {
-                                    calculo1 = somatoriaForcasVerticais /
-                                        Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
-                                }
-                            }
-                            else
-                            {
-                                if (encontrouNulo[0].Forca.Angulo == 90 || encontrouNulo[0].Forca.Angulo == 270)
-                                {
-                                    calculo1 = somatoriaForcasVerticais /
-                                        Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-                                }
-                                else if (encontrouNulo[0].Forca.Angulo == 0 || encontrouNulo[0].Forca.Angulo == 180)
-                                {
-                                    calculo1 = somatoriaForcasHorizontais /
-                                        Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-                                }
-                                else
-                                {
-                                    calculo1 = somatoriaForcasVerticais /
-                                        Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
-                                }
-                            }
-                          
-
-                            string direcao;
-
-                            if (calculo1 > 0)
-                            {
-                                direcao = "Apontada para dentro";
-                            }
-                            else
-                            {
-                                direcao = "Apontada para fora";
-                            }
-                            encontrouNulo[0].Forca.AdicionaComponentesEncontrados(calculo1, encontrouNulo[0].angle, direcao);
-
-                        }
-                    }
+                    g.DrawLine(myPen2, barras.pontoInicialX, barras.pontoInicialY, barras.pontoFinalX, barras.pontoFinalY);
+                    AdicionaIntensidade(barras);
                 }
 
-                encontrouNulo = listaBarras.FindAll(x => x.Forca.Intensidade == 0);
+
             }
-            while (encontrouNulo.Count != 0);
+            if (btnCalcular.Enabled == false)
+            {
+                Point pontoTracao = new Point(1250, 595);
+                Point pontoCompressao = new Point(1250, 635);
+                g.DrawLine(myPen2, 1400, 610, 1600, 610);
+                g.DrawString("Tração", novaFont, Brushes.Black, pontoTracao);
+                g.DrawLine(myPen3, 1400, 655, 1600, 655);
+                g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
+            }
 
-
-            DesenhaBarras();
-            DesenhaForcas();
-
-
-
+            g.Dispose();
+            myPen.Dispose();
+            myPen2.Dispose();
+            myPen3.Dispose();
         }
 
         private void AdicionaIntensidade(Barra barra)
@@ -786,64 +546,8 @@ namespace Software_Trelisa
             g.Dispose();
 
         }
+        #endregion
 
-
-        public void deletaForca_Click(object sender, EventArgs e, PontoSeta pontoSeta)
-            {
-                listaSetas.Clear();
-                DesenhaBarras();
-                DesenhaForcas();
-                PontoSeta ponto = listaSetas.Find(p => (p.ValorFinalX == pontoSeta.ValorFinalX
-                                                && p.ValorFinalY == pontoSeta.ValorFinalY
-                                                && p.ValorInicialX == pontoSeta.ValorInicialX
-                                                && p.ValorInicialY == pontoSeta.ValorInicialY));
-                listaSetas.Remove(ponto);
-            if (ponto != null)
-            {
-
-                var pontoForca = listaPontos.Find(f => (f.valorX == ponto.ValorInicialX && f.valorY == ponto.ValorInicialY) || (f.valorX == ponto.ValorFinalX && f.valorY == ponto.ValorFinalY));
-                pontoForca.forcasPonto.Remove(ponto.ForcaPonto);
-            }
-            foreach (Control control in listaDeletaForca)
-            {
-                panelDesenho.Controls.Remove(control);
-            }
-            listaSetas.Clear();
-            DesenhaBarras();
-            DesenhaForcas();
-        }
-
-        public void CriaDeletaForca(PontoSeta pontoSeta)
-        {
-            PictureBox imagemDeleta = new PictureBox();
-            imagemDeleta.Image = Resources.iconeDelete;
-            imagemDeleta.Name = "iconeDelete";
-            imagemDeleta.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagemDeleta.Height = 20;
-            imagemDeleta.Width = 20;
-            imagemDeleta.Location = new Point((pontoSeta.ValorFinalX + pontoSeta.ValorInicialX) / 2, (pontoSeta.ValorInicialY + pontoSeta.ValorFinalY) / 2);
-            imagemDeleta.Visible = true;
-            imagemDeleta.Click += new EventHandler((sender, e) => deletaForca_Click(sender, e, pontoSeta));
-            listaDeletaForca.Add(imagemDeleta);
-            panelDesenho.Controls.Add(imagemDeleta);
-        }
-        private void btnDeletar_Click(object sender, EventArgs e)
-        {
-            frmDeleta f = new frmDeleta();
-            f.ShowDialog();
-        }
-
-        public void DeletarForcaEvent()
-        {
-            listaDeletaForca.RemoveAll(pcb => pcb.Name == "iconeDelete");
-
-            foreach (var pontoSeta in listaSetas)
-            {
-                CriaDeletaForca(pontoSeta);
-            }
-        }
-      
-        
     }
 }
 
