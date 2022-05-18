@@ -179,12 +179,8 @@ namespace Software_Trelisa
             {
                 if (ponto.forcasApoio.Count >= 1)
                 {
-
                     foreach (var forcaApoio in ponto.forcasApoio)
                     {
-                        MessageBox.Show($"{forcaApoio.Intensidade}");
-                        MessageBox.Show($"{forcaApoio.Angulo}");
-
                         ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
                     }
                 }
