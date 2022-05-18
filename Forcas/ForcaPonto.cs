@@ -47,7 +47,7 @@ namespace Software_Trelisa
             }
             if(this.Quadrante == 3)
             {
-                forca.ComponenteVertical = Math.Round(Math.Sin((forca.Angulo + 180) * constAngle) * forca.Intensidade, 6);
+                forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo + 180) * constAngle) * forca.Intensidade, 6);
                 forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo + 180) * constAngle) * forca.Intensidade, 6);
             }
             if(this.Quadrante == 4)
