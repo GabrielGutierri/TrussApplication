@@ -25,15 +25,17 @@ namespace Software_Trelisa
             
         }
 
+        /*
         
         private void VerificaEscala()
         {
             if(Form1.listaBarras.Count == 0 && distancia > 400)
             {
-                Form1.escalaDesenho = distancia / 400;
+                Form1.escalaDesenho = distancia / 200;
             }
         }
         
+        */
 
         private void rbBarraInclinada_CheckedChanged(object sender, EventArgs e)
         {
@@ -81,10 +83,10 @@ namespace Software_Trelisa
         {
             try
             {
-                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
-                VerificaEscala();
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) ;
+                //VerificaEscala();
                 angulo = 90;
-                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) ;
             }
             catch
             {
@@ -125,10 +127,10 @@ namespace Software_Trelisa
         {
             try
             {
-                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
-                VerificaEscala();
+                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) ;
+                //VerificaEscala();
                 angulo = 0;
-                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
+                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) ;
             }
             catch
             {
@@ -168,22 +170,22 @@ namespace Software_Trelisa
                 if (txtDistanciaInclinado.Text == "")
                 {
                     distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
-                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / Form1.escalaDesenho;
+                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) ;
                 }
                 else
                 {
-                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / Form1.escalaDesenho;
+                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) ;
                 }
 
-                VerificaEscala();
+                //VerificaEscala();
                 if (txtDistanciaInclinado.Text == "")
                 {
                     distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
-                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / Form1.escalaDesenho;
+                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2));
                 }
                 else
                 {
-                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / Form1.escalaDesenho;
+                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text);
                 }
             }
             catch

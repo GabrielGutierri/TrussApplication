@@ -544,6 +544,7 @@ namespace Software_Trelisa
         }
         #endregion
 
+        /*
         public void AdicionaApoios(Ponto ponto, string tipo)
         {
             System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
@@ -564,6 +565,7 @@ namespace Software_Trelisa
                 panelDesenho.Controls.Add(novoPontoImagem);
             }
         }
+        */
 
     }
 }

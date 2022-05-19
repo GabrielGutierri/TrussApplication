@@ -17,7 +17,6 @@ namespace Software_Trelisa
             this.Direcao = direcao;
             if (sentido == "inclinada")
                 MudaDirecao();
-            MessageBox.Show($"Quadrante: {this.Quadrante}");
             MudaComponentesAngulo(this);
         }
         public ForcaPonto(double intensidade, double angulo, string sentido, string direcao) : base(intensidade, angulo, sentido, direcao)
