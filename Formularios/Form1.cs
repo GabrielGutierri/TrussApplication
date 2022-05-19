@@ -134,6 +134,70 @@ namespace Software_Trelisa
         }
         #endregion
 
+        #region Botao Teste2
+        private void btnTeste2_Click(object sender, EventArgs e)
+        {
+            Barra barra1 = new Barra(75, 500, 175, 250, 68.199, 269.258, "Crescente");
+            Barra barra2 = new Barra(75, 500, 325, 500, 0, 250, "Crescente");
+            Barra barra3 = new Barra(175, 250, 375, 0, 51.34, 320.156, "Crescente");
+            Barra barra4 = new Barra(175, 250, 325, 500, 59.036, 291.547, "Decrescente");
+            Barra barra5 = new Barra(375, 0, 575, 500, 68.199, 538.516, "Decrescente");
+            Barra barra6 = new Barra(325, 500, 375, 0, 84.289, 502.494, "Crescente");
+            Barra barra7 = new Barra(325, 500, 575, 500, 0, 250, "Crescente");
+
+            listaPontos[0].barrasPonto.Add(barra1);
+            listaPontos[0].barrasPonto.Add(barra2);
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo"));
+            pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
+
+            Ponto ponto2 = new Ponto(175, 250);
+            ponto2.forcasPonto.Add(new ForcaPonto(50000, 0, "horizontal", "Apontada para fora", 1));
+            ponto2.barrasPonto.Add(barra1);
+            ponto2.barrasPonto.Add(barra3);
+            ponto2.barrasPonto.Add(barra4);
+            Ponto ponto3 = new Ponto(375, 0);
+            ponto3.forcasPonto.Add(new ForcaPonto(30000, 90, "vertical", "Apontada para dentro", 1));
+            ponto3.forcasPonto.Add(new ForcaPonto(26000, 0, "horizontal", "Apontada para dentro", 1));
+            ponto3.barrasPonto.Add(barra3);
+            ponto3.barrasPonto.Add(barra5);
+            ponto3.barrasPonto.Add(barra6);
+            Ponto ponto4 = new Ponto(575, 500);
+            ponto4.barrasPonto.Add(barra5);
+            ponto4.barrasPonto.Add(barra7);
+            ponto4.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel"));
+            Ponto ponto5 = new Ponto(325, 500);
+            ponto5.barrasPonto.Add(barra2);
+            ponto5.barrasPonto.Add(barra7);
+            ponto5.barrasPonto.Add(barra4);
+            ponto5.barrasPonto.Add(barra6);
+            ponto5.forcasPonto.Add(new ForcaPonto(22000, 90, "vertical", "Apontada para dentro", 1));
+            listaPontos.Add(ponto2);
+            listaPontos.Add(ponto3);
+            listaPontos.Add(ponto4);
+            listaPontos.Add(ponto5);
+
+
+            CriaPontoImagem(ponto2);
+            CriaPontoImagem(ponto3);
+            CriaPontoImagem(ponto4);
+            CriaPontoImagem(ponto5);
+
+
+            listaBarras.Add(barra1);
+            listaBarras.Add(barra2);
+            listaBarras.Add(barra3);
+            listaBarras.Add(barra4);
+            listaBarras.Add(barra5);
+            listaBarras.Add(barra6);
+            listaBarras.Add(barra7);
+
+            DesenhaBarras();
+            DesenhaForcas();
+
+            btnTeste2.Enabled = false;
+        }
+        #endregion
+
         #region Botão Criar
         private void btnCriar_Click_1(object sender, EventArgs e)
         {
@@ -181,6 +245,7 @@ namespace Software_Trelisa
                 {
                     foreach (var forcaApoio in ponto.forcasApoio)
                     {
+                        MessageBox.Show($"{forcaApoio.Intensidade}, {forcaApoio.Angulo}, {forcaApoio.Sentido}, {forcaApoio.Direcao}");
                         ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
                     }
                 }
