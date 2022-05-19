@@ -25,12 +25,12 @@ namespace Software_Trelisa
             
         }
 
-        
+
         private void VerificaEscala()
         {
             if(Form1.listaBarras.Count == 0 && distancia > 400)
             {
-                Form1.escalaDesenho = distancia / 400;
+                Form1.escalaDesenho = Math.Round(distancia / 200, 1);
             }
         }
         
@@ -81,10 +81,10 @@ namespace Software_Trelisa
         {
             try
             {
-                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho ;
                 VerificaEscala();
                 angulo = 90;
-                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho;
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho ;
             }
             catch
             {

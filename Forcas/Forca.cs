@@ -37,6 +37,8 @@ namespace Software_Trelisa
             }
             this.ComponenteVertical = Math.Round(Intensidade * Math.Sin(Angulo * (Math.PI / 180)), 6);
             this.ComponenteHorizontal = Math.Round(Intensidade * Math.Cos(Angulo * (Math.PI / 180)), 6);
+        
+        
         }
     }
 }

@@ -38,23 +38,22 @@ namespace Software_Trelisa
         public void MudaComponentesAngulo(ForcaPonto forca)
         {
             const double constAngle = Math.PI / 180;
-            
-            if(this.Quadrante == 2)
+
+            if (this.Quadrante == 2)
             {
                 MessageBox.Show($"{forca.Angulo}");
                 forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
-                forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 180) * constAngle) * forca.Intensidade,6);
+                forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
             }
-            if(this.Quadrante == 3)
+            if (this.Quadrante == 3)
             {
                 forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
                 forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
-                MessageBox.Show($"{forca.Angulo - 180}");
 
             }
-            if(this.Quadrante == 4)
+            if (this.Quadrante == 4)
             {
-                forca.ComponenteVertical = Math.Round(Math.Sin(-(Math.Abs(forca.Angulo -360)) * constAngle) * forca.Intensidade, 6);
+                forca.ComponenteVertical = Math.Round(Math.Sin(-(Math.Abs(forca.Angulo - 360)) * constAngle) * forca.Intensidade, 6);
                 forca.ComponenteHorizontal = Math.Round(Math.Cos(Math.Abs((forca.Angulo - 360)) * constAngle) * forca.Intensidade, 6);
             }
         }
