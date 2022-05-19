@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Software_Trelisa.Calculos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,21 +50,24 @@ namespace Software_Trelisa
                             }
                             if(pontoApoioFixo.valorY - item.valorY < 0) // ponto mais baixo para a direita
                             {
-                                //var listaApoio = PontoDireitaApoioMaisBaixo(item, pontoApoioFixo);
-                                //somaHorario += listaApoio[0];
-                                //somaAntiHorario += listaApoio[1];
+                                var listaApoio = CalculoMomentoDireita.PontoDireitaApoioMaisBaixo(item, pontoApoioFixo);
+                                somaHorario += listaApoio[0];
+                                somaAntiHorario += listaApoio[1];
                             }
                         }
                         if(item.valorX - pontoApoioFixo.valorX < 0) //ponto para a esquerda do ponto fixo
                         {
                             if (pontoApoioFixo.valorY - item.valorY >= 0) // ponto mais alto para a esquerda
                             {
-                                var listaSoma = CalculoMomentoDireita.PontoDireitaApoio(pontoApoioFixo, item);
+                                var listaSoma = CalculoMomentoEsquerda.PontoEsquerdaApoio(pontoApoioFixo, item);
                                 somaHorario += listaSoma[0];
                                 somaAntiHorario += listaSoma[1];
                             }
                             if (pontoApoioFixo.valorY - item.valorY < 0) // ponto mais baixo para a esquerda
                             {
+                                var listaApoio = CalculoMomentoEsquerda.PontoEsquerdaApoioMaisBaixo(item, pontoApoioFixo);
+                                somaHorario += listaApoio[0];
+                                somaAntiHorario += listaApoio[1];
                             }
                         }
                     }
