@@ -151,7 +151,7 @@ namespace Software_Trelisa
             pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
 
             Ponto ponto2 = new Ponto(175, 250);
-            ponto2.forcasPonto.Add(new ForcaPonto(50000, 0, "horizontal", "Apontada para fora", 1));
+            ponto2.forcasPonto.Add(new ForcaPonto(50000, 0, "horizontal", "Apontada para dentro", 2));
             ponto2.barrasPonto.Add(barra1);
             ponto2.barrasPonto.Add(barra3);
             ponto2.barrasPonto.Add(barra4);
@@ -170,7 +170,7 @@ namespace Software_Trelisa
             ponto5.barrasPonto.Add(barra7);
             ponto5.barrasPonto.Add(barra4);
             ponto5.barrasPonto.Add(barra6);
-            ponto5.forcasPonto.Add(new ForcaPonto(22000, 90, "vertical", "Apontada para dentro", 1));
+            ponto5.forcasPonto.Add(new ForcaPonto(22000, 90, "vertical", "Apontada para fora", 3));
             listaPontos.Add(ponto2);
             listaPontos.Add(ponto3);
             listaPontos.Add(ponto4);
