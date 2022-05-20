@@ -33,6 +33,12 @@ namespace Software_Trelisa
             formPrincipal.DeletarForcaEvent();
             this.Close();
         }
-        
+
+        private void btnDeletaApoio_Click(object sender, EventArgs e)
+        {
+            Form1 formPrincipal = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+            formPrincipal.DeletarApoioEvent();
+            this.Close();
+        }
     }
 }

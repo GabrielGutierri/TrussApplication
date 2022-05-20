@@ -149,6 +149,7 @@ namespace Software_Trelisa
             listaPontos[0].barrasPonto.Add(barra2);
             pontoTeste.forcasApoio.Add(new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo"));
             pontoTeste.forcasApoio.Add(new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo"));
+            
 
             Ponto ponto2 = new Ponto(175, 250);
             ponto2.forcasPonto.Add(new ForcaPonto(50000, 0, "horizontal", "Apontada para dentro", 2));
@@ -193,6 +194,7 @@ namespace Software_Trelisa
 
             DesenhaBarras();
             DesenhaForcas();
+            
 
             btnTeste2.Enabled = false;
         }
@@ -486,8 +488,9 @@ namespace Software_Trelisa
                 {
 
                     ValorXPonto(forca);
-                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(forca.Angulo * (Math.PI / 180)));
-                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-forca.Angulo * (Math.PI / 180)));
+                    double anguloForca = TrocaAnguloDesenho(forca);
+                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(anguloForca * (Math.PI / 180)));
+                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-anguloForca * (Math.PI / 180)));
                     if (forca.Direcao == "Apontada para fora")
                     {
                         g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY); //ponto da força é o ponto inicial
@@ -503,6 +506,25 @@ namespace Software_Trelisa
 
             g.Dispose();
             p.Dispose();
+        }
+        public double TrocaAnguloDesenho(ForcaPonto forca)
+        {
+            if (forca.Angulo > 90)
+                return forca.Angulo;
+            else if (forca.Quadrante == 2) //210 - 30 = 180
+            {
+                return forca.Angulo + 180;
+            }
+            else if (forca.Quadrante == 3)
+            {
+                return forca.Angulo + 180;
+            }
+            else if (forca.Quadrante == 4)
+            {
+                return forca.Angulo + 270;
+            }
+            else return forca.Angulo;
+
         }
         public int ValorXPonto(ForcaPonto forca)
         {
@@ -554,6 +576,22 @@ namespace Software_Trelisa
                 g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
             }
 
+            foreach (var ponto in listaPontos)
+            {
+                int count = 0;
+                if(ponto.forcasApoio.Count == 1 && count < 2)
+                {
+                    AdicionaApoios(ponto, "movel");
+                    count++;
+                }
+                if(ponto.forcasApoio.Count == 2 && count < 2)
+                {
+                    AdicionaApoios(ponto, "fixo");
+                    count++;
+                }
+                if (count == 2)
+                    break;
+            }
             g.Dispose();
             myPen.Dispose();
             myPen2.Dispose();
@@ -609,17 +647,36 @@ namespace Software_Trelisa
         }
         #endregion
 
-        /*
+        public void DeletarApoioEvent()
+        {
+            foreach (Control apoio in panelDesenho.Controls)
+            {
+                if(apoio.Tag == "apoio")
+                {
+                    Ponto ponto = listaPontos.Find(p => (p.valorX - 50) == apoio.Location.X && p.valorY == apoio.Location.Y);
+                    apoio.Click += new EventHandler((sender, e) => deletaApoio_Click(sender, e, ponto));
+                }
+            }
+        }
+        public void deletaApoio_Click(object sender, EventArgs e, Ponto ponto)
+        {
+            DeletaApoio(ponto);
+            DesenhaBarras();
+            DesenhaForcas();
+           
+        }
+
         public void AdicionaApoios(Ponto ponto, string tipo)
         {
             System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
             novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             novoPontoImagem.BorderStyle = BorderStyle.None;
-            novoPontoImagem.BackColor = Color.White;
             novoPontoImagem.Width = 100;
             novoPontoImagem.Height = 60;
+            novoPontoImagem.Tag = "apoio";
+            
             novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY);
-            if(tipo == "Fixo")
+            if(tipo == "fixo")
             {
                 novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
                 panelDesenho.Controls.Add(novoPontoImagem);
@@ -627,11 +684,37 @@ namespace Software_Trelisa
             else
             {
                 novoPontoImagem.Image = Properties.Resources.Apoio_simples;
-                panelDesenho.Controls.Add(novoPontoImagem);
             }
+            panelDesenho.Controls.Add(novoPontoImagem);
+            novoPontoImagem.BackColor = Color.Transparent;
         }
-        */
 
+        public void DeletaApoio(Ponto ponto)
+        {
+            ponto.forcasApoio.Clear();
+            foreach (Control control in panelDesenho.Controls)
+            {
+                if(control.Tag == "apoio")
+                    panelDesenho.Controls.Remove(control);
+            }
+            panelDesenho.Controls.Clear();
+        }
+
+        private void panelDesenho_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void Novo_Click(object sender, EventArgs e)
+        {
+            panelDesenho.Invalidate();
+            listaBarras.Clear();
+            listaPontos.Clear();
+            listaSetas.Clear();
+            listaPictureBox.Clear();
+            listaDeletar.Clear();
+            listaDeletaForca.Clear();
+
+        }
     }
 }
 
