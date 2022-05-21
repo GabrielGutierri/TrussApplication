@@ -48,7 +48,6 @@
             this.panelDesenho.Name = "panelDesenho";
             this.panelDesenho.Size = new System.Drawing.Size(1617, 833);
             this.panelDesenho.TabIndex = 0;
-            this.panelDesenho.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesenho_Paint);
             // 
             // panel3
             // 

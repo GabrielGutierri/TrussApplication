@@ -707,13 +707,9 @@ namespace Software_Trelisa
                 if(control.Tag == "apoio")
                     panelDesenho.Controls.Remove(control);
             }
-            //panelDesenho.Controls.Clear();
+            panelDesenho.Controls.Clear();
         }
 
-        private void panelDesenho_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void Novo_Click(object sender, EventArgs e)
         {
             panelDesenho.Invalidate();
