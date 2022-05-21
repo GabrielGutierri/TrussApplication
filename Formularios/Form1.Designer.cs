@@ -66,7 +66,7 @@
             // 
             this.lbDeletar.AutoSize = true;
             this.lbDeletar.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDeletar.Location = new System.Drawing.Point(320, 5);
+            this.lbDeletar.Location = new System.Drawing.Point(374, 9);
             this.lbDeletar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeletar.Name = "lbDeletar";
             this.lbDeletar.Size = new System.Drawing.Size(801, 32);
@@ -78,7 +78,7 @@
             // 
             this.lbMensagem.AutoSize = true;
             this.lbMensagem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbMensagem.Location = new System.Drawing.Point(488, 5);
+            this.lbMensagem.Location = new System.Drawing.Point(621, 9);
             this.lbMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMensagem.Name = "lbMensagem";
             this.lbMensagem.Size = new System.Drawing.Size(317, 32);
@@ -168,7 +168,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(1755, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1673, 29);
             this.menuStrip2.TabIndex = 22;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1755, 923);
+            this.ClientSize = new System.Drawing.Size(1673, 923);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.btnTeste2);
             this.Controls.Add(this.panel3);
