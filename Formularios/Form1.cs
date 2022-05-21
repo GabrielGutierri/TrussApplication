@@ -67,7 +67,6 @@ namespace Software_Trelisa
             novoPontoImagem.Visible = false;
             panelDesenho.Controls.Add(novoPontoImagem);
             listaPictureBox.Add(novoPontoImagem);
-
         }
         #endregion
 
@@ -671,6 +670,11 @@ namespace Software_Trelisa
         public void deletaApoio_Click(object sender, EventArgs e, Ponto ponto)
         {
             DeletaApoio(ponto);
+            listaPictureBox.Clear();
+            foreach(Ponto pontoImagem in listaPontos)
+            {
+                CriaPontoImagem(pontoImagem);
+            }
             DesenhaBarras();
             DesenhaForcas();
            
