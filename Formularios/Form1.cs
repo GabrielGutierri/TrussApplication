@@ -241,15 +241,22 @@ namespace Software_Trelisa
                 return;
             }
             Calculo.CalculaMomentoApoio();
+            foreach (Control apoio in panelDesenho.Controls)
+            {
+                if (apoio.Tag == "apoio")
+                {
+                    panelDesenho.Controls.Remove(apoio);
+                }
+            }
             foreach (var ponto in Form1.listaPontos)
             {
                 if (ponto.forcasApoio.Count >= 1)
                 {
                     foreach (var forcaApoio in ponto.forcasApoio)
                     {
-                        MessageBox.Show($"{forcaApoio.Intensidade}, {forcaApoio.Angulo}, {forcaApoio.Sentido}, {forcaApoio.Direcao}");
                         ponto.forcasPonto.Add(new ForcaPonto(forcaApoio.Intensidade, forcaApoio.Angulo, forcaApoio.Sentido, forcaApoio.Direcao));
                     }
+                    DeletaApoio(ponto);
                 }
             }
             Calculos.CalculoForcasBarras.CalculaForcasBarra();
@@ -260,9 +267,10 @@ namespace Software_Trelisa
 
         private bool VerificaHiperasticidade()
         {
-            int quantidadesForcasApoios = 0;
+            int quantidadesForcasApoios = 0, quantidadeIncognitas = 0;
             foreach (Ponto pontoAnalisado in Form1.listaPontos)
             {
+                quantidadeIncognitas++;
                 if (pontoAnalisado.forcasApoio.Count == 2)
                 {
                     quantidadesForcasApoios += 2;
@@ -273,7 +281,8 @@ namespace Software_Trelisa
                 }
             }
 
-            if (quantidadesForcasApoios < 3)
+            quantidadeIncognitas = (quantidadeIncognitas * 2) - 3;
+            if (quantidadesForcasApoios < 3 || listaBarras.Count > quantidadeIncognitas)
             {
                 MessageBox.Show("Treliça Hiperestatica - Não é possivel calcular");
                 return true;
@@ -282,6 +291,7 @@ namespace Software_Trelisa
             {
                 return false;
             }
+
         }
         #endregion
 
@@ -579,12 +589,12 @@ namespace Software_Trelisa
             foreach (var ponto in listaPontos)
             {
                 int count = 0;
-                if(ponto.forcasApoio.Count == 1 && count < 2)
+                if(ponto.forcasApoio.Count == 1 && count < 2 )
                 {
                     AdicionaApoios(ponto, "movel");
                     count++;
                 }
-                if(ponto.forcasApoio.Count == 2 && count < 2)
+                if(ponto.forcasApoio.Count == 2 && count < 2 )
                 {
                     AdicionaApoios(ponto, "fixo");
                     count++;
@@ -675,7 +685,7 @@ namespace Software_Trelisa
             novoPontoImagem.Height = 60;
             novoPontoImagem.Tag = "apoio";
             
-            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY);
+            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY );
             if(tipo == "fixo")
             {
                 novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
@@ -697,7 +707,7 @@ namespace Software_Trelisa
                 if(control.Tag == "apoio")
                     panelDesenho.Controls.Remove(control);
             }
-            panelDesenho.Controls.Clear();
+            //panelDesenho.Controls.Clear();
         }
 
         private void panelDesenho_Paint(object sender, PaintEventArgs e)

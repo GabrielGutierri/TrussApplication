@@ -37,16 +37,16 @@
             this.lbDeletar = new System.Windows.Forms.Label();
             this.btnTeste = new System.Windows.Forms.Button();
             this.btnTeste2 = new System.Windows.Forms.Button();
+            this.btnAjuda = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDesenho
             // 
-            this.panelDesenho.BackColor = System.Drawing.Color.LightGray;
-            this.panelDesenho.Location = new System.Drawing.Point(9, 29);
-            this.panelDesenho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelDesenho.BackColor = System.Drawing.Color.White;
+            this.panelDesenho.Location = new System.Drawing.Point(10, 39);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1415, 625);
+            this.panelDesenho.Size = new System.Drawing.Size(1617, 833);
             this.panelDesenho.TabIndex = 0;
             this.panelDesenho.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesenho_Paint);
             // 
@@ -57,17 +57,17 @@
             this.panel3.Controls.Add(this.btnDeletar);
             this.panel3.Controls.Add(this.btnCalcular);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(438, 658);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(501, 880);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(459, 80);
+            this.panel3.Size = new System.Drawing.Size(525, 107);
             this.panel3.TabIndex = 3;
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(11, 17);
+            this.btnCriar.Location = new System.Drawing.Point(13, 23);
+            this.btnCriar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCriar.Name = "btnCriar";
-            this.btnCriar.Size = new System.Drawing.Size(141, 49);
+            this.btnCriar.Size = new System.Drawing.Size(161, 65);
             this.btnCriar.TabIndex = 7;
             this.btnCriar.Text = "Criar";
             this.btnCriar.UseVisualStyleBackColor = true;
@@ -75,9 +75,10 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(158, 17);
+            this.btnDeletar.Location = new System.Drawing.Point(181, 23);
+            this.btnDeletar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(141, 49);
+            this.btnDeletar.Size = new System.Drawing.Size(161, 65);
             this.btnDeletar.TabIndex = 8;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
@@ -86,10 +87,9 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalcular.Location = new System.Drawing.Point(304, 17);
-            this.btnCalcular.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCalcular.Location = new System.Drawing.Point(347, 23);
             this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(141, 48);
+            this.btnCalcular.Size = new System.Drawing.Size(161, 64);
             this.btnCalcular.TabIndex = 0;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
@@ -99,30 +99,31 @@
             // 
             this.lbMensagem.AutoSize = true;
             this.lbMensagem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbMensagem.Location = new System.Drawing.Point(373, 5);
+            this.lbMensagem.Location = new System.Drawing.Point(682, 4);
             this.lbMensagem.Name = "lbMensagem";
-            this.lbMensagem.Size = new System.Drawing.Size(498, 25);
+            this.lbMensagem.Size = new System.Drawing.Size(317, 32);
             this.lbMensagem.TabIndex = 4;
-            this.lbMensagem.Text = "Selecione um ponto inicial clicando duas vezes sobre ele :";
+            this.lbMensagem.Text = "Selecione um ponto inicial  :";
             this.lbMensagem.Visible = false;
             // 
             // lbDeletar
             // 
             this.lbDeletar.AutoSize = true;
-            this.lbDeletar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDeletar.Location = new System.Drawing.Point(373, 7);
+            this.lbDeletar.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDeletar.Location = new System.Drawing.Point(451, 4);
             this.lbDeletar.Name = "lbDeletar";
-            this.lbDeletar.Size = new System.Drawing.Size(632, 21);
+            this.lbDeletar.Size = new System.Drawing.Size(801, 32);
             this.lbDeletar.TabIndex = 5;
-            this.lbDeletar.Text = "Selecione os dois pontos de uma barra clicando duas vezes sobre eles para deletar" +
-    " a barra";
+            this.lbDeletar.Text = "Selecione os dois pontos de uma barra clicando neles para deletar a barra";
+            this.lbDeletar.Visible = false;
             // 
             // btnTeste
             // 
             this.btnTeste.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste.Location = new System.Drawing.Point(979, 675);
+            this.btnTeste.Location = new System.Drawing.Point(1119, 900);
+            this.btnTeste.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTeste.Name = "btnTeste";
-            this.btnTeste.Size = new System.Drawing.Size(105, 42);
+            this.btnTeste.Size = new System.Drawing.Size(120, 56);
             this.btnTeste.TabIndex = 6;
             this.btnTeste.Text = "Teste";
             this.btnTeste.UseVisualStyleBackColor = true;
@@ -131,58 +132,40 @@
             // btnTeste2
             // 
             this.btnTeste2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste2.Location = new System.Drawing.Point(1089, 675);
-            this.btnTeste2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTeste2.Location = new System.Drawing.Point(1245, 900);
             this.btnTeste2.Name = "btnTeste2";
-            this.btnTeste2.Size = new System.Drawing.Size(106, 43);
+            this.btnTeste2.Size = new System.Drawing.Size(121, 57);
             this.btnTeste2.TabIndex = 7;
             this.btnTeste2.Text = "Teste 2";
             this.btnTeste2.UseVisualStyleBackColor = true;
             this.btnTeste2.Click += new System.EventHandler(this.btnTeste2_Click);
-
-            //// 
-            //// menuStrip1
-            //// 
-            //this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            //this.menuToolStripMenuItem});
-            //this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            //this.menuStrip1.Name = "menuStrip1";
-            //this.menuStrip1.Size = new System.Drawing.Size(1321, 24);
-            //this.menuStrip1.TabIndex = 7;
-            //this.menuStrip1.Text = "menuStrip1";
-            //// 
-            //// menuToolStripMenuItem
-            //// 
-            //this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            //this.novoToolStripMenuItem});
-            //this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            //this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            //this.menuToolStripMenuItem.Text = "Menu";
-            //// 
-            //// novoToolStripMenuItem
-            //// 
-            //this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            //this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            //this.novoToolStripMenuItem.Text = "Novo";
-            //this.novoToolStripMenuItem.Click += new System.EventHandler(this.Novo_Click);
+            // 
+            // btnAjuda
+            // 
+            this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAjuda.Location = new System.Drawing.Point(1526, 947);
+            this.btnAjuda.Name = "btnAjuda";
+            this.btnAjuda.Size = new System.Drawing.Size(103, 40);
+            this.btnAjuda.TabIndex = 21;
+            this.btnAjuda.Text = "Ajuda";
+            this.btnAjuda.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1641, 999);
+            this.Controls.Add(this.btnAjuda);
+            this.Controls.Add(this.lbDeletar);
             this.Controls.Add(this.btnTeste2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTeste);
-            this.Controls.Add(this.lbDeletar);
             this.Controls.Add(this.lbMensagem);
             this.Controls.Add(this.panelDesenho);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel3.ResumeLayout(false);
-            //this.menuStrip1.ResumeLayout(false);
-            //this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +186,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem menuToolStripMenuItem;
         private ToolStripMenuItem novoToolStripMenuItem;
+        private Button btnAjuda;
     }
 }
