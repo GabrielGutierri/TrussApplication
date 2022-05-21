@@ -30,7 +30,7 @@ namespace Software_Trelisa
         {
             if(Form1.listaBarras.Count == 0 && distancia > 400)
             {
-                Form1.escalaDesenho = Math.Round(distancia / 200, 1);
+                Form1.escalaDesenho = Math.Round(distancia / 400, 1);
             }
         }
         

@@ -46,7 +46,7 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(75, 500);
+            Ponto ponto = new Ponto(75, 725);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
             this.pontoTeste = ponto;
