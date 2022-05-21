@@ -50,6 +50,12 @@ namespace Software_Trelisa
             //Verificar se foi passado um ângulo entre 0 e 90 -> falar pra adicionar horizontal se for 0 e adicionar vertical se for 90
             ForcaPonto forcaPonto;
 
+            if(rbForcaInclinada.Checked == true && cbQuadrante.SelectedIndex == 0)
+            {
+                MessageBox.Show("Dados Invalidos");
+                return;
+            }
+
             try
             {
                 AlteraAngulo();
