@@ -25,8 +25,8 @@ namespace Software_Trelisa
                     forcaApoioFixo.Add(item.forcasApoio[0]);
                     forcaApoioFixo.Add(item.forcasApoio[1]);
                     pontoApoioFixo = item;
-                    
                 }
+
                 if (item.forcasApoio.Count == 1)
                 {
                     forcaApoioMovel = item.forcasApoio[0];
@@ -59,7 +59,7 @@ namespace Software_Trelisa
                         {
                             if (pontoApoioFixo.valorY - item.valorY >= 0) // ponto mais alto para a esquerda
                             {
-                                var listaSoma = CalculoMomentoEsquerda.PontoEsquerdaApoio(pontoApoioFixo, item);
+                                var listaSoma = CalculoMomentoEsquerda.PontoEsquerdaApoio(item, pontoApoioFixo);
                                 somaHorario += listaSoma[0];
                                 somaAntiHorario += listaSoma[1];
                             }
@@ -111,7 +111,6 @@ namespace Software_Trelisa
         }
         public static double CalculaSoma(ForcaPonto forca, string orientacao, int pontoReferencia1, double pontoReferencia2)
         {
-            MessageBox.Show($"Horizontal: {forca.ComponenteHorizontal} - Vertical: {forca.ComponenteVertical}");
             if (orientacao == "sen")
             {
                 return Math.Abs(forca.ComponenteVertical * (pontoReferencia1 - pontoReferencia2));

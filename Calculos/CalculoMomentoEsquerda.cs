@@ -13,6 +13,8 @@ namespace Software_Trelisa.Calculos
             double somaHorario = 0;
             double somaAntiHorario = 0;
             double pontoY = item.valorY;
+
+            //pontoApoioFixo.forcasApoio[1].Direcao = "Apontada para dentro";
             foreach (var forcaPonto in item.forcasPonto)
             {
                 if (forcaPonto.Direcao == "Apontada para fora")
