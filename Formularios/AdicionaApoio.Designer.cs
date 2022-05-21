@@ -29,53 +29,26 @@
         private void InitializeComponent()
         {
             this.gbApoio = new System.Windows.Forms.GroupBox();
-            this.pbFixo = new System.Windows.Forms.PictureBox();
-            this.pbMovel = new System.Windows.Forms.PictureBox();
             this.gbTipoApoio = new System.Windows.Forms.GroupBox();
             this.rbFixo = new System.Windows.Forms.RadioButton();
             this.rbMovel = new System.Windows.Forms.RadioButton();
             this.btnCriarApoio = new System.Windows.Forms.Button();
             this.gbApoio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFixo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMovel)).BeginInit();
             this.gbTipoApoio.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbApoio
             // 
-            this.gbApoio.Controls.Add(this.pbFixo);
-            this.gbApoio.Controls.Add(this.pbMovel);
             this.gbApoio.Controls.Add(this.gbTipoApoio);
             this.gbApoio.Controls.Add(this.btnCriarApoio);
             this.gbApoio.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gbApoio.Location = new System.Drawing.Point(14, 15);
             this.gbApoio.Name = "gbApoio";
-            this.gbApoio.Size = new System.Drawing.Size(427, 301);
+            this.gbApoio.Size = new System.Drawing.Size(258, 301);
             this.gbApoio.TabIndex = 22;
             this.gbApoio.TabStop = false;
             this.gbApoio.Text = "Adicionar Apoio";
             this.gbApoio.Enter += new System.EventHandler(this.gbForça_Enter);
-            // 
-            // pbFixo
-            // 
-            this.pbFixo.Location = new System.Drawing.Point(272, 55);
-            this.pbFixo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pbFixo.Name = "pbFixo";
-            this.pbFixo.Size = new System.Drawing.Size(127, 191);
-            this.pbFixo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFixo.TabIndex = 25;
-            this.pbFixo.TabStop = false;
-            this.pbFixo.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pbMovel
-            // 
-            this.pbMovel.Location = new System.Drawing.Point(272, 55);
-            this.pbMovel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pbMovel.Name = "pbMovel";
-            this.pbMovel.Size = new System.Drawing.Size(127, 191);
-            this.pbMovel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbMovel.TabIndex = 26;
-            this.pbMovel.TabStop = false;
             // 
             // gbTipoApoio
             // 
@@ -117,9 +90,9 @@
             // btnCriarApoio
             // 
             this.btnCriarApoio.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCriarApoio.Location = new System.Drawing.Point(39, 236);
+            this.btnCriarApoio.Location = new System.Drawing.Point(58, 248);
             this.btnCriarApoio.Name = "btnCriarApoio";
-            this.btnCriarApoio.Size = new System.Drawing.Size(160, 60);
+            this.btnCriarApoio.Size = new System.Drawing.Size(142, 47);
             this.btnCriarApoio.TabIndex = 12;
             this.btnCriarApoio.Text = "Criar Apoio";
             this.btnCriarApoio.UseVisualStyleBackColor = true;
@@ -129,14 +102,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 336);
+            this.ClientSize = new System.Drawing.Size(288, 336);
             this.Controls.Add(this.gbApoio);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdicionaApoio";
             this.Text = "AdicionaApoio";
             this.gbApoio.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbFixo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMovel)).EndInit();
             this.gbTipoApoio.ResumeLayout(false);
             this.gbTipoApoio.PerformLayout();
             this.ResumeLayout(false);
@@ -150,8 +121,6 @@
         private GroupBox gbTipoApoio;
         private RadioButton rbFixo;
         private RadioButton rbMovel;
-        private PictureBox pbFixo;
-        private PictureBox pbMovel;
     }
 }
 

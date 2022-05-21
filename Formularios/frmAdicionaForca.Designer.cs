@@ -59,11 +59,9 @@
             this.gbForça.Controls.Add(this.label1);
             this.gbForça.Controls.Add(this.label2);
             this.gbForça.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbForça.Location = new System.Drawing.Point(12, -13);
-            this.gbForça.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbForça.Location = new System.Drawing.Point(14, -17);
             this.gbForça.Name = "gbForça";
-            this.gbForça.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbForça.Size = new System.Drawing.Size(361, 404);
+            this.gbForça.Size = new System.Drawing.Size(413, 539);
             this.gbForça.TabIndex = 21;
             this.gbForça.TabStop = false;
             this.gbForça.Text = "Adicionar Força";
@@ -72,9 +70,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(25, 271);
+            this.label5.Location = new System.Drawing.Point(29, 361);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 25);
+            this.label5.Size = new System.Drawing.Size(236, 32);
             this.label5.TabIndex = 25;
             this.label5.Text = "Quadrante da Força :";
             // 
@@ -91,10 +89,9 @@
             "2",
             "3",
             "4"});
-            this.cbQuadrante.Location = new System.Drawing.Point(25, 298);
-            this.cbQuadrante.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbQuadrante.Location = new System.Drawing.Point(29, 397);
             this.cbQuadrante.Name = "cbQuadrante";
-            this.cbQuadrante.Size = new System.Drawing.Size(281, 33);
+            this.cbQuadrante.Size = new System.Drawing.Size(321, 39);
             this.cbQuadrante.TabIndex = 24;
             // 
             // cbTipoSentido
@@ -103,38 +100,35 @@
             this.cbTipoSentido.Items.AddRange(new object[] {
             "Apontada para fora",
             "Apontada para dentro"});
-            this.cbTipoSentido.Location = new System.Drawing.Point(25, 211);
-            this.cbTipoSentido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTipoSentido.Location = new System.Drawing.Point(29, 281);
             this.cbTipoSentido.Name = "cbTipoSentido";
-            this.cbTipoSentido.Size = new System.Drawing.Size(281, 33);
+            this.cbTipoSentido.Size = new System.Drawing.Size(321, 39);
             this.cbTipoSentido.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(25, 184);
+            this.label3.Location = new System.Drawing.Point(29, 245);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 25);
+            this.label3.Size = new System.Drawing.Size(205, 32);
             this.label3.TabIndex = 23;
             this.label3.Text = "Sentido da Força :";
             // 
             // txtIntensidade
             // 
             this.txtIntensidade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtIntensidade.Location = new System.Drawing.Point(25, 137);
-            this.txtIntensidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtIntensidade.Location = new System.Drawing.Point(29, 183);
             this.txtIntensidade.Name = "txtIntensidade";
-            this.txtIntensidade.Size = new System.Drawing.Size(182, 29);
+            this.txtIntensidade.Size = new System.Drawing.Size(207, 34);
             this.txtIntensidade.TabIndex = 5;
             // 
             // btnCriarBarraInclinado
             // 
             this.btnCriarBarraInclinado.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(25, 356);
-            this.btnCriarBarraInclinado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCriarBarraInclinado.Location = new System.Drawing.Point(129, 472);
             this.btnCriarBarraInclinado.Name = "btnCriarBarraInclinado";
-            this.btnCriarBarraInclinado.Size = new System.Drawing.Size(119, 33);
+            this.btnCriarBarraInclinado.Size = new System.Drawing.Size(136, 44);
             this.btnCriarBarraInclinado.TabIndex = 12;
             this.btnCriarBarraInclinado.Text = "Criar Força";
             this.btnCriarBarraInclinado.UseVisualStyleBackColor = true;
@@ -143,19 +137,18 @@
             // txtAngulo
             // 
             this.txtAngulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAngulo.Location = new System.Drawing.Point(25, 72);
-            this.txtAngulo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAngulo.Location = new System.Drawing.Point(29, 96);
             this.txtAngulo.Name = "txtAngulo";
-            this.txtAngulo.Size = new System.Drawing.Size(182, 29);
+            this.txtAngulo.Size = new System.Drawing.Size(207, 34);
             this.txtAngulo.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(25, 45);
+            this.label1.Location = new System.Drawing.Point(29, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 25);
+            this.label1.Size = new System.Drawing.Size(110, 32);
             this.label1.TabIndex = 8;
             this.label1.Text = "Ângulo  :";
             // 
@@ -163,19 +156,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(25, 110);
+            this.label2.Location = new System.Drawing.Point(29, 147);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 25);
+            this.label2.Size = new System.Drawing.Size(150, 32);
             this.label2.TabIndex = 9;
             this.label2.Text = "Intensidade :";
             // 
             // btnAjuda
             // 
             this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAjuda.Location = new System.Drawing.Point(402, 302);
-            this.btnAjuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAjuda.Location = new System.Drawing.Point(591, 483);
             this.btnAjuda.Name = "btnAjuda";
-            this.btnAjuda.Size = new System.Drawing.Size(90, 30);
+            this.btnAjuda.Size = new System.Drawing.Size(103, 40);
             this.btnAjuda.TabIndex = 25;
             this.btnAjuda.Text = "Ajuda";
             this.btnAjuda.UseVisualStyleBackColor = true;
@@ -183,10 +175,9 @@
             // rbForcaVertical
             // 
             this.rbForcaVertical.AutoSize = true;
-            this.rbForcaVertical.Location = new System.Drawing.Point(10, 99);
-            this.rbForcaVertical.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbForcaVertical.Location = new System.Drawing.Point(11, 132);
             this.rbForcaVertical.Name = "rbForcaVertical";
-            this.rbForcaVertical.Size = new System.Drawing.Size(144, 29);
+            this.rbForcaVertical.Size = new System.Drawing.Size(176, 36);
             this.rbForcaVertical.TabIndex = 16;
             this.rbForcaVertical.Text = "Força Vertical";
             this.rbForcaVertical.UseVisualStyleBackColor = true;
@@ -195,10 +186,9 @@
             // rbForcaHorizontal
             // 
             this.rbForcaHorizontal.AutoSize = true;
-            this.rbForcaHorizontal.Location = new System.Drawing.Point(10, 145);
-            this.rbForcaHorizontal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbForcaHorizontal.Location = new System.Drawing.Point(11, 193);
             this.rbForcaHorizontal.Name = "rbForcaHorizontal";
-            this.rbForcaHorizontal.Size = new System.Drawing.Size(169, 29);
+            this.rbForcaHorizontal.Size = new System.Drawing.Size(209, 36);
             this.rbForcaHorizontal.TabIndex = 17;
             this.rbForcaHorizontal.Text = "Força Horizontal";
             this.rbForcaHorizontal.UseVisualStyleBackColor = true;
@@ -208,10 +198,9 @@
             // 
             this.rbForcaInclinada.AutoSize = true;
             this.rbForcaInclinada.Checked = true;
-            this.rbForcaInclinada.Location = new System.Drawing.Point(10, 56);
-            this.rbForcaInclinada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbForcaInclinada.Location = new System.Drawing.Point(11, 75);
             this.rbForcaInclinada.Name = "rbForcaInclinada";
-            this.rbForcaInclinada.Size = new System.Drawing.Size(158, 29);
+            this.rbForcaInclinada.Size = new System.Drawing.Size(194, 36);
             this.rbForcaInclinada.TabIndex = 15;
             this.rbForcaInclinada.TabStop = true;
             this.rbForcaInclinada.Text = "Força Inclinada";
@@ -225,23 +214,22 @@
             this.groupBox3.Controls.Add(this.rbForcaHorizontal);
             this.groupBox3.Controls.Add(this.rbForcaVertical);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(392, 25);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(448, 33);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(213, 187);
+            this.groupBox3.Size = new System.Drawing.Size(243, 249);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo de Força:";
             // 
             // frmAdicionaForca
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 431);
+            this.ClientSize = new System.Drawing.Size(706, 535);
             this.Controls.Add(this.gbForça);
             this.Controls.Add(this.btnAjuda);
             this.Controls.Add(this.groupBox3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAdicionaForca";
             this.Text = "frmAdicionaForca";
             this.gbForça.ResumeLayout(false);

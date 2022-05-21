@@ -179,9 +179,19 @@ namespace Software_Trelisa.Calculos
                     somatoriaForcasVerticais;
 
                 calculo3 = calculo2 / calculo1;
-                calculo4 = (somatoriaForcasVerticais -
+
+                if(encontrouNulo[0].anguloPontoInicial == 0 || encontrouNulo[0].anguloPontoInicial == 180)
+                {
+                    calculo4 = (somatoriaForcasHorizontais -
+                    Math.Cos(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) * calculo3)
+                    / Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
+                }
+                else
+                {
+                    calculo4 = (somatoriaForcasVerticais -
                     Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) * calculo3)
                     / Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
+                }
             }
             else if (encontrouNulo[0].pontoInicialX == pontoAnalisado.valorX
                 && encontrouNulo[0].pontoInicialY == pontoAnalisado.valorY
@@ -200,9 +210,19 @@ namespace Software_Trelisa.Calculos
                     somatoriaForcasVerticais;
 
                 calculo3 = calculo2 / calculo1;
-                calculo4 = (somatoriaForcasVerticais -
+
+                if (encontrouNulo[0].anguloPontoInicial == 0 || encontrouNulo[0].anguloPontoInicial == 180)
+                {
+                    calculo4 = (somatoriaForcasHorizontais -
+                    Math.Cos(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
+                    / Math.Cos(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
+                }
+                else
+                {
+                    calculo4 = (somatoriaForcasVerticais -
                     Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
                     / Math.Sin(encontrouNulo[0].anguloPontoInicial * (Math.PI / 180));
+                }
             }
             else if (encontrouNulo[0].pontoFinalX == pontoAnalisado.valorX
                 && encontrouNulo[0].pontoFinalY == pontoAnalisado.valorY
@@ -221,9 +241,19 @@ namespace Software_Trelisa.Calculos
                     somatoriaForcasVerticais;
 
                 calculo3 = calculo2 / calculo1;
-                calculo4 = (somatoriaForcasVerticais -
+
+                if (encontrouNulo[0].anguloPontoFinal == 0 || encontrouNulo[0].anguloPontoFinal == 180)
+                {
+                    calculo4 = (somatoriaForcasHorizontais -
+                    Math.Cos(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) * calculo3)
+                    / Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
+                }
+                else
+                {
+                    calculo4 = (somatoriaForcasVerticais -
                     Math.Sin(encontrouNulo[1].anguloPontoInicial * (Math.PI / 180)) * calculo3)
                     / Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
+                }
             }
             else if (encontrouNulo[0].pontoFinalX == pontoAnalisado.valorX
                 && encontrouNulo[0].pontoFinalY == pontoAnalisado.valorY
@@ -242,9 +272,19 @@ namespace Software_Trelisa.Calculos
                     somatoriaForcasVerticais;
 
                 calculo3 = calculo2 / calculo1;
-                calculo4 = (somatoriaForcasVerticais -
+
+                if (encontrouNulo[0].anguloPontoFinal == 0 || encontrouNulo[0].anguloPontoFinal == 180)
+                {
+                    calculo4 = (somatoriaForcasHorizontais -
+                    Math.Cos(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
+                    / Math.Cos(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
+                }
+                else
+                {
+                    calculo4 = (somatoriaForcasVerticais -
                     Math.Sin(encontrouNulo[1].anguloPontoFinal * (Math.PI / 180)) * calculo3)
                     / Math.Sin(encontrouNulo[0].anguloPontoFinal * (Math.PI / 180));
+                }
             }
 
             AdicionaValoresEncontrados(encontrouNulo[0], calculo4);

@@ -59,14 +59,14 @@ namespace Software_Trelisa
 
         private void rbMovel_CheckedChanged(object sender, EventArgs e)
         {
-            pbFixo.Visible = false;
-            pbMovel.Visible = true;
+            //pbFixo.Visible = false;
+            //pbMovel.Visible = true;
         }
 
         private void rbFixo_CheckedChanged(object sender, EventArgs e)
         {
-            pbFixo.Visible = true;
-            pbMovel.Visible = false;
+            //pbFixo.Visible = true;
+            //pbMovel.Visible = false;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Software_Trelisa
         {
             if(Form1.listaBarras.Count == 0 && distancia > 400)
             {
-                Form1.escalaDesenho = Math.Round(distancia / 200, 1);
+                Form1.escalaDesenho = Math.Round(distancia / 400, 1);
             }
         }
         
@@ -111,9 +111,8 @@ namespace Software_Trelisa
                 
             }
 
-            if (pontoFinal.valorX > 1277 | pontoFinal.valorY > 843 | pontoFinal.valorX < 0 | pontoFinal.valorY < 0)
+            if (VerificaLimitesPanel() == true)
             {
-                MessageBox.Show("Ponto final fora dos limites permitidos. Tente outra vez");
                 return;
             }
             Form1.listaBarras.Add(barra);
@@ -151,9 +150,8 @@ namespace Software_Trelisa
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
             }
 
-            if (pontoFinal.valorX > 1277 | pontoFinal.valorY > 843 | pontoFinal.valorX < 0 | pontoFinal.valorY < 0)
+            if (VerificaLimitesPanel() == true)
             {
-                MessageBox.Show("Ponto final fora dos limites permitidos. Tente outra vez");
                 return;
             }
             Form1.listaBarras.Add(barra);
@@ -272,9 +270,8 @@ namespace Software_Trelisa
 
             }
 
-            if (pontoFinal.valorX > 1277 | pontoFinal.valorY > 843 | pontoFinal.valorX < 0 | pontoFinal.valorY < 0)
+            if(VerificaLimitesPanel() == true)
             {
-                MessageBox.Show("Ponto final fora dos limites permitidos. Tente outra vez");
                 return;
             }
             VerificaPontoExiste(pontoFinal);
@@ -284,6 +281,20 @@ namespace Software_Trelisa
             this.Close();
         }
 
+        private bool VerificaLimitesPanel() 
+        {
+            Form1 formPrincipal = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+
+            if (pontoFinal.valorX > formPrincipal.panelDesenho.Width | pontoFinal.valorY > formPrincipal.panelDesenho.Height | pontoFinal.valorX < 0 | pontoFinal.valorY < 0)
+            {
+                MessageBox.Show("Ponto final fora dos limites permitidos. Tente outra vez");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         private void VerificaPontoExiste(Ponto pontoNovo)
         {
             Form1 formPrincipal = Application.OpenForms.OfType<Form1>().FirstOrDefault();
