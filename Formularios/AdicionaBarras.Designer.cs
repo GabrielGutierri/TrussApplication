@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionaBarras));
             this.txtAnguloInclinado = new System.Windows.Forms.TextBox();
             this.txtDistanciaInclinado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -491,7 +492,7 @@
             // 
             // btnAjuda
             // 
-            this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAjuda.Location = new System.Drawing.Point(756, 496);
             this.btnAjuda.Name = "btnAjuda";
             this.btnAjuda.Size = new System.Drawing.Size(103, 40);
@@ -509,7 +510,9 @@
             this.Controls.Add(this.gbBarraHorizontal);
             this.Controls.Add(this.btnAjuda);
             this.Controls.Add(this.groupBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionaBarras";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdicionaBarras";
             this.gbBarraInclinada.ResumeLayout(false);
             this.gbBarraInclinada.PerformLayout();

@@ -714,7 +714,7 @@ namespace Software_Trelisa
             panelDesenho.Controls.Clear();
         }
 
-        private void Novo_Click(object sender, EventArgs e)
+        private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelDesenho.Invalidate();
             listaBarras.Clear();
@@ -723,7 +723,14 @@ namespace Software_Trelisa
             listaPictureBox.Clear();
             listaDeletar.Clear();
             listaDeletaForca.Clear();
+            btnCriar.Enabled = true;
+            btnDeletar.Enabled = true;
+            btnCalcular.Enabled = true;
+        }
 
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

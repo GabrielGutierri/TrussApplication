@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdicionaForca));
             this.gbForça = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbQuadrante = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,7 @@
             this.gbForça.Controls.Add(this.label1);
             this.gbForça.Controls.Add(this.label2);
             this.gbForça.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbForça.Location = new System.Drawing.Point(14, -17);
+            this.gbForça.Location = new System.Drawing.Point(12, 16);
             this.gbForça.Name = "gbForça";
             this.gbForça.Size = new System.Drawing.Size(413, 539);
             this.gbForça.TabIndex = 21;
@@ -164,8 +165,8 @@
             // 
             // btnAjuda
             // 
-            this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAjuda.Location = new System.Drawing.Point(591, 483);
+            this.btnAjuda.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAjuda.Location = new System.Drawing.Point(591, 515);
             this.btnAjuda.Name = "btnAjuda";
             this.btnAjuda.Size = new System.Drawing.Size(103, 40);
             this.btnAjuda.TabIndex = 25;
@@ -225,12 +226,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 535);
+            this.ClientSize = new System.Drawing.Size(706, 567);
             this.Controls.Add(this.gbForça);
             this.Controls.Add(this.btnAjuda);
             this.Controls.Add(this.groupBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAdicionaForca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAdicionaForca";
             this.gbForça.ResumeLayout(false);
             this.gbForça.PerformLayout();
