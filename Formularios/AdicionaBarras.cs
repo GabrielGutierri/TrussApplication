@@ -28,9 +28,9 @@ namespace Software_Trelisa
 
         private void VerificaEscala()
         {
-            if(Form1.listaBarras.Count == 0 && distancia > 400)
+            if(Form1.listaBarras.Count == 0 && distancia > 300)
             {
-                Form1.escalaDesenho = Math.Round(distancia / 400, 1);
+                Form1.escalaDesenho = Math.Round(distancia / 300, 1);
             }
         }
         
@@ -95,26 +95,31 @@ namespace Software_Trelisa
 
             if (rbCimaVertical.Checked == true)
             {
-                
                 pontoFinalX = pontoInicial.valorX;
                 pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
+                VerificaArredondamento();
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                if (VerificaLimitesPanel() == true)
+                {
+                    return;
+                }
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
             }
             else
             {
                 
                 pontoFinalX = pontoInicial.valorX;
                 pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
+                VerificaArredondamento();
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                if (VerificaLimitesPanel() == true)
+                {
+                    return;
+                }
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                 
             }
 
-            if (VerificaLimitesPanel() == true)
-            {
-                return;
-            }
             Form1.listaBarras.Add(barra);
             VerificaPontoExiste(pontoFinal);
             this.Close();
@@ -139,21 +144,27 @@ namespace Software_Trelisa
             {
                 pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                 pontoFinalY = pontoInicial.valorY;
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
+                VerificaArredondamento();
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                if (VerificaLimitesPanel() == true)
+                {
+                    return;
+                }
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
             }
             else
             {
                 pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                 pontoFinalY = pontoInicial.valorY;
-                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
+                VerificaArredondamento();
                 pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                if (VerificaLimitesPanel() == true)
+                {
+                    return;
+                }
+                barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
             }
 
-            if (VerificaLimitesPanel() == true)
-            {
-                return;
-            }
             Form1.listaBarras.Add(barra);
             VerificaPontoExiste(pontoFinal);
             this.Close();
@@ -219,15 +230,25 @@ namespace Software_Trelisa
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
+                    VerificaArredondamento();
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                    if (VerificaLimitesPanel() == true)
+                    {
+                        return;
+                    }
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                 }
                 else
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
+                    VerificaArredondamento();
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                    if (VerificaLimitesPanel() == true)
+                    {
+                        return;
+                    }
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Crescente");
                 }
 
             }
@@ -257,23 +278,29 @@ namespace Software_Trelisa
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX - distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY - distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
+                    VerificaArredondamento();
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                    if (VerificaLimitesPanel() == true)
+                    {
+                        return;
+                    }
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                 }
                 else
                 {
                     pontoFinalX = Convert.ToInt32(pontoInicial.valorX + distancia * Math.Cos(Math.PI * angulo / 180.0));
                     pontoFinalY = Convert.ToInt32(pontoInicial.valorY + distancia * Math.Sin(Math.PI * angulo / 180.0));
-                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
+                    VerificaArredondamento();
                     pontoFinal = new Ponto(pontoFinalX, pontoFinalY);
+                    if (VerificaLimitesPanel() == true)
+                    {
+                        return;
+                    }
+                    barra = new Barra(pontoInicial.valorX, pontoInicial.valorY, pontoFinalX, pontoFinalY, angulo, distancia, "Decrescente");
                 }
 
             }
 
-            if(VerificaLimitesPanel() == true)
-            {
-                return;
-            }
             VerificaPontoExiste(pontoFinal);
             var listaPontosBarra = new List<Ponto>() { pontoInicial, pontoFinal };
             barra.Forca = new ForcaBarra(Convert.ToDouble(null), barra.angle, barra.Sentido,"Apontada para dentro", listaPontosBarra);
@@ -281,6 +308,20 @@ namespace Software_Trelisa
             this.Close();
         }
 
+
+        private void VerificaArredondamento()
+        {
+            foreach (Ponto ponto in Form1.listaPontos)
+            {
+                if (pontoFinalX <= (ponto.valorX + 3) & pontoFinalX >= (ponto.valorX - 3) &
+                    pontoFinalY <= (ponto.valorY + 3) & pontoFinalY >= (ponto.valorY - 3))
+                {
+                    pontoFinalX = ponto.valorX;
+                    pontoFinalY = ponto.valorY;
+                    break;
+                }
+            }
+        }
         private bool VerificaLimitesPanel() 
         {
             Form1 formPrincipal = Application.OpenForms.OfType<Form1>().FirstOrDefault();

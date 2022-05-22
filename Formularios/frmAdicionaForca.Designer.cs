@@ -234,7 +234,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAdicionaForca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAdicionaForca";
+            this.Text = "Adiciona Forca";
             this.gbForça.ResumeLayout(false);
             this.gbForça.PerformLayout();
             this.groupBox3.ResumeLayout(false);

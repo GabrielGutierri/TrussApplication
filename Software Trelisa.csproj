@@ -12,6 +12,8 @@
   <ItemGroup>
     <Compile Remove="Form2.cs" />
     <Compile Remove="Form2.Designer.cs" />
+    <Compile Remove="Formularios\Form2.cs" />
+    <Compile Remove="Formularios\Form2.Designer.cs" />
     <Compile Remove="frmDeletar.cs" />
     <Compile Remove="frmDeletar.Designer.cs" />
     <Compile Remove="Password.cs" />
@@ -19,6 +21,7 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Form2.resx" />
+    <EmbeddedResource Remove="Formularios\Form2.resx" />
     <EmbeddedResource Remove="frmDeletar.resx" />
   </ItemGroup>
 

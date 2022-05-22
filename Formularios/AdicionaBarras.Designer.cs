@@ -513,7 +513,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdicionaBarras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdicionaBarras";
+            this.Text = "Adiciona Barras";
             this.gbBarraInclinada.ResumeLayout(false);
             this.gbBarraInclinada.PerformLayout();
             this.gbBarraVertical.ResumeLayout(false);
