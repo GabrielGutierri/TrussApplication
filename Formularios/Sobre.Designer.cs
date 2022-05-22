@@ -52,9 +52,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(242, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 32);
+            this.label2.Size = new System.Drawing.Size(361, 32);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Gabriel Gutierri    RA: 0822000";
+            this.label2.Text = "Gabriel Gutierri    RA: 082200014";
             // 
             // label3
             // 
@@ -72,9 +72,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(242, 195);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(336, 32);
+            this.label4.Size = new System.Drawing.Size(339, 32);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Michell                RA: 0822000";
+            this.label4.Text = "Michell Seidl        RA: 0822000";
             // 
             // label5
             // 

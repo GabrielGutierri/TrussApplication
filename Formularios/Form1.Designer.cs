@@ -135,6 +135,7 @@
             // 
             // btnTeste
             // 
+            this.btnTeste.Enabled = false;
             this.btnTeste.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTeste.Location = new System.Drawing.Point(1107, 895);
             this.btnTeste.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
