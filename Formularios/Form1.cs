@@ -46,7 +46,7 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(75, 675);
+            Ponto ponto = new Ponto(75, 500);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
             this.pontoTeste = ponto;
@@ -744,6 +744,12 @@ namespace Software_Trelisa
         {
                 DesenhaBarras();
                 DesenhaForcas();
+        }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.AjudaFormPrincipal f = new Formularios.AjudaFormPrincipal();
+            f.ShowDialog();
         }
     }
 }

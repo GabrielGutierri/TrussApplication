@@ -499,6 +499,7 @@
             this.btnAjuda.TabIndex = 20;
             this.btnAjuda.Text = "Ajuda";
             this.btnAjuda.UseVisualStyleBackColor = true;
+            this.btnAjuda.Click += new System.EventHandler(this.btnAjuda_Click);
             // 
             // AdicionaBarras
             // 

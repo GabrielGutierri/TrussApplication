@@ -172,6 +172,7 @@
             this.btnAjuda.TabIndex = 25;
             this.btnAjuda.Text = "Ajuda";
             this.btnAjuda.UseVisualStyleBackColor = true;
+            this.btnAjuda.Click += new System.EventHandler(this.btnAjuda_Click);
             // 
             // rbForcaVertical
             // 

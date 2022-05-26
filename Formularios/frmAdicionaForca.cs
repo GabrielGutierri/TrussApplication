@@ -82,5 +82,11 @@ namespace Software_Trelisa
             else
                 angulo = Convert.ToDouble(txtAngulo.Text);
         }
+
+        private void btnAjuda_Click(object sender, EventArgs e)
+        {
+            Formularios.AjudaAdicionaForca f = new Formularios.AjudaAdicionaForca();
+            f.ShowDialog();
+        }
     }
 }

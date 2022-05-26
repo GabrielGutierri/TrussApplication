@@ -308,7 +308,6 @@ namespace Software_Trelisa
             this.Close();
         }
 
-
         private void VerificaArredondamento()
         {
             foreach (Ponto ponto in Form1.listaPontos)
@@ -362,6 +361,12 @@ namespace Software_Trelisa
                 pontoNovo = Form1.listaPontos.Find(x => x.valorX == pontoNovo.valorX & x.valorY == pontoNovo.valorY);
                 pontoNovo.barrasPonto.Add(barra);
             }
+        }
+
+        private void btnAjuda_Click(object sender, EventArgs e)
+        {
+            Formularios.AjudaAdicionaBarra f = new Formularios.AjudaAdicionaBarra();
+            f.ShowDialog();
         }
     }
 }
