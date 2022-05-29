@@ -741,6 +741,15 @@ namespace Software_Trelisa
         public void DeletaApoio(Ponto ponto)
         {
             ponto.forcasApoio.Clear();
+            if (ponto.forcasApoio[0].ehApoioFixo)
+            {
+                AdicionaApoio.JaTemFixo = false;
+            }
+            else
+            {
+                AdicionaApoio.JaTemMovel = false;
+            }
+
             foreach (Control control in panelDesenho.Controls)
             {
                 if(control.Tag == "apoio")

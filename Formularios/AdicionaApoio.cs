@@ -14,6 +14,8 @@ namespace Software_Trelisa
     {
 
         public Ponto _ponto;
+        public static bool JaTemFixo;
+        public static bool JaTemMovel;
         public AdicionaApoio(Ponto ponto)
         {
             InitializeComponent();
@@ -32,21 +34,38 @@ namespace Software_Trelisa
             //fixo   
             if (rbFixo.Checked)
             {
-                // Criando forças - > intensidade, ang, sentido, tiposentido
-                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo");
-                this._ponto.forcasApoio.Add(forcaApoioV);
-                ForcaApoio forcaApoioH2 = new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo");
-                this._ponto.forcasApoio.Add(forcaApoioH2);
-                //formPrincipal.AdicionaApoios(_ponto, "Fixo");
-                this.Close();
+                if (JaTemFixo != true)
+                {
+                    JaTemFixo = true;
+                    // Criando forças - > intensidade, ang, sentido, tiposentido
+                    ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "fixo");
+                    this._ponto.forcasApoio.Add(forcaApoioV);
+                    ForcaApoio forcaApoioH2 = new ForcaApoio(0, 0, "horizontal", "Apontada para fora", "fixo");
+                    this._ponto.forcasApoio.Add(forcaApoioH2);
+                    //formPrincipal.AdicionaApoios(_ponto, "Fixo");
+                    this.Close();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Já existe um apoio fixo");
+                }
 
             }
             else
             {
-                ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel");
-                this._ponto.forcasApoio.Add(forcaApoioV);
-                //formPrincipal.AdicionaApoios(_ponto, "Movel");
-                this.Close();
+                if (JaTemMovel != true) {
+                    JaTemMovel = true;
+                    ForcaApoio forcaApoioV = new ForcaApoio(0, 90, "vertical", "Apontada para fora", "movel");
+                    this._ponto.forcasApoio.Add(forcaApoioV);
+                    //formPrincipal.AdicionaApoios(_ponto, "Movel");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Já existe um apoio móvel");
+                }
+
             }
 
 
