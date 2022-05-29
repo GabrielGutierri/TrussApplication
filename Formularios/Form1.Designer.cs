@@ -59,7 +59,7 @@
             this.panelDesenho.Location = new System.Drawing.Point(11, 42);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1702, 809);
+            this.panelDesenho.Size = new System.Drawing.Size(1332, 547);
             this.panelDesenho.TabIndex = 0;
             // 
             // lbDeletar
@@ -93,7 +93,7 @@
             this.panel3.Controls.Add(this.btnCriar);
             this.panel3.Controls.Add(this.btnDeletar);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(531, 865);
+            this.panel3.Location = new System.Drawing.Point(243, 593);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(524, 98);
@@ -136,7 +136,7 @@
             // btnTeste
             // 
             this.btnTeste.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste.Location = new System.Drawing.Point(1107, 895);
+            this.btnTeste.Location = new System.Drawing.Point(841, 623);
             this.btnTeste.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnTeste.Name = "btnTeste";
             this.btnTeste.Size = new System.Drawing.Size(142, 42);
@@ -147,9 +147,8 @@
             // 
             // btnTeste2
             // 
-            this.btnTeste2.Enabled = false;
             this.btnTeste2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste2.Location = new System.Drawing.Point(1253, 895);
+            this.btnTeste2.Location = new System.Drawing.Point(987, 623);
             this.btnTeste2.Margin = new System.Windows.Forms.Padding(2);
             this.btnTeste2.Name = "btnTeste2";
             this.btnTeste2.Size = new System.Drawing.Size(142, 42);
@@ -169,7 +168,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(1724, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1358, 29);
             this.menuStrip2.TabIndex = 22;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -232,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1724, 974);
+            this.ClientSize = new System.Drawing.Size(1358, 702);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.btnTeste2);
             this.Controls.Add(this.panel3);
