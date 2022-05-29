@@ -59,7 +59,6 @@ namespace Software_Trelisa
             try
             {
                 AlteraAngulo();
-                MessageBox.Show($"Angulo: {angulo}");
                 forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), cbQuadrante.SelectedIndex + 1);
                 this._ponto.forcasPonto.Add(forcaPonto);
             }
@@ -82,6 +81,12 @@ namespace Software_Trelisa
                 angulo = 180 + Convert.ToDouble(txtAngulo.Text);
             else
                 angulo = Convert.ToDouble(txtAngulo.Text);
+        }
+
+        private void btnAjuda_Click(object sender, EventArgs e)
+        {
+            Formularios.AjudaAdicionaForca f = new Formularios.AjudaAdicionaForca();
+            f.ShowDialog();
         }
     }
 }

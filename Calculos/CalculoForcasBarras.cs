@@ -69,22 +69,25 @@ namespace Software_Trelisa.Calculos
         {
             foreach (ForcaPonto forcaPonto in pontoAnalisado.forcasPonto)
             {
-                if ((forcaPonto.Sentido == "vertical" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para fora")
+                ForcaPonto forcaPontoNova = new ForcaPonto(forcaPonto.Intensidade, forcaPonto.Angulo,
+                    forcaPonto.Sentido, forcaPonto.Direcao, 1);
+
+                if ((forcaPontoNova.Sentido == "vertical" || forcaPontoNova.Sentido == "inclinada") && forcaPontoNova.Direcao == "Apontada para fora")
                 {
-                    somatoriaForcasVerticais += forcaPonto.ComponenteVertical;
+                    somatoriaForcasVerticais += forcaPontoNova.ComponenteVertical;
                 }
-                else if ((forcaPonto.Sentido == "vertical" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para dentro")
+                else if ((forcaPontoNova.Sentido == "vertical" || forcaPontoNova.Sentido == "inclinada") && forcaPontoNova.Direcao == "Apontada para dentro")
                 {
-                    somatoriaForcasVerticais -= forcaPonto.ComponenteVertical;
+                    somatoriaForcasVerticais -= forcaPontoNova.ComponenteVertical;
                 }
 
-                if ((forcaPonto.Sentido == "horizontal" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para fora")
+                if ((forcaPontoNova.Sentido == "horizontal" || forcaPontoNova.Sentido == "inclinada") && forcaPontoNova.Direcao == "Apontada para fora")
                 {
-                    somatoriaForcasHorizontais += forcaPonto.ComponenteHorizontal;
+                    somatoriaForcasHorizontais += forcaPontoNova.ComponenteHorizontal;
                 }
-                else if ((forcaPonto.Sentido == "horizontal" || forcaPonto.Sentido == "inclinada") && forcaPonto.Direcao == "Apontada para dentro")
+                else if ((forcaPontoNova.Sentido == "horizontal" || forcaPontoNova.Sentido == "inclinada") && forcaPontoNova.Direcao == "Apontada para dentro")
                 {
-                    somatoriaForcasHorizontais -= forcaPonto.ComponenteHorizontal;
+                    somatoriaForcasHorizontais -= forcaPontoNova.ComponenteHorizontal;
                 }
             }
         }

@@ -57,6 +57,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>- Para calcular as forças da treliça, os resultados apareceram em KN, além de mostar se esta em tração ou compressão. 
+
+- Caso não seja possivel calcular a treliça, aparecera uma mensagem informando o ocorrido.
+
+- Caso queira começar um novo arquivo após o calculo ou a qualquer momento clique em: ARQUIVO -&gt; NOVO ARQUIVO.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionaApoio));
             this.gbApoio = new System.Windows.Forms.GroupBox();
             this.gbTipoApoio = new System.Windows.Forms.GroupBox();
             this.rbFixo = new System.Windows.Forms.RadioButton();
@@ -104,9 +105,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(288, 336);
             this.Controls.Add(this.gbApoio);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdicionaApoio";
-            this.Text = "AdicionaApoio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Adiciona Apoio";
             this.gbApoio.ResumeLayout(false);
             this.gbTipoApoio.ResumeLayout(false);
             this.gbTipoApoio.PerformLayout();

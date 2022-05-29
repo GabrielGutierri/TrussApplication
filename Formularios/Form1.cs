@@ -577,11 +577,11 @@ namespace Software_Trelisa
             }
             if (btnCalcular.Enabled == false)
             {
-                Point pontoTracao = new Point(1250, 595);
-                Point pontoCompressao = new Point(1250, 635);
-                g.DrawLine(myPen2, 1400, 610, 1600, 610);
+                Point pontoTracao = new Point(1350, 705);
+                Point pontoCompressao = new Point(1350, 745);
+                g.DrawLine(myPen2, 1500, 720, 1650, 720);
                 g.DrawString("Tração", novaFont, Brushes.Black, pontoTracao);
-                g.DrawLine(myPen3, 1400, 655, 1600, 655);
+                g.DrawLine(myPen3, 1500, 765, 1650, 765);
                 g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
             }
 
@@ -662,7 +662,7 @@ namespace Software_Trelisa
             {
                 if(apoio.Tag == "apoio")
                 {
-                    Ponto ponto = listaPontos.Find(p => (p.valorX - 50) == apoio.Location.X && p.valorY == apoio.Location.Y);
+                    Ponto ponto = listaPontos.Find(p => (p.valorX - 50) == apoio.Location.X && (p.valorY + 6) == apoio.Location.Y);
                     apoio.Click += new EventHandler((sender, e) => deletaApoio_Click(sender, e, ponto));
                 }
             }
@@ -689,7 +689,7 @@ namespace Software_Trelisa
             novoPontoImagem.Height = 60;
             novoPontoImagem.Tag = "apoio";
             
-            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY );
+            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY + 6 );
             if(tipo == "fixo")
             {
                 novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
@@ -711,14 +711,10 @@ namespace Software_Trelisa
                 if(control.Tag == "apoio")
                     panelDesenho.Controls.Remove(control);
             }
-            //panelDesenho.Controls.Clear();
+            panelDesenho.Controls.Clear();
         }
 
-        private void panelDesenho_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void Novo_Click(object sender, EventArgs e)
+        private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelDesenho.Invalidate();
             listaBarras.Clear();
@@ -727,7 +723,33 @@ namespace Software_Trelisa
             listaPictureBox.Clear();
             listaDeletar.Clear();
             listaDeletaForca.Clear();
+            AdicionaPrimeiroPonto();
+            btnCriar.Enabled = true;
+            btnDeletar.Enabled = true;
+            btnCalcular.Enabled = true;
+        }
 
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.Sobre f = new Formularios.Sobre();
+            f.ShowDialog();
+        }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+                DesenhaBarras();
+                DesenhaForcas();
+        }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.AjudaFormPrincipal f = new Formularios.AjudaFormPrincipal();
+            f.ShowDialog();
         }
     }
 }

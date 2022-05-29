@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCriacao));
             this.btnAdicionaBarra = new System.Windows.Forms.Button();
             this.btnAdicionaForca = new System.Windows.Forms.Button();
             this.btnAdicionaApoio = new System.Windows.Forms.Button();
@@ -77,9 +78,11 @@
             this.Controls.Add(this.btnAdicionaApoio);
             this.Controls.Add(this.btnAdicionaForca);
             this.Controls.Add(this.btnAdicionaBarra);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmCriacao";
-            this.Text = "frmCriacao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Criacao";
             this.ResumeLayout(false);
 
         }
