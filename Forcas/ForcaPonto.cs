@@ -41,7 +41,6 @@ namespace Software_Trelisa
 
             if (this.Quadrante == 2)
             {
-                MessageBox.Show($"{forca.Angulo}");
                 forca.ComponenteVertical = Math.Round(Math.Sin(-(forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
                 forca.ComponenteHorizontal = Math.Round(Math.Cos((forca.Angulo - 180) * constAngle) * forca.Intensidade, 6);
             }

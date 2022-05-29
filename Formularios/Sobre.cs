@@ -16,5 +16,6 @@ namespace Software_Trelisa.Formularios
         {
             InitializeComponent();
         }
+
     }
 }

@@ -27,6 +27,11 @@ namespace Software_Trelisa
             txtAngulo.Text = "";
             txtAngulo.ReadOnly = false;
             sentido = "inclinada";
+            cbQuadrante.Items.Clear();
+            cbQuadrante.Items.Add("1");
+            cbQuadrante.Items.Add("2");
+            cbQuadrante.Items.Add("3");
+            cbQuadrante.Items.Add("4");
         }
 
         private void rbForcaVertical_CheckedChanged(object sender, EventArgs e)
@@ -35,6 +40,10 @@ namespace Software_Trelisa
             txtAngulo.Text = "90";
             txtAngulo.ReadOnly = true;
             sentido = "vertical";
+            cbQuadrante.Items.Clear();
+            cbQuadrante.Items.Add("1");
+            cbQuadrante.Items.Add("3");
+            
         }
 
         private void rbForcaHorizontal_CheckedChanged(object sender, EventArgs e)
@@ -43,43 +52,53 @@ namespace Software_Trelisa
             txtAngulo.Text = "0";
             txtAngulo.ReadOnly = true;
             sentido = "horizontal";
+            cbQuadrante.Items.Clear();
+            cbQuadrante.Items.Add("1");
+            cbQuadrante.Items.Add("2");
         }
 
         private void btnCriarBarraInclinado_Click(object sender, EventArgs e)
         {
             //Verificar se foi passado um ângulo entre 0 e 90 -> falar pra adicionar horizontal se for 0 e adicionar vertical se for 90
-            ForcaPonto forcaPonto;
-
-            if(rbForcaInclinada.Checked == true && cbQuadrante.SelectedIndex == 0)
-            {
-                MessageBox.Show("Dados Invalidos");
-                return;
-            }
-            AlteraAngulo();
-            forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), cbQuadrante.SelectedIndex + 1);
-            this._ponto.forcasPonto.Add(forcaPonto);
-            
-            MessageBox.Show($"{forcaPonto.Angulo} = Cos: {forcaPonto.ComponenteHorizontal} - Sen {forcaPonto.ComponenteVertical}");
-            this.Close();
-        }
-        private void AlteraAngulo()
-        {
             try
             {
-                Verificacoes.VerificaAngulo(txtAngulo.Text);
-                if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+                Convert.ToInt32(txtAngulo.Text);
+                Convert.ToInt32(txtIntensidade.Text);
+                if (Verificacoes.VerificaAngulo(txtAngulo.Text))
                 {
-                    angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+                    ForcaPonto forcaPonto;
+
+                    if (rbForcaInclinada.Checked == true && cbQuadrante.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Dados Inválidos");
+                        return;
+                    }
+                    AlteraAngulo();
+                    forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), Convert.ToInt32(cbQuadrante.Text));
+                    this._ponto.forcasPonto.Add(forcaPonto);
+                    this.Close();
                 }
-                else if (cbQuadrante.SelectedIndex + 1 == 3)
-                    angulo = 180 + Convert.ToDouble(txtAngulo.Text);
-                else
-                    angulo = Convert.ToDouble(txtAngulo.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ângulo e intensidade devem ser números");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void AlteraAngulo()
+        {
+            if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+            {
+                angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+            }
+            else if (cbQuadrante.SelectedIndex + 1 == 3)
+                angulo = 180 + Convert.ToDouble(txtAngulo.Text);
+            else
+                angulo = Convert.ToDouble(txtAngulo.Text);
+            
         }
 
         private void btnAjuda_Click(object sender, EventArgs e)
@@ -87,5 +106,6 @@ namespace Software_Trelisa
             Formularios.AjudaAdicionaForca f = new Formularios.AjudaAdicionaForca();
             f.ShowDialog();
         }
+
     }
 }
