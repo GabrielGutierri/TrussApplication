@@ -506,11 +506,13 @@ namespace Software_Trelisa
                     {
                         g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY); //ponto da força é o ponto inicial
                         listaSetas.Add(new PontoSeta(valorXPonto, valorYPonto, ponto.valorX, ponto.valorY, forca.Direcao, forca));
+                        AdicionaIntensidadeForca(ponto,valorXPonto, valorYPonto, forca);
                     }
                     else
                     {
                         g.DrawLine(p, ponto.valorX, ponto.valorY, valorXPonto, valorYPonto); // ponto é o inicial
                         listaSetas.Add(new PontoSeta(ponto.valorX, ponto.valorY, valorXPonto, valorYPonto, forca.Direcao, forca));
+                        AdicionaIntensidadeForca(ponto, valorXPonto, valorYPonto, forca);
                     }
                 }
             }
@@ -754,9 +756,25 @@ namespace Software_Trelisa
             f.ShowDialog();
         }
 
-        private void panelDesenho_Paint(object sender, PaintEventArgs e)
+        private void AdicionaIntensidadeForca(Ponto ponto, int valorXponto, int valorYponto, Forca forca)
         {
+            Point novoPonto;
+            Label lbIntensidade = new Label();
+            Font novaFont = new Font("arial", 14);
+            lbIntensidade.Font = novaFont;
+            Graphics g = panelDesenho.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
+            if(forca.Direcao == "Apontada para fora")
+            {
+                novoPonto = new Point(valorXponto + 15, valorYponto);
+                g.DrawString(forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
+            }
+            else
+            {
+                novoPonto = new Point(valorXponto + 15, valorYponto);
+                g.DrawString(forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
+            }
         }
     }
 }
