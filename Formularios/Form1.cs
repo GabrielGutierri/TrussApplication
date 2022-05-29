@@ -48,7 +48,7 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(75, 500);
+            Ponto ponto = new Ponto(75, 650);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
             this.pontoTeste = ponto;
@@ -73,6 +73,8 @@ namespace Software_Trelisa
         #endregion
 
         #region Botao Teste
+
+        /*
         private void button2_Click(object sender, EventArgs e)
         {
             Barra barra1 = new Barra(75, 500, 125, 230, 79.509, 274.59060, "Crescente");
@@ -133,9 +135,12 @@ namespace Software_Trelisa
 
             btnTeste.Enabled = false;
         }
+        */
         #endregion
 
         #region Botao Teste2
+
+        /*
         private void btnTeste2_Click(object sender, EventArgs e)
         {
             Barra barra1 = new Barra(75, 500, 175, 250, 68.199, 269.258, "Crescente");
@@ -199,6 +204,7 @@ namespace Software_Trelisa
 
             btnTeste2.Enabled = false;
         }
+        */
         #endregion
 
         #region Botão Criar
@@ -220,6 +226,32 @@ namespace Software_Trelisa
             DesenhaBarras();
             DesenhaForcas();
         }
+        #endregion
+
+        #region Adiciona Apoio
+        public void AdicionaApoios(Ponto ponto, string tipo)
+        {
+            System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
+            novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
+            novoPontoImagem.BorderStyle = BorderStyle.None;
+            novoPontoImagem.Width = 100;
+            novoPontoImagem.Height = 60;
+            novoPontoImagem.Tag = "apoio";
+
+            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY + 6);
+            if (tipo == "fixo")
+            {
+                novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
+                panelDesenho.Controls.Add(novoPontoImagem);
+            }
+            else
+            {
+                novoPontoImagem.Image = Properties.Resources.Apoio_simples;
+            }
+            panelDesenho.Controls.Add(novoPontoImagem);
+            novoPontoImagem.BackColor = Color.Transparent;
+        }
+
         #endregion
 
         #region Botão Deletar
@@ -627,7 +659,7 @@ namespace Software_Trelisa
                 novoPonto = new Point(barra.pontoInicialX + ((barra.pontoFinalX - barra.pontoInicialX) / 2)
                     - (lbIntensidade.Width / 2), barra.pontoFinalY + ((barra.pontoInicialY - barra.pontoFinalY) / 2)
                     - (lbIntensidade.Height / 2));
-                g.DrawString(barra.Forca.Intensidade.ToString("0.00"), novaFont, Brushes.Black, novoPonto);
+                g.DrawString(barra.Forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
             }
             else if (barra.sentidoAngulo == "Crescente" && barra.pontoInicialX >= barra.pontoFinalX &&
                 barra.pontoInicialY <= barra.pontoFinalY)
@@ -635,7 +667,7 @@ namespace Software_Trelisa
                 novoPonto = new Point(barra.pontoFinalX + ((barra.pontoInicialX - barra.pontoFinalX) / 2)
                     - (lbIntensidade.Width / 2), barra.pontoInicialY + ((barra.pontoFinalY - barra.pontoInicialY) / 2)
                      - (lbIntensidade.Height / 2));
-                g.DrawString(barra.Forca.Intensidade.ToString("0.00"), novaFont, Brushes.Black, novoPonto);
+                g.DrawString(barra.Forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
             }
             else if (barra.sentidoAngulo == "Decrescente" && barra.pontoInicialX <= barra.pontoFinalX &&
                 barra.pontoInicialY <= barra.pontoFinalY)
@@ -643,7 +675,7 @@ namespace Software_Trelisa
                 novoPonto = new Point(barra.pontoInicialX + ((barra.pontoFinalX - barra.pontoInicialX) / 2)
                     - (lbIntensidade.Width / 2), barra.pontoInicialY + ((barra.pontoFinalY - barra.pontoInicialY) / 2)
                     - (lbIntensidade.Height / 2));
-                g.DrawString(barra.Forca.Intensidade.ToString("0.00"), novaFont, Brushes.Black, novoPonto);
+                g.DrawString(barra.Forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
 
             }
             else if (barra.sentidoAngulo == "Decrescente" && barra.pontoInicialX >= barra.pontoFinalX &&
@@ -652,14 +684,36 @@ namespace Software_Trelisa
                 novoPonto = new Point(barra.pontoFinalX + ((barra.pontoInicialX - barra.pontoFinalX) / 2)
                     - (lbIntensidade.Width / 2), barra.pontoFinalY + ((barra.pontoInicialY - barra.pontoFinalY) / 2)
                     - (lbIntensidade.Height / 2));
-                g.DrawString(barra.Forca.Intensidade.ToString("0.00"), novaFont, Brushes.Black, novoPonto);
+                g.DrawString(barra.Forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
             }
 
             g.Dispose();
 
         }
+
+        private void AdicionaIntensidadeForca(Ponto ponto, int valorXponto, int valorYponto, Forca forca)
+        {
+            Point novoPonto;
+            Label lbIntensidade = new Label();
+            Font novaFont = new Font("arial", 14);
+            lbIntensidade.Font = novaFont;
+            Graphics g = panelDesenho.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+            if (forca.Direcao == "Apontada para fora")
+            {
+                novoPonto = new Point(valorXponto + 15, valorYponto);
+                g.DrawString(forca.Intensidade.ToString("0") + " KN", novaFont, Brushes.Black, novoPonto);
+            }
+            else
+            {
+                novoPonto = new Point(valorXponto + 15, valorYponto);
+                g.DrawString(forca.Intensidade.ToString("0") + " KN", novaFont, Brushes.Black, novoPonto);
+            }
+        }
         #endregion
 
+        #region Deletar Apoio
         public void DeletarApoioEvent()
         {
             foreach (Control apoio in panelDesenho.Controls)
@@ -684,29 +738,6 @@ namespace Software_Trelisa
            
         }
 
-        public void AdicionaApoios(Ponto ponto, string tipo)
-        {
-            System.Windows.Forms.PictureBox novoPontoImagem = new System.Windows.Forms.PictureBox();
-            novoPontoImagem.SizeMode = PictureBoxSizeMode.StretchImage;
-            novoPontoImagem.BorderStyle = BorderStyle.None;
-            novoPontoImagem.Width = 100;
-            novoPontoImagem.Height = 60;
-            novoPontoImagem.Tag = "apoio";
-            
-            novoPontoImagem.Location = new Point(ponto.valorX - 50, ponto.valorY + 6 );
-            if(tipo == "fixo")
-            {
-                novoPontoImagem.Image = Properties.Resources.Apoio_Duplo;
-                panelDesenho.Controls.Add(novoPontoImagem);
-            }
-            else
-            {
-                novoPontoImagem.Image = Properties.Resources.Apoio_simples;
-            }
-            panelDesenho.Controls.Add(novoPontoImagem);
-            novoPontoImagem.BackColor = Color.Transparent;
-        }
-
         public void DeletaApoio(Ponto ponto)
         {
             ponto.forcasApoio.Clear();
@@ -717,7 +748,9 @@ namespace Software_Trelisa
             }
             panelDesenho.Controls.Clear();
         }
+        #endregion
 
+        #region Toolbar
         private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelDesenho.Invalidate();
@@ -755,27 +788,7 @@ namespace Software_Trelisa
             Formularios.AjudaFormPrincipal f = new Formularios.AjudaFormPrincipal();
             f.ShowDialog();
         }
-
-        private void AdicionaIntensidadeForca(Ponto ponto, int valorXponto, int valorYponto, Forca forca)
-        {
-            Point novoPonto;
-            Label lbIntensidade = new Label();
-            Font novaFont = new Font("arial", 14);
-            lbIntensidade.Font = novaFont;
-            Graphics g = panelDesenho.CreateGraphics();
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
-            if(forca.Direcao == "Apontada para fora")
-            {
-                novoPonto = new Point(valorXponto + 15, valorYponto);
-                g.DrawString(forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
-            }
-            else
-            {
-                novoPonto = new Point(valorXponto + 15, valorYponto);
-                g.DrawString(forca.Intensidade.ToString("0.00") + " KN", novaFont, Brushes.Black, novoPonto);
-            }
-        }
+        #endregion
     }
 }
 

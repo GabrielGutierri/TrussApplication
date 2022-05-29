@@ -33,7 +33,6 @@ namespace Software_Trelisa
             cmd.Parameters.Add("@email", SqlDbType.VarChar, 70).Value = email;
 
             int contador = (int)cmd.ExecuteScalar();
-            MessageBox.Show($"contador");
             if (contador != 0)
                 throw new Exception("E-mail já cadastrado!");
             else return true;

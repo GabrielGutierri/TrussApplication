@@ -52,7 +52,6 @@ namespace Software_Trelisa
                 forcaHorizontal.Intensidade = somaEsquerda - somaDireita;
             else
                 forcaHorizontal.Intensidade = somaDireita - somaEsquerda;
-            MessageBox.Show($"Esquerda: {somaEsquerda} - Direita: {somaDireita}");
             ChecaDirecaoHorizontal(forcaHorizontal);
         }
         private static void ChecaDirecaoHorizontal(ForcaApoio forcaHorizontal)
@@ -103,7 +102,6 @@ namespace Software_Trelisa
                 }
             }
             forcaVertical.Intensidade = somaBaixo - somaCima; //só considerei força de apoio fixo para cima
-            MessageBox.Show($"Cima: {somaCima} - Baixo: {somaBaixo}");
             ChecaDirecaoVertical(forcaVertical);
         }
         public static void ChecaDirecaoVertical(ForcaApoio forcaVertical)

@@ -36,8 +36,6 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnCriar = new System.Windows.Forms.Button();
             this.btnDeletar = new System.Windows.Forms.Button();
-            this.btnTeste = new System.Windows.Forms.Button();
-            this.btnTeste2 = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,9 +58,8 @@
             this.panelDesenho.Location = new System.Drawing.Point(11, 42);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1332, 547);
+            this.panelDesenho.Size = new System.Drawing.Size(1670, 780);
             this.panelDesenho.TabIndex = 0;
-            this.panelDesenho.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesenho_Paint);
             // 
             // lbDeletar
             // 
@@ -71,7 +68,7 @@
             this.lbDeletar.Location = new System.Drawing.Point(374, 9);
             this.lbDeletar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeletar.Name = "lbDeletar";
-            this.lbDeletar.Size = new System.Drawing.Size(635, 25);
+            this.lbDeletar.Size = new System.Drawing.Size(801, 32);
             this.lbDeletar.TabIndex = 5;
             this.lbDeletar.Text = "Selecione os dois pontos de uma barra clicando neles para deletar a barra";
             this.lbDeletar.Visible = false;
@@ -83,7 +80,7 @@
             this.lbMensagem.Location = new System.Drawing.Point(621, 9);
             this.lbMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMensagem.Name = "lbMensagem";
-            this.lbMensagem.Size = new System.Drawing.Size(249, 25);
+            this.lbMensagem.Size = new System.Drawing.Size(317, 32);
             this.lbMensagem.TabIndex = 4;
             this.lbMensagem.Text = "Selecione um ponto inicial  :";
             this.lbMensagem.Visible = false;
@@ -95,7 +92,7 @@
             this.panel3.Controls.Add(this.btnCriar);
             this.panel3.Controls.Add(this.btnDeletar);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(243, 593);
+            this.panel3.Location = new System.Drawing.Point(572, 826);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(524, 98);
@@ -135,30 +132,6 @@
             this.btnDeletar.UseVisualStyleBackColor = true;
             this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
-            // btnTeste
-            // 
-            this.btnTeste.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste.Location = new System.Drawing.Point(841, 623);
-            this.btnTeste.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnTeste.Name = "btnTeste";
-            this.btnTeste.Size = new System.Drawing.Size(142, 42);
-            this.btnTeste.TabIndex = 6;
-            this.btnTeste.Text = "Teste";
-            this.btnTeste.UseVisualStyleBackColor = true;
-            this.btnTeste.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnTeste2
-            // 
-            this.btnTeste2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTeste2.Location = new System.Drawing.Point(987, 623);
-            this.btnTeste2.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTeste2.Name = "btnTeste2";
-            this.btnTeste2.Size = new System.Drawing.Size(142, 42);
-            this.btnTeste2.TabIndex = 7;
-            this.btnTeste2.Text = "Teste 2";
-            this.btnTeste2.UseVisualStyleBackColor = true;
-            this.btnTeste2.Click += new System.EventHandler(this.btnTeste2_Click);
-            // 
             // menuStrip2
             // 
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -170,7 +143,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(1370, 25);
+            this.menuStrip2.Size = new System.Drawing.Size(1689, 29);
             this.menuStrip2.TabIndex = 22;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -181,20 +154,20 @@
             this.fecharToolStripMenuItem});
             this.arquivoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(69, 23);
+            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(83, 27);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
             // 
             // novoArquivoToolStripMenuItem
             // 
             this.novoArquivoToolStripMenuItem.Name = "novoArquivoToolStripMenuItem";
-            this.novoArquivoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.novoArquivoToolStripMenuItem.Size = new System.Drawing.Size(199, 28);
             this.novoArquivoToolStripMenuItem.Text = "Novo Arquivo";
             this.novoArquivoToolStripMenuItem.Click += new System.EventHandler(this.novoArquivoToolStripMenuItem_Click);
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(199, 28);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
             // 
@@ -204,20 +177,20 @@
             this.modoNoturnoToolStripMenuItem});
             this.temaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.temaToolStripMenuItem.Name = "temaToolStripMenuItem";
-            this.temaToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
+            this.temaToolStripMenuItem.Size = new System.Drawing.Size(64, 27);
             this.temaToolStripMenuItem.Text = "Tema";
             // 
             // modoNoturnoToolStripMenuItem
             // 
             this.modoNoturnoToolStripMenuItem.Name = "modoNoturnoToolStripMenuItem";
-            this.modoNoturnoToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.modoNoturnoToolStripMenuItem.Size = new System.Drawing.Size(209, 28);
             this.modoNoturnoToolStripMenuItem.Text = "Modo Noturno";
             // 
             // ajudaToolStripMenuItem
             // 
             this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(56, 23);
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.ajudaToolStripMenuItem.Text = "Ajuda";
             this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
             // 
@@ -225,17 +198,16 @@
             // 
             this.sobreToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(56, 23);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.btnTeste);
-            this.Controls.Add(this.btnTeste2);
+            this.ClientSize = new System.Drawing.Size(1689, 932);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelDesenho);
             this.Controls.Add(this.menuStrip2);
@@ -264,11 +236,9 @@
         private Button button1;
         private Label lbMensagem;
         private Label lbDeletar;
-        private Button btnTeste;
         private Button btnCriar;
         private Button btnDeletar;
         private Button btnCalcular;
-        private Button btnTeste2;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem menuToolStripMenuItem;
         private ToolStripMenuItem novoToolStripMenuItem;
