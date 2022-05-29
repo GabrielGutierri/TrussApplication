@@ -55,32 +55,31 @@ namespace Software_Trelisa
                 MessageBox.Show("Dados Invalidos");
                 return;
             }
-
-            try
-            {
-                AlteraAngulo();
-                forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), cbQuadrante.SelectedIndex + 1);
-                this._ponto.forcasPonto.Add(forcaPonto);
-            }
-            catch
-            {
-                MessageBox.Show("Dados Invalidos");
-                return;
-            }
-
+            AlteraAngulo();
+            forcaPonto = new ForcaPonto(Convert.ToDouble(txtIntensidade.Text), angulo, sentido, cbTipoSentido.SelectedItem.ToString(), cbQuadrante.SelectedIndex + 1);
+            this._ponto.forcasPonto.Add(forcaPonto);
+            
             MessageBox.Show($"{forcaPonto.Angulo} = Cos: {forcaPonto.ComponenteHorizontal} - Sen {forcaPonto.ComponenteVertical}");
             this.Close();
         }
         private void AlteraAngulo()
         {
-            if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+            try
             {
-                angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+                Verificacoes.VerificaAngulo(txtAngulo.Text);
+                if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+                {
+                    angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+                }
+                else if (cbQuadrante.SelectedIndex + 1 == 3)
+                    angulo = 180 + Convert.ToDouble(txtAngulo.Text);
+                else
+                    angulo = Convert.ToDouble(txtAngulo.Text);
             }
-            else if (cbQuadrante.SelectedIndex + 1 == 3)
-                angulo = 180 + Convert.ToDouble(txtAngulo.Text);
-            else
-                angulo = Convert.ToDouble(txtAngulo.Text);
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAjuda_Click(object sender, EventArgs e)

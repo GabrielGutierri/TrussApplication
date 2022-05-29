@@ -39,7 +39,7 @@ namespace Software_Trelisa
                 string email = txtEmail.Text;
                 string senha = txtPassword.Text;
                 string repetirSenha = txtRepeatPassword.Text;
-                string connectionString = "";
+                string connectionString = $"Data Source=truss-server.database.windows.net;Initial Catalog=TrussDatabase;User ID=TrussAdmin;Password=TrussGVMJF0422";
 
                 SqlConnection connection = new SqlConnection(connectionString);
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -56,6 +56,7 @@ namespace Software_Trelisa
                     adapter.InsertCommand.ExecuteNonQuery();
                     cmd.Dispose();
                     connection.Close();
+                    this.Close();
                 }
             }
             catch(Exception ex)

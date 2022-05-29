@@ -17,6 +17,8 @@ namespace Software_Trelisa
 
         public Form1()
         {
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
             InitializeComponent();
             AdicionaPrimeiroPonto();
         }
@@ -750,6 +752,11 @@ namespace Software_Trelisa
         {
             Formularios.AjudaFormPrincipal f = new Formularios.AjudaFormPrincipal();
             f.ShowDialog();
+        }
+
+        private void panelDesenho_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

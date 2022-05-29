@@ -38,5 +38,13 @@ namespace Software_Trelisa
                 throw new Exception("E-mail já cadastrado!");
             else return true;
         }
+        public static bool VerificaAngulo(string angulo)
+        {
+            if (Convert.ToInt32(angulo) > 90 || Convert.ToInt32(angulo) < 0)
+            {
+                throw new Exception("O ângulo deve estar entre 0° e 90°");
+            }
+            else return true;
+        }
     }
 }
