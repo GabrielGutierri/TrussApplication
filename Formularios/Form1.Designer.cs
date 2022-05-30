@@ -40,8 +40,6 @@
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoArquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.temaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modoNoturnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDesenho.SuspendLayout();
@@ -51,21 +49,25 @@
             // 
             // panelDesenho
             // 
-            this.panelDesenho.AutoSize = true;
+            this.panelDesenho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDesenho.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelDesenho.BackColor = System.Drawing.Color.White;
             this.panelDesenho.Controls.Add(this.lbDeletar);
             this.panelDesenho.Controls.Add(this.lbMensagem);
             this.panelDesenho.Location = new System.Drawing.Point(11, 42);
             this.panelDesenho.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesenho.Name = "panelDesenho";
-            this.panelDesenho.Size = new System.Drawing.Size(1670, 780);
+            this.panelDesenho.Size = new System.Drawing.Size(1180, 495);
             this.panelDesenho.TabIndex = 0;
             // 
             // lbDeletar
             // 
+            this.lbDeletar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbDeletar.AutoSize = true;
             this.lbDeletar.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDeletar.Location = new System.Drawing.Point(374, 9);
+            this.lbDeletar.Location = new System.Drawing.Point(127, 9);
             this.lbDeletar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeletar.Name = "lbDeletar";
             this.lbDeletar.Size = new System.Drawing.Size(801, 32);
@@ -75,9 +77,10 @@
             // 
             // lbMensagem
             // 
+            this.lbMensagem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbMensagem.AutoSize = true;
             this.lbMensagem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbMensagem.Location = new System.Drawing.Point(621, 9);
+            this.lbMensagem.Location = new System.Drawing.Point(375, 9);
             this.lbMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMensagem.Name = "lbMensagem";
             this.lbMensagem.Size = new System.Drawing.Size(317, 32);
@@ -87,24 +90,28 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Controls.Add(this.btnCalcular);
             this.panel3.Controls.Add(this.btnCriar);
             this.panel3.Controls.Add(this.btnDeletar);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(572, 826);
+            this.panel3.Location = new System.Drawing.Point(333, 546);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(524, 98);
+            this.panel3.Size = new System.Drawing.Size(529, 96);
             this.panel3.TabIndex = 3;
             // 
             // btnCalcular
             // 
+            this.btnCalcular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnCalcular.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCalcular.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalcular.Location = new System.Drawing.Point(348, 18);
+            this.btnCalcular.Location = new System.Drawing.Point(347, 15);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(163, 66);
+            this.btnCalcular.Size = new System.Drawing.Size(163, 67);
             this.btnCalcular.TabIndex = 0;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
@@ -112,10 +119,12 @@
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(14, 18);
+            this.btnCriar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnCriar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCriar.Location = new System.Drawing.Point(13, 15);
             this.btnCriar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCriar.Name = "btnCriar";
-            this.btnCriar.Size = new System.Drawing.Size(163, 66);
+            this.btnCriar.Size = new System.Drawing.Size(163, 67);
             this.btnCriar.TabIndex = 7;
             this.btnCriar.Text = "Criar";
             this.btnCriar.UseVisualStyleBackColor = true;
@@ -123,10 +132,12 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(181, 18);
+            this.btnDeletar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnDeletar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDeletar.Location = new System.Drawing.Point(180, 15);
             this.btnDeletar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(163, 66);
+            this.btnDeletar.Size = new System.Drawing.Size(163, 67);
             this.btnDeletar.TabIndex = 8;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
@@ -137,13 +148,12 @@
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
-            this.temaToolStripMenuItem,
             this.ajudaToolStripMenuItem,
             this.sobreToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(1689, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1202, 29);
             this.menuStrip2.TabIndex = 22;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -171,21 +181,6 @@
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
             // 
-            // temaToolStripMenuItem
-            // 
-            this.temaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modoNoturnoToolStripMenuItem});
-            this.temaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.temaToolStripMenuItem.Name = "temaToolStripMenuItem";
-            this.temaToolStripMenuItem.Size = new System.Drawing.Size(64, 27);
-            this.temaToolStripMenuItem.Text = "Tema";
-            // 
-            // modoNoturnoToolStripMenuItem
-            // 
-            this.modoNoturnoToolStripMenuItem.Name = "modoNoturnoToolStripMenuItem";
-            this.modoNoturnoToolStripMenuItem.Size = new System.Drawing.Size(209, 28);
-            this.modoNoturnoToolStripMenuItem.Text = "Modo Noturno";
-            // 
             // ajudaToolStripMenuItem
             // 
             this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -204,10 +199,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1689, 932);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1202, 653);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelDesenho);
             this.Controls.Add(this.menuStrip2);
@@ -218,6 +213,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tremliça";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.panelDesenho.ResumeLayout(false);
             this.panelDesenho.PerformLayout();
@@ -246,8 +242,6 @@
         private ToolStripMenuItem arquivoToolStripMenuItem;
         private ToolStripMenuItem novoArquivoToolStripMenuItem;
         private ToolStripMenuItem fecharToolStripMenuItem;
-        private ToolStripMenuItem temaToolStripMenuItem;
-        private ToolStripMenuItem modoNoturnoToolStripMenuItem;
         private ToolStripMenuItem sobreToolStripMenuItem;
         private ToolStripMenuItem ajudaToolStripMenuItem;
     }

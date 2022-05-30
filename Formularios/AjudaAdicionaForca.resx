@@ -59,7 +59,7 @@
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
     <value>- Selecione o tipo de inclinação para começar.
-- Passar angulo em graus levando em consideração somente o eixo X, no sentido anti- horario. 
+- Passar angulo em graus levando em consideração somente o eixo X. 
 - Passar intensidade em KN.
 - Selecionar o sentido da força (para dentro do ponto ou para fora dele).
 - Selecionar o quadrante da força.  

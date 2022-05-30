@@ -67,6 +67,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnAjuda = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.gbBarraInclinada.SuspendLayout();
             this.gbBarraVertical.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             // gbBarraInclinada
             // 
+            this.gbBarraInclinada.Controls.Add(this.label13);
             this.gbBarraInclinada.Controls.Add(this.label4);
             this.gbBarraInclinada.Controls.Add(this.cbTipoInclinacao);
             this.gbBarraInclinada.Controls.Add(this.label3);
@@ -180,7 +182,7 @@
             this.rbInferiorInclinado.AutoSize = true;
             this.rbInferiorInclinado.Location = new System.Drawing.Point(304, 148);
             this.rbInferiorInclinado.Name = "rbInferiorInclinado";
-            this.rbInferiorInclinado.Size = new System.Drawing.Size(112, 36);
+            this.rbInferiorInclinado.Size = new System.Drawing.Size(109, 36);
             this.rbInferiorInclinado.TabIndex = 22;
             this.rbInferiorInclinado.Text = "Inferior";
             this.rbInferiorInclinado.UseVisualStyleBackColor = true;
@@ -191,7 +193,7 @@
             this.rbSuperiorInclinado.Checked = true;
             this.rbSuperiorInclinado.Location = new System.Drawing.Point(304, 99);
             this.rbSuperiorInclinado.Name = "rbSuperiorInclinado";
-            this.rbSuperiorInclinado.Size = new System.Drawing.Size(125, 36);
+            this.rbSuperiorInclinado.Size = new System.Drawing.Size(122, 36);
             this.rbSuperiorInclinado.TabIndex = 21;
             this.rbSuperiorInclinado.TabStop = true;
             this.rbSuperiorInclinado.Text = "Superior";
@@ -270,7 +272,7 @@
             this.rbCimaVertical.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rbCimaVertical.Location = new System.Drawing.Point(310, 117);
             this.rbCimaVertical.Name = "rbCimaVertical";
-            this.rbCimaVertical.Size = new System.Drawing.Size(89, 36);
+            this.rbCimaVertical.Size = new System.Drawing.Size(86, 36);
             this.rbCimaVertical.TabIndex = 2;
             this.rbCimaVertical.TabStop = true;
             this.rbCimaVertical.Text = "Cima";
@@ -282,7 +284,7 @@
             this.rbBaixoVertical.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rbBaixoVertical.Location = new System.Drawing.Point(310, 159);
             this.rbBaixoVertical.Name = "rbBaixoVertical";
-            this.rbBaixoVertical.Size = new System.Drawing.Size(92, 36);
+            this.rbBaixoVertical.Size = new System.Drawing.Size(89, 36);
             this.rbBaixoVertical.TabIndex = 3;
             this.rbBaixoVertical.TabStop = true;
             this.rbBaixoVertical.Text = "Baixo";
@@ -343,7 +345,7 @@
             this.rbBarraInclinada.Checked = true;
             this.rbBarraInclinada.Location = new System.Drawing.Point(12, 76);
             this.rbBarraInclinada.Name = "rbBarraInclinada";
-            this.rbBarraInclinada.Size = new System.Drawing.Size(191, 36);
+            this.rbBarraInclinada.Size = new System.Drawing.Size(188, 36);
             this.rbBarraInclinada.TabIndex = 15;
             this.rbBarraInclinada.TabStop = true;
             this.rbBarraInclinada.Text = "Barra Inclinada";
@@ -355,7 +357,7 @@
             this.rbBarraVertical.AutoSize = true;
             this.rbBarraVertical.Location = new System.Drawing.Point(12, 134);
             this.rbBarraVertical.Name = "rbBarraVertical";
-            this.rbBarraVertical.Size = new System.Drawing.Size(173, 36);
+            this.rbBarraVertical.Size = new System.Drawing.Size(170, 36);
             this.rbBarraVertical.TabIndex = 16;
             this.rbBarraVertical.Text = "Barra Vertical";
             this.rbBarraVertical.UseVisualStyleBackColor = true;
@@ -366,7 +368,7 @@
             this.rbBarraHorizontal.AutoSize = true;
             this.rbBarraHorizontal.Location = new System.Drawing.Point(12, 195);
             this.rbBarraHorizontal.Name = "rbBarraHorizontal";
-            this.rbBarraHorizontal.Size = new System.Drawing.Size(206, 36);
+            this.rbBarraHorizontal.Size = new System.Drawing.Size(203, 36);
             this.rbBarraHorizontal.TabIndex = 17;
             this.rbBarraHorizontal.Text = "Barra Horizontal";
             this.rbBarraHorizontal.UseVisualStyleBackColor = true;
@@ -423,7 +425,7 @@
             this.rbDireitaHorizontal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rbDireitaHorizontal.Location = new System.Drawing.Point(310, 117);
             this.rbDireitaHorizontal.Name = "rbDireitaHorizontal";
-            this.rbDireitaHorizontal.Size = new System.Drawing.Size(105, 36);
+            this.rbDireitaHorizontal.Size = new System.Drawing.Size(102, 36);
             this.rbDireitaHorizontal.TabIndex = 2;
             this.rbDireitaHorizontal.TabStop = true;
             this.rbDireitaHorizontal.Text = "Direita";
@@ -435,7 +437,7 @@
             this.rbEsquerdaHorizontal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rbEsquerdaHorizontal.Location = new System.Drawing.Point(310, 159);
             this.rbEsquerdaHorizontal.Name = "rbEsquerdaHorizontal";
-            this.rbEsquerdaHorizontal.Size = new System.Drawing.Size(132, 36);
+            this.rbEsquerdaHorizontal.Size = new System.Drawing.Size(129, 36);
             this.rbEsquerdaHorizontal.TabIndex = 3;
             this.rbEsquerdaHorizontal.TabStop = true;
             this.rbEsquerdaHorizontal.Text = "Esquerda";
@@ -500,6 +502,16 @@
             this.btnAjuda.Text = "Ajuda";
             this.btnAjuda.UseVisualStyleBackColor = true;
             this.btnAjuda.Click += new System.EventHandler(this.btnAjuda_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(237, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 46);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "°";
             // 
             // AdicionaBarras
             // 
@@ -566,5 +578,6 @@
         private Button btnAjuda;
         private Label label4;
         private ComboBox cbTipoInclinacao;
+        private Label label13;
     }
 }
