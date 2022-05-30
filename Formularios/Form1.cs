@@ -762,7 +762,8 @@ namespace Software_Trelisa
         #region Toolbar
         private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            panelDesenho.Invalidate();
+            //panelDesenho.Invalidate();
+            panelDesenho.Refresh();
             listaBarras.Clear();
             listaPontos.Clear();
             listaSetas.Clear();
