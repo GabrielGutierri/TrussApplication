@@ -260,6 +260,7 @@ namespace Software_Trelisa
         #region Botão Deletar
         private void btnDeletar_Click(object sender, EventArgs e)
         {
+            lbMensagem.Visible = false;
             frmDeleta f = new frmDeleta();
             f.ShowDialog();
         }
@@ -773,6 +774,7 @@ namespace Software_Trelisa
         private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelDesenho.Invalidate();
+            panelDesenho.Controls.Clear();
             listaBarras.Clear();
             listaPontos.Clear();
             listaSetas.Clear();
@@ -780,7 +782,6 @@ namespace Software_Trelisa
             listaDeletar.Clear();
             listaDeletaForca.Clear();
             escalaDesenho = 1;
-            AdicionaPrimeiroPonto();
             btnCriar.Enabled = true;
             btnDeletar.Enabled = true;
             btnCalcular.Enabled = true;

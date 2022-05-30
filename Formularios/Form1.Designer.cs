@@ -67,7 +67,7 @@
             this.lbDeletar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbDeletar.AutoSize = true;
             this.lbDeletar.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDeletar.Location = new System.Drawing.Point(127, 9);
+            this.lbDeletar.Location = new System.Drawing.Point(163, 9);
             this.lbDeletar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeletar.Name = "lbDeletar";
             this.lbDeletar.Size = new System.Drawing.Size(801, 32);

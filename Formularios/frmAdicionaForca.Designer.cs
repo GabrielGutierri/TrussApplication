@@ -205,7 +205,7 @@
             this.rbForcaVertical.AutoSize = true;
             this.rbForcaVertical.Location = new System.Drawing.Point(11, 132);
             this.rbForcaVertical.Name = "rbForcaVertical";
-            this.rbForcaVertical.Size = new System.Drawing.Size(173, 36);
+            this.rbForcaVertical.Size = new System.Drawing.Size(176, 36);
             this.rbForcaVertical.TabIndex = 16;
             this.rbForcaVertical.Text = "Força Vertical";
             this.rbForcaVertical.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@
             this.rbForcaHorizontal.AutoSize = true;
             this.rbForcaHorizontal.Location = new System.Drawing.Point(11, 193);
             this.rbForcaHorizontal.Name = "rbForcaHorizontal";
-            this.rbForcaHorizontal.Size = new System.Drawing.Size(206, 36);
+            this.rbForcaHorizontal.Size = new System.Drawing.Size(209, 36);
             this.rbForcaHorizontal.TabIndex = 17;
             this.rbForcaHorizontal.Text = "Força Horizontal";
             this.rbForcaHorizontal.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@
             this.rbForcaInclinada.Checked = true;
             this.rbForcaInclinada.Location = new System.Drawing.Point(11, 75);
             this.rbForcaInclinada.Name = "rbForcaInclinada";
-            this.rbForcaInclinada.Size = new System.Drawing.Size(191, 36);
+            this.rbForcaInclinada.Size = new System.Drawing.Size(194, 36);
             this.rbForcaInclinada.TabIndex = 15;
             this.rbForcaInclinada.TabStop = true;
             this.rbForcaInclinada.Text = "Força Inclinada";

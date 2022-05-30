@@ -218,6 +218,11 @@ namespace Software_Trelisa
                     else
                     {
                         angulo = Convert.ToDouble(txtAnguloInclinado.Text);
+                        if(angulo > 90 || angulo < 0)
+                        {
+                            MessageBox.Show("Angulo precisa estar entre 0 e 90");
+                            return;
+                        }
                     }
                 }
                 catch
@@ -264,6 +269,11 @@ namespace Software_Trelisa
                     else
                     {
                         angulo = Convert.ToDouble(txtAnguloInclinado.Text);
+                        if (angulo > 90 || angulo < 0)
+                        {
+                            MessageBox.Show("Angulo precisa estar entre 0 e 90");
+                            return;
+                        }
                     }
 
                 }
