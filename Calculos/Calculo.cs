@@ -9,8 +9,8 @@ namespace Software_Trelisa
 {
     public static class Calculo
     {
-        static double somaAntiHorario = 0;
-        static double somaHorario = 0;
+        public static double somaAntiHorario = 0;
+        public static double somaHorario = 0;
         public static void CalculaMomentoApoio()
         {
             List<ForcaApoio> forcaApoioFixo = new List<ForcaApoio>();

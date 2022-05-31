@@ -8,8 +8,8 @@ namespace Software_Trelisa.Calculos
 {
     public static class CalculoForcasBarras
     {
-        static double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
-        static int quantidadeLoops = 0;
+        public static double somatoriaForcasVerticais = 0, somatoriaForcasHorizontais = 0;
+        public static int quantidadeLoops = 0;
 
         public static void CalculaForcasBarra()
         {
