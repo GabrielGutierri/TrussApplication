@@ -214,7 +214,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tremliça";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panelDesenho.ResumeLayout(false);
             this.panelDesenho.PerformLayout();
             this.panel3.ResumeLayout(false);

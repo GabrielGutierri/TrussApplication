@@ -798,11 +798,6 @@ namespace Software_Trelisa
             f.ShowDialog();
         }
 
-        private void Form1_LocationChanged(object sender, EventArgs e)
-        {
-                DesenhaBarras();
-                DesenhaForcas();
-        }
 
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -811,6 +806,11 @@ namespace Software_Trelisa
         }
         #endregion
 
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            DesenhaBarras();
+            DesenhaForcas();
+        }
     }
 }
 
