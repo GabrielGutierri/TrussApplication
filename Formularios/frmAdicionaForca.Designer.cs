@@ -77,9 +77,9 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(149, 185);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 32);
+            this.label7.Size = new System.Drawing.Size(46, 32);
             this.label7.TabIndex = 27;
-            this.label7.Text = "kN";
+            this.label7.Text = "KN";
             // 
             // label6
             // 

@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCriarBarraInclinado = new System.Windows.Forms.Button();
             this.gbBarraInclinada = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbTipoInclinacao = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -122,6 +123,7 @@
             // 
             // gbBarraInclinada
             // 
+            this.gbBarraInclinada.Controls.Add(this.label13);
             this.gbBarraInclinada.Controls.Add(this.label4);
             this.gbBarraInclinada.Controls.Add(this.cbTipoInclinacao);
             this.gbBarraInclinada.Controls.Add(this.label3);
@@ -144,6 +146,16 @@
             this.gbBarraInclinada.TabStop = false;
             this.gbBarraInclinada.Text = "Barra Inclinada";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(237, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 46);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "°";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -156,6 +168,7 @@
             // 
             // cbTipoInclinacao
             // 
+            this.cbTipoInclinacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoInclinacao.FormattingEnabled = true;
             this.cbTipoInclinacao.Items.AddRange(new object[] {
             "Barra Inclinada Crescente",
@@ -566,5 +579,6 @@
         private Button btnAjuda;
         private Label label4;
         private ComboBox cbTipoInclinacao;
+        private Label label13;
     }
 }

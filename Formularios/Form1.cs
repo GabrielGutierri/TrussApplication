@@ -20,7 +20,6 @@ namespace Software_Trelisa
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
             InitializeComponent();
-            AdicionaPrimeiroPonto();
         }
 
         #region Eventos Ponto
@@ -48,7 +47,7 @@ namespace Software_Trelisa
 
         private void AdicionaPrimeiroPonto()
         {
-            Ponto ponto = new Ponto(75, 650);
+            Ponto ponto = new Ponto(75, panelDesenho.Height - 100);
             listaPontos.Add(ponto);
             CriaPontoImagem(ponto);
             this.pontoTeste = ponto;
@@ -210,6 +209,10 @@ namespace Software_Trelisa
         #region Botão Criar
         private void btnCriar_Click_1(object sender, EventArgs e)
         {
+            if(listaPontos.Count == 0)
+            {
+                AdicionaPrimeiroPonto();
+            }
             lbDeletar.Visible = false;
             panelDesenho.Visible = true;
             lbMensagem.Visible = true;
@@ -257,6 +260,7 @@ namespace Software_Trelisa
         #region Botão Deletar
         private void btnDeletar_Click(object sender, EventArgs e)
         {
+            lbMensagem.Visible = false;
             frmDeleta f = new frmDeleta();
             f.ShowDialog();
         }
@@ -266,6 +270,12 @@ namespace Software_Trelisa
         #region Botão Calcular
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            if (DialogResult.Cancel == MessageBox.Show("Os dados informados estão corretos? Essa ação não poderá ser desfeita", "Confirmação",
+                MessageBoxButtons.OKCancel))
+            {
+                return;
+            }
+
             btnCriar.Enabled = false;
             btnDeletar.Enabled = false;
             btnCalcular.Enabled = false;
@@ -613,11 +623,11 @@ namespace Software_Trelisa
             }
             if (btnCalcular.Enabled == false)
             {
-                Point pontoTracao = new Point(1350, 705);
-                Point pontoCompressao = new Point(1350, 745);
-                g.DrawLine(myPen2, 1500, 720, 1650, 720);
+                Point pontoTracao = new Point(panelDesenho.Width - 320, panelDesenho.Height - 75);
+                Point pontoCompressao = new Point(panelDesenho.Width - 320, panelDesenho.Height - 35);
+                g.DrawLine(myPen2, panelDesenho.Width - 170, panelDesenho.Height - 60, panelDesenho.Width - 20, panelDesenho.Height - 60);
                 g.DrawString("Tração", novaFont, Brushes.Black, pontoTracao);
-                g.DrawLine(myPen3, 1500, 765, 1650, 765);
+                g.DrawLine(myPen3, panelDesenho.Width - 170, panelDesenho.Height - 15, panelDesenho.Width - 20, panelDesenho.Height - 15);
                 g.DrawString("Compressão", novaFont, Brushes.Black, pontoCompressao);
             }
 
@@ -740,14 +750,15 @@ namespace Software_Trelisa
 
         public void DeletaApoio(Ponto ponto)
         {
-            ponto.forcasApoio.Clear();
             if (ponto.forcasApoio[0].ehApoioFixo)
             {
                 AdicionaApoio.JaTemFixo = false;
+                ponto.forcasApoio.Clear();
             }
             else
             {
                 AdicionaApoio.JaTemMovel = false;
+                ponto.forcasApoio.Clear();
             }
 
             foreach (Control control in panelDesenho.Controls)
@@ -770,7 +781,7 @@ namespace Software_Trelisa
             listaPictureBox.Clear();
             listaDeletar.Clear();
             listaDeletaForca.Clear();
-            AdicionaPrimeiroPonto();
+            escalaDesenho = 1;
             btnCriar.Enabled = true;
             btnDeletar.Enabled = true;
             btnCalcular.Enabled = true;
@@ -799,6 +810,7 @@ namespace Software_Trelisa
             f.ShowDialog();
         }
         #endregion
+
     }
 }
 
