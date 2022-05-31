@@ -1,3 +1,4 @@
+using Software_Trelisa.Calculos;
 using Software_Trelisa.Properties;
 using System.Drawing.Drawing2D;
 
@@ -773,7 +774,10 @@ namespace Software_Trelisa
         #region Toolbar
         private void novoArquivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Calculo.somaAntiHorario = 0;
+            Calculo.somaHorario = 0;
+            CalculoForcasBarras.somatoriaForcasVerticais = 0;
+            CalculoForcasBarras.somatoriaForcasHorizontais = 0;
             panelDesenho.Refresh();
             listaBarras.Clear();
             listaPontos.Clear();
