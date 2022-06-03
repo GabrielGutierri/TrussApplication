@@ -88,13 +88,18 @@ namespace Software_Trelisa
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void AlteraAngulo()
         {
-            if (cbQuadrante.SelectedIndex + 1 == 2 || cbQuadrante.SelectedIndex + 1 == 4)
+            if (Convert.ToInt32(cbQuadrante.SelectedItem) == 2)
             {
-                angulo = (90 * (cbQuadrante.SelectedIndex + 1)) - Convert.ToDouble(txtAngulo.Text);
+                angulo = (90 * (Convert.ToInt32(cbQuadrante.SelectedItem))) - Convert.ToDouble(txtAngulo.Text);
             }
-            else if (cbQuadrante.SelectedIndex + 1 == 3)
+            else if (Convert.ToInt32(cbQuadrante.SelectedItem) == 4)
+            {
+                angulo = (90 * (Convert.ToInt32(cbQuadrante.SelectedItem))) - Convert.ToDouble(txtAngulo.Text);
+            }
+            else if (Convert.ToInt32(cbQuadrante.SelectedItem) == 3)
                 angulo = 180 + Convert.ToDouble(txtAngulo.Text);
             else
                 angulo = Convert.ToDouble(txtAngulo.Text);
