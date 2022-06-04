@@ -531,8 +531,8 @@ namespace Software_Trelisa
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
-            Pen p = new Pen(Color.Red, 4.0f);
-            p.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(5, 5, false);
+            Pen p = new Pen(Color.Red, 3.0f);
+            p.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 4, false);
 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
@@ -595,11 +595,11 @@ namespace Software_Trelisa
         }
         public void DesenhaBarras()
         {
-            Font novaFont = new Font("Segoe", 14);
+            Font novaFont = new Font("Segoe", 12);
             Graphics g = panelDesenho.CreateGraphics();
-            Pen myPen = new Pen(Color.Gray, 6);
-            Pen myPen2 = new Pen(Color.LightSteelBlue, 6);
-            Pen myPen3 = new Pen(Color.DarkSeaGreen, 6);
+            Pen myPen = new Pen(Color.Gray, 4);
+            Pen myPen2 = new Pen(Color.LightSteelBlue, 4);
+            Pen myPen3 = new Pen(Color.DarkSeaGreen, 4);
             g.Clear(panelDesenho.BackColor);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
@@ -658,7 +658,7 @@ namespace Software_Trelisa
         {
             Point novoPonto;
             Label lbIntensidade = new Label();
-            Font novaFont = new Font("Segoe", 14);
+            Font novaFont = new Font("Segoe", 12);
             lbIntensidade.Font = novaFont;
             Graphics g = panelDesenho.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -706,7 +706,7 @@ namespace Software_Trelisa
         {
             Point novoPonto;
             Label lbIntensidade = new Label();
-            Font novaFont = new Font("arial", 14);
+            Font novaFont = new Font("Segoe", 12);
             lbIntensidade.Font = novaFont;
             Graphics g = panelDesenho.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;

@@ -28,9 +28,9 @@ namespace Software_Trelisa
 
         private void VerificaEscala()
         {
-            if(Form1.listaBarras.Count == 0 && distancia > 350)
+            if(Form1.listaBarras.Count == 0 && distancia > 180)
             {
-                Form1.escalaDesenho = Math.Round(distancia / 350, 1);
+                Form1.escalaDesenho = Math.Round(distancia / 180, 1);
             }
         }
         
