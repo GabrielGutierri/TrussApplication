@@ -543,8 +543,8 @@ namespace Software_Trelisa
 
                     ValorXPonto(forca);
                     double anguloForca = TrocaAnguloDesenho(forca);
-                    var valorXPonto = ponto.valorX + Convert.ToInt32(75 * Math.Cos(anguloForca * (Math.PI / 180)));
-                    var valorYPonto = ponto.valorY + Convert.ToInt32(75 * Math.Sin(-anguloForca * (Math.PI / 180)));
+                    var valorXPonto = ponto.valorX + Convert.ToInt32(50 * Math.Cos(anguloForca * (Math.PI / 180)));
+                    var valorYPonto = ponto.valorY + Convert.ToInt32(50 * Math.Sin(-anguloForca * (Math.PI / 180)));
                     if (forca.Direcao == "Apontada para fora")
                     {
                         g.DrawLine(p, valorXPonto, valorYPonto, ponto.valorX, ponto.valorY); //ponto da força é o ponto inicial

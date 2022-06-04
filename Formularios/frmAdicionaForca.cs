@@ -68,7 +68,7 @@ namespace Software_Trelisa
                 {
                     ForcaPonto forcaPonto;
 
-                    if (rbForcaInclinada.Checked == true && cbQuadrante.SelectedIndex == 0)
+                    if (rbForcaInclinada.Checked == true && cbQuadrante.SelectedIndex == -1)
                     {
                         MessageBox.Show("Dados Inválidos");
                         return;

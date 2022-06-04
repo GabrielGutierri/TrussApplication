@@ -70,7 +70,7 @@
             this.lbDeletar.Location = new System.Drawing.Point(266, 9);
             this.lbDeletar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeletar.Name = "lbDeletar";
-            this.lbDeletar.Size = new System.Drawing.Size(635, 25);
+            this.lbDeletar.Size = new System.Drawing.Size(801, 32);
             this.lbDeletar.TabIndex = 5;
             this.lbDeletar.Text = "Selecione os dois pontos de uma barra clicando neles para deletar a barra";
             this.lbDeletar.Visible = false;
@@ -83,7 +83,7 @@
             this.lbMensagem.Location = new System.Drawing.Point(451, 9);
             this.lbMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMensagem.Name = "lbMensagem";
-            this.lbMensagem.Size = new System.Drawing.Size(249, 25);
+            this.lbMensagem.Size = new System.Drawing.Size(317, 32);
             this.lbMensagem.TabIndex = 4;
             this.lbMensagem.Text = "Selecione um ponto inicial  :";
             this.lbMensagem.Visible = false;
@@ -153,7 +153,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(1202, 25);
+            this.menuStrip2.Size = new System.Drawing.Size(1202, 29);
             this.menuStrip2.TabIndex = 22;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -164,20 +164,20 @@
             this.fecharToolStripMenuItem});
             this.arquivoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(69, 23);
+            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(83, 27);
             this.arquivoToolStripMenuItem.Text = "Arquivo";
             // 
             // novoArquivoToolStripMenuItem
             // 
             this.novoArquivoToolStripMenuItem.Name = "novoArquivoToolStripMenuItem";
-            this.novoArquivoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.novoArquivoToolStripMenuItem.Size = new System.Drawing.Size(199, 28);
             this.novoArquivoToolStripMenuItem.Text = "Novo Arquivo";
             this.novoArquivoToolStripMenuItem.Click += new System.EventHandler(this.novoArquivoToolStripMenuItem_Click);
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(199, 28);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
             // 
@@ -185,7 +185,7 @@
             // 
             this.ajudaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(56, 23);
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.ajudaToolStripMenuItem.Text = "Ajuda";
             this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
             // 
@@ -193,14 +193,14 @@
             // 
             this.sobreToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(56, 23);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.sobreToolStripMenuItem.Text = "Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 11F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1202, 653);
             this.Controls.Add(this.panel3);

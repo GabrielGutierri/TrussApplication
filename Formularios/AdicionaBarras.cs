@@ -28,9 +28,9 @@ namespace Software_Trelisa
 
         private void VerificaEscala()
         {
-            if(Form1.listaBarras.Count == 0 && distancia > 180)
+            if(Form1.listaBarras.Count == 0 && distancia > 230)
             {
-                Form1.escalaDesenho = Math.Round(distancia / 180, 1);
+                Form1.escalaDesenho = Math.Round(distancia / 230, 1);
             }
         }
         
@@ -81,7 +81,7 @@ namespace Software_Trelisa
         {
             try
             {
-                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho ;
+                distancia = Convert.ToDouble(txtDistanciaVertical.Text) / 1 ;
                 VerificaEscala();
                 angulo = 90;
                 distancia = Convert.ToDouble(txtDistanciaVertical.Text) / Form1.escalaDesenho ;
@@ -129,7 +129,7 @@ namespace Software_Trelisa
         {
             try
             {
-                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
+                distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / 1;
                 VerificaEscala();
                 angulo = 0;
                 distancia = Convert.ToDouble(txtDistanciaHorizontal.Text) / Form1.escalaDesenho;
@@ -177,11 +177,11 @@ namespace Software_Trelisa
                 if (txtDistanciaInclinado.Text == "")
                 {
                     distancia = Math.Sqrt(Math.Pow(Convert.ToDouble(txtCatetoAdjacenteInclinado.Text), 2) +
-                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / Form1.escalaDesenho;
+                        Math.Pow(Convert.ToDouble(txtCatetoOpostoInclinado.Text), 2)) / 1;
                 }
                 else
                 {
-                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / Form1.escalaDesenho;
+                    distancia = Convert.ToDouble(txtDistanciaInclinado.Text) / 1;
                 }
 
                 VerificaEscala();
