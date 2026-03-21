@@ -1,4 +1,4 @@
-namespace Software_Trelisa
+namespace TrussApplication
 {
     internal static class Program
     {
